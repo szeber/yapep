@@ -1,0 +1,37 @@
+FolderTypeData:
+    tableName: folder_type_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        name:
+            notnull: true
+            type: string(100)
+        non_doc:
+            notnull: true
+            default: 0
+            type: boolean(25)
+        no_new_doc:
+            notnull: true
+            type: boolean(25)
+        description: string(255)
+        icon: string(255)
+        icon_act: string(255)
+    relations:
+        Folders:
+            class: FolderData
+            local: id
+            foreign: folder_type_id
+            type: many
+        ObjectTypes:
+            refClass: FolderTypeObjectTypeRel
+            class: ObjectTypeData
+            local: folder_type_id
+            foreign: object_type_id
+            type: many
+        FolderTypeObjectTypeRel:
+            local: id
+            foreign: folder_type_id
+            type: many
+            onDelete: CASCADE

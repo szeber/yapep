@@ -1,0 +1,20 @@
+AssetResizerData:
+    tableName: asset_resizer_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        name:
+            notnull: true
+            type: string(255)
+        width:
+            notnull: true
+            type: integer(4)
+        height:
+            notnull: true
+            type: integer(4)
+        force_exact:
+            notnull: true
+            default: 1
+            type: boolean(25)

@@ -1,0 +1,51 @@
+ObjectTypeData:
+    tableName: object_type_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        name:
+            notnull: true
+            notblank: true
+            type: string(255)
+        short_name:
+            notnull: true
+            type: string(32)
+        persist_class:
+            notnull: true
+            notblank: true
+            nospace: true
+            type: string(255)
+        handler_class: string(255)
+        admin_class: string(255)
+        icon: string(255)
+        icon_act: string(255)
+        template_file: string(100)
+    relations:
+        Columns:
+            class: ObjectTypeColumnData
+            local: id
+            foreign: object_type_id
+            type: many
+        Objects:
+            class: ObjectData
+            local: id
+            foreign: object_type_id
+            type: many
+        FolderTypes:
+            refClass: FolderTypeObjectTypeRel
+            class: FolderTypeData
+            local: object_type_id
+            foreign: folder_type_id
+            type: many
+        FolderTypeObjectTypeRel:
+            local: id
+            foreign: object_type_id
+            type: many
+    indexes:
+        name_idx:
+            fields: [ name ]
+        short_name_idx:
+            fields: [ short_name ]
+            type: unique

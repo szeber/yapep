@@ -1,0 +1,38 @@
+CmsPageObjectRel:
+    tableName: cms_page_object_rel
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        page_id:
+            notnull: true
+            type: integer(10)
+        theme_id:
+            notnull: true
+            type: integer(10)
+        relation_type:
+            notnull: true
+            type: integer(4)
+        object_id: integer(10)
+    relations:
+        Page:
+            class: CmsPageData
+            local: page_id
+            foreign: id
+            type: one
+        Object:
+            class: ObjectData
+            local: object_id
+            foreign: id
+            type: one
+            onDelete: CASCADE
+        Theme:
+            class: CmsThemeData
+            local: theme_id
+            foreign: id
+            type: one
+    indexes:
+        relation_type_idx:
+            fields: [ relation_type ]
+

@@ -1,0 +1,36 @@
+CmsModuleData:
+    tableName: cms_module_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        name:
+            notnull: true
+            type: string(100)
+        description:
+            notnull: true
+            type: string(100)
+        cache_type:
+            notnull: true
+            type: integer(1)
+        cache_expire:
+            notnull: true
+            type: integer(10)
+        parent_id: integer(2147483647)
+    relations:
+        Parent:
+            class: CmsModuleData
+            local: parent_id
+            foreign: id
+            type: one
+        PageBoxes:
+            class: CmsPageBoxData
+            local: id
+            foreign: module_id
+            type: many
+        Params:
+            class: CmsModuleParamData
+            local: id
+            foreign: module_id
+            type: many

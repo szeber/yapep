@@ -1,0 +1,26 @@
+LanguageData:
+    tableName: language_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        locale_id:
+            notnull: true
+            type: integer(2147483647)
+        language_code:
+            fixed: true
+            notnull: true
+            notblank: true
+            nospace: true
+            unique: true
+            type: string(2)
+        name:
+            notnull: true
+            type: string(40)
+    relations:
+        Locale:
+            class: LocaleData
+            local: locale_id
+            foreign: id
+            type: one

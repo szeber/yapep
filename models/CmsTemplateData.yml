@@ -1,0 +1,25 @@
+CmsTemplateData:
+    tableName: cms_template_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        name:
+            notnull: true
+            type: string(40)
+        file:
+            notnull: true
+            type: string(40)
+        locale_id: integer(10)
+    relations:
+        Boxplaces:
+            class: CmsBoxplaceData
+            local: id
+            foreign: template_id
+            type: many
+        Pages:
+            class: CmsPageData
+            local: id
+            foreign: template_id
+            type: many

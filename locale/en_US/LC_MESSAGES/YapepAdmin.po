@@ -1,0 +1,797 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: YAPEP Admin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-06-02 11:38+0100\n"
+"PO-Revision-Date: 2008-06-02 11:39+0100\n"
+"Last-Translator: Zsolt Szeberenyi <szeber@svinformatika.hu>\n"
+"Language-Team: The YAPEP project\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: {t}\n"
+"X-Poedit-SearchPath-0: ../../../module/admin\n"
+"X-Poedit-SearchPath-1: ../../../../svportal/module/admin\n"
+"X-Poedit-SearchPath-2: ../../../../svportal/sys/admin\n"
+"X-Poedit-SearchPath-3: ../../../../svportal/template/admin\n"
+
+#: ../../../module/admin/Joke.php:62
+#: ../../../module/admin/Product.php:64
+#: ../../../module/admin/test.php:13
+#: ../../../../svportal/module/admin/Article.php:64
+msgid "Title"
+msgstr "Title"
+
+#: ../../../module/admin/Joke.php:67
+#: ../../../module/admin/Product.php:75
+#: ../../../module/admin/test.php:21
+#: ../../../../svportal/module/admin/Article.php:74
+msgid "Content"
+msgstr "Content"
+
+#: ../../../module/admin/Joke.php:71
+#: ../../../module/admin/test.php:24
+#: ../../../../svportal/module/admin/Article.php:78
+msgid "Author"
+msgstr "Author"
+
+#: ../../../module/admin/Product.php:69
+#: ../../../module/admin/test.php:17
+#: ../../../../svportal/module/admin/Article.php:68
+msgid "Lead"
+msgstr "Lead"
+
+#: ../../../module/admin/Product.php:70
+#: ../../../../svportal/module/admin/Article.php:69
+msgid "This is the lead."
+msgstr "This is the lead."
+
+#: ../../../module/admin/Product.php:79
+#: ../../../module/admin/test.php:30
+#: ../../../../svportal/module/admin/Article.php:86
+msgid "Picture 1"
+msgstr "Picture 1"
+
+#: ../../../module/admin/Product.php:83
+#: ../../../module/admin/test.php:33
+#: ../../../../svportal/module/admin/Article.php:90
+msgid "Picture 2"
+msgstr "Picture 2"
+
+#: ../../../module/admin/Product.php:87
+msgid "Product code"
+msgstr "Product code"
+
+#: ../../../module/admin/Product.php:91
+msgid "Short code"
+msgstr "Short code"
+
+#: ../../../module/admin/Product.php:95
+msgid "Pages"
+msgstr "Pages"
+
+#: ../../../module/admin/Product.php:99
+msgid "Size"
+msgstr "Size"
+
+#: ../../../module/admin/Product.php:103
+msgid "Publishing year"
+msgstr "Publishing year"
+
+#: ../../../module/admin/Product.php:107
+msgid "Price"
+msgstr "Price"
+
+#: ../../../module/admin/test.php:27
+#: ../../../../svportal/module/admin/Article.php:82
+msgid "Author email"
+msgstr "Author email"
+
+#: ../../../module/admin/Banner.php:64
+#: ../../../../svportal/module/admin/List.php:119
+#: ../../../../svportal/module/admin/cms/Module.php:72
+#: ../../../../svportal/module/admin/cms/ModuleParam.php:80
+#: ../../../../svportal/module/admin/cms/AdminFunc.php:70
+#: ../../../../svportal/module/admin/cms/ParamType.php:78
+#: ../../../../svportal/module/admin/cms/FolderType.php:69
+#: ../../../../svportal/module/admin/cms/SysConfig.php:68
+#: ../../../../svportal/module/admin/cms/ObjectType.php:68
+msgid "Name"
+msgstr "Name"
+
+#: ../../../module/admin/Banner.php:69
+msgid "Width"
+msgstr "Width"
+
+#: ../../../module/admin/Banner.php:74
+msgid "Height"
+msgstr "Height"
+
+#: ../../../module/admin/Banner.php:78
+msgid "Click URL"
+msgstr "Click URL"
+
+#: ../../../module/admin/Banner.php:82
+msgid "Open in new window"
+msgstr "Open in new window"
+
+#: ../../../module/admin/Banner.php:86
+#: ../../../../svportal/module/admin/Doc.php:92
+msgid "Active"
+msgstr "Active"
+
+#: ../../../../svportal/module/admin/List.php:110
+msgid "Invalid list module"
+msgstr "Invalid list module"
+
+#: ../../../../svportal/module/admin/List.php:119
+#: ../../../../svportal/module/admin/cms/Module.php:77
+#: ../../../../svportal/module/admin/cms/ModuleParamValue.php:73
+#: ../../../../svportal/module/admin/cms/ModuleParam.php:85
+#: ../../../../svportal/module/admin/cms/FolderType.php:74
+msgid "Description"
+msgstr "Description"
+
+#: ../../../../svportal/module/admin/List.php:119
+msgid "Information"
+msgstr "Information"
+
+#: ../../../../svportal/module/admin/List.php:119
+msgid "File path"
+msgstr "File path"
+
+#: ../../../../svportal/module/admin/List.php:202
+msgid "ID"
+msgstr "ID"
+
+#: ../../../../svportal/module/admin/List.php:275
+msgid "Invalid mode for this module"
+msgstr "Invalid mode for this module"
+
+#: ../../../../svportal/module/admin/List.php:279
+msgid "Invalid list name"
+msgstr "Invalid list name"
+
+#: ../../../../svportal/module/admin/Doc.php:61
+#: ../../../../svportal/module/admin/page/Editor.php:79
+msgid "No submodule set"
+msgstr "No submodule set"
+
+#: ../../../../svportal/module/admin/Doc.php:64
+msgid "Submodule not found"
+msgstr "Submodule not found"
+
+#: ../../../../svportal/module/admin/Doc.php:76
+msgid "Document title"
+msgstr "Document title"
+
+#: ../../../../svportal/module/admin/Doc.php:82
+msgid "Start date"
+msgstr "Start date"
+
+#: ../../../../svportal/module/admin/Doc.php:88
+msgid "End date"
+msgstr "End date"
+
+#: ../../../../svportal/module/admin/Doc.php:93
+msgid "Inactive"
+msgstr "Inactive"
+
+#: ../../../../svportal/module/admin/Doc.php:94
+msgid "Status"
+msgstr "Status"
+
+#: ../../../../svportal/module/admin/Doc.php:99
+msgid "Docname"
+msgstr "Docname"
+
+#: ../../../../svportal/module/admin/Login.php:80
+#: ../../../../svportal/module/admin/Login.php:108
+msgid "Please log in"
+msgstr "Please log in"
+
+#: ../../../../svportal/module/admin/Login.php:86
+#: ../../../../svportal/module/admin/cms/AdminUser.php:77
+msgid "Username"
+msgstr "Username"
+
+#: ../../../../svportal/module/admin/Login.php:93
+#: ../../../../svportal/module/admin/cms/AdminUser.php:82
+msgid "Password"
+msgstr "Password"
+
+#: ../../../../svportal/module/admin/Login.php:99
+msgid "Login"
+msgstr "Login"
+
+#: ../../../../svportal/module/admin/Login.php:104
+msgid "Login failed"
+msgstr "Login failed"
+
+#: ../../../../svportal/module/admin/Main.php:86
+msgid "Site locale"
+msgstr "Site locale"
+
+#: ../../../../svportal/module/admin/Main.php:93
+msgid "Admin locale"
+msgstr "Admin locale"
+
+#: ../../../../svportal/module/admin/Main.php:103
+msgid "Logged in as"
+msgstr "Logged in as"
+
+#: ../../../../svportal/module/admin/Main.php:108
+msgid "Logout"
+msgstr "Logout"
+
+#: ../../../../svportal/module/admin/Main.php:118
+msgid "Object view"
+msgstr "Object view"
+
+#: ../../../../svportal/module/admin/Main.php:127
+#: ../../../../svportal/module/admin/Main.php:197
+#: ../../../../svportal/module/admin/cms/ParamType.php:96
+msgid "Folder browser"
+msgstr "Folder browser"
+
+#: ../../../../svportal/module/admin/Main.php:145
+#: ../../../../svportal/module/admin/object/Browser.php:78
+msgid "Object list"
+msgstr "Object list"
+
+#: ../../../../svportal/module/admin/Main.php:153
+msgid "Folder properties"
+msgstr "Folder properties"
+
+#: ../../../../svportal/module/admin/Main.php:161
+msgid "Page view"
+msgstr "Page view"
+
+#: ../../../../svportal/module/admin/Main.php:178
+msgid "Page editor"
+msgstr "Page editor"
+
+#: ../../../../svportal/module/admin/Main.php:189
+msgid "Page properties"
+msgstr "Page properties"
+
+#: ../../../../svportal/module/admin/cms/Module.php:82
+msgid "Caching type"
+msgstr "Caching type"
+
+#: ../../../../svportal/module/admin/cms/Module.php:84
+msgid "Enabled"
+msgstr "Enabled"
+
+#: ../../../../svportal/module/admin/cms/Module.php:84
+msgid "Disabled"
+msgstr "Disabled"
+
+#: ../../../../svportal/module/admin/cms/Module.php:84
+msgid "Disabled and veto page caching"
+msgstr "Disabled and veto page caching"
+
+#: ../../../../svportal/module/admin/cms/Module.php:88
+msgid "Cache expiration time"
+msgstr "Cache expiration time"
+
+#: ../../../../svportal/module/admin/cms/Module.php:93
+msgid "Parameters"
+msgstr "Parameters"
+
+#: ../../../../svportal/module/admin/cms/Module.php:97
+msgid "New parameter"
+msgstr "New parameter"
+
+#: ../../../../svportal/module/admin/cms/AdminUser.php:72
+msgid "Full name"
+msgstr "Full name"
+
+#: ../../../../svportal/module/admin/cms/AdminUser.php:87
+msgid "Superuser"
+msgstr "Superuser"
+
+#: ../../../../svportal/module/admin/cms/AdminUser.php:91
+msgid "Default locale"
+msgstr "Default locale"
+
+#: ../../../../svportal/module/admin/cms/ModuleParamValue.php:67
+msgid "Module parameter ID"
+msgstr "Module parameter ID"
+
+#: ../../../../svportal/module/admin/cms/ModuleParamValue.php:78
+msgid "value"
+msgstr "value"
+
+#: ../../../../svportal/module/admin/cms/ModuleParam.php:68
+msgid "Module ID"
+msgstr "Module ID"
+
+#: ../../../../svportal/module/admin/cms/ModuleParam.php:74
+msgid "Type"
+msgstr "Type"
+
+#: ../../../../svportal/module/admin/cms/ModuleParam.php:90
+msgid "Allow variable"
+msgstr "Allow variable"
+
+#: ../../../../svportal/module/admin/cms/ModuleParam.php:94
+msgid "Default value"
+msgstr "Default value"
+
+#: ../../../../svportal/module/admin/cms/ModuleParam.php:98
+msgid "Default is variable"
+msgstr "Default is variable"
+
+#: ../../../../svportal/module/admin/cms/ModuleParam.php:102
+msgid "Parameter values"
+msgstr "Parameter values"
+
+#: ../../../../svportal/module/admin/cms/ModuleParam.php:103
+msgid "Only for combobox type parameters"
+msgstr "Only for combobox type parameters"
+
+#: ../../../../svportal/module/admin/cms/ModuleParam.php:107
+msgid "New value"
+msgstr "New value"
+
+#: ../../../../svportal/module/admin/cms/Locale.php:61
+msgid "Locale editor"
+msgstr "Locale editor"
+
+#: ../../../../svportal/module/admin/cms/Locale.php:69
+#: ../../../../svportal/module/admin/cms/AdminLocale.php:76
+msgid "Locale code"
+msgstr "Locale code"
+
+#: ../../../../svportal/module/admin/cms/Locale.php:73
+#: ../../../../svportal/module/admin/cms/AdminLocale.php:80
+#: ../../../../svportal/module/admin/cms/Language.php:80
+msgid "Locale name"
+msgstr "Locale name"
+
+#: ../../../../svportal/module/admin/cms/AdminFunc.php:74
+msgid "Admin module name"
+msgstr "Admin module name"
+
+#: ../../../../svportal/module/admin/cms/ParamType.php:70
+msgid "Module parameter type editor"
+msgstr "Module parameter type editor"
+
+#: ../../../../svportal/module/admin/cms/ParamType.php:83
+msgid "Display as"
+msgstr "Display as"
+
+#: ../../../../svportal/module/admin/cms/ParamType.php:86
+#: ../../../../svportal/module/admin/cms/Language.php:87
+msgid "-- Please select --"
+msgstr "-- Please select --"
+
+#: ../../../../svportal/module/admin/cms/ParamType.php:92
+msgid "Text"
+msgstr "Text"
+
+#: ../../../../svportal/module/admin/cms/ParamType.php:93
+msgid "Combobox"
+msgstr "Combobox"
+
+#: ../../../../svportal/module/admin/cms/ParamType.php:94
+msgid "Checkbox"
+msgstr "Checkbox"
+
+#: ../../../../svportal/module/admin/cms/ParamType.php:95
+msgid "Document browser"
+msgstr "Document browser"
+
+#: ../../../../svportal/module/admin/cms/ParamType.php:97
+msgid "Document list"
+msgstr "Document list"
+
+#: ../../../../svportal/module/admin/cms/Theme.php:63
+msgid "Theme editor"
+msgstr "Theme editor"
+
+#: ../../../../svportal/module/admin/cms/Theme.php:71
+msgid "Theme name"
+msgstr "Theme name"
+
+#: ../../../../svportal/module/admin/cms/Theme.php:75
+msgid "Theme description"
+msgstr "Theme description"
+
+#: ../../../../svportal/module/admin/cms/AdminLocale.php:68
+msgid "Admin locale editor"
+msgstr "Admin locale editor"
+
+#: ../../../../svportal/module/admin/cms/FolderTypeObjectTypeRel.php:81
+msgid "Folder type ID"
+msgstr "Folder type ID"
+
+#: ../../../../svportal/module/admin/cms/FolderTypeObjectTypeRel.php:87
+msgid "Object type"
+msgstr "Object type"
+
+#: ../../../../svportal/module/admin/cms/FolderTypeObjectTypeRel.php:131
+msgid "Data modification disabled"
+msgstr "Data modification disabled"
+
+#: ../../../../svportal/module/admin/cms/ObjectTypeColumn.php:74
+msgid "Object type ID"
+msgstr "Object type ID"
+
+#: ../../../../svportal/module/admin/cms/ObjectTypeColumn.php:79
+msgid "Column name"
+msgstr "Column name"
+
+#: ../../../../svportal/module/admin/cms/ObjectTypeColumn.php:84
+msgid "Displayed name"
+msgstr "Displayed name"
+
+#: ../../../../svportal/module/admin/cms/ObjectTypeColumn.php:89
+msgid "Column number"
+msgstr "Column number"
+
+#: ../../../../svportal/module/admin/cms/ObjectTypeColumn.php:95
+msgid "Displayed in list"
+msgstr "Displayed in list"
+
+#: ../../../../svportal/module/admin/cms/ObjectTypeColumn.php:99
+msgid "Displayed in export"
+msgstr "Displayed in export"
+
+#: ../../../../svportal/module/admin/cms/FolderType.php:58
+msgid "Folder type editor"
+msgstr "Folder type editor"
+
+#: ../../../../svportal/module/admin/cms/FolderType.php:79
+#: ../../../../svportal/module/admin/cms/ObjectType.php:97
+msgid "Icon"
+msgstr "Icon"
+
+#: ../../../../svportal/module/admin/cms/FolderType.php:84
+#: ../../../../svportal/module/admin/cms/ObjectType.php:101
+msgid "Active icon"
+msgstr "Active icon"
+
+#: ../../../../svportal/module/admin/cms/FolderType.php:89
+msgid "Not document holder"
+msgstr "Not document holder"
+
+#: ../../../../svportal/module/admin/cms/FolderType.php:93
+msgid "Don't allow creating new documents"
+msgstr "Don't allow creating new documents"
+
+#: ../../../../svportal/module/admin/cms/FolderType.php:97
+msgid "Object types"
+msgstr "Object types"
+
+#: ../../../../svportal/module/admin/cms/FolderType.php:98
+msgid "New object type"
+msgstr "New object type"
+
+#: ../../../../svportal/module/admin/cms/Language.php:68
+msgid "Language editor"
+msgstr "Language editor"
+
+#: ../../../../svportal/module/admin/cms/Language.php:76
+msgid "Language code"
+msgstr "Language code"
+
+#: ../../../../svportal/module/admin/cms/Recache.php:58
+#: ../../../../svportal/module/admin/cms/Recache.php:62
+msgid "Recache"
+msgstr "Recache"
+
+#: ../../../../svportal/module/admin/cms/Recache.php:65
+msgid "Configuration data cache"
+msgstr "Configuration data cache"
+
+#: ../../../../svportal/module/admin/cms/Recache.php:70
+msgid "Module cache"
+msgstr "Module cache"
+
+#: ../../../../svportal/module/admin/cms/Recache.php:75
+msgid "Page cache"
+msgstr "Page cache"
+
+#: ../../../../svportal/module/admin/cms/Recache.php:80
+msgid "Folder cache"
+msgstr "Folder cache"
+
+#: ../../../../svportal/module/admin/cms/Recache.php:85
+msgid "System configuration cache"
+msgstr "System configuration cache"
+
+#: ../../../../svportal/module/admin/cms/Recache.php:90
+msgid "Database cache"
+msgstr "Database cache"
+
+#: ../../../../svportal/module/admin/cms/Recache.php:94
+msgid "Smarty cache"
+msgstr "Smarty cache"
+
+#: ../../../../svportal/module/admin/cms/Recache.php:98
+msgid "Smarty compile cache"
+msgstr "Smarty compile cache"
+
+#: ../../../../svportal/module/admin/cms/SysConfig.php:57
+msgid "System configuration editor"
+msgstr "System configuration editor"
+
+#: ../../../../svportal/module/admin/cms/SysConfig.php:74
+msgid "Value"
+msgstr "Value"
+
+#: ../../../../svportal/module/admin/cms/ObjectType.php:73
+#: ../../../../svportal/module/admin/page/Prop.php:77
+msgid "Short name"
+msgstr "Short name"
+
+#: ../../../../svportal/module/admin/cms/ObjectType.php:78
+msgid "Persistence class"
+msgstr "Persistence class"
+
+#: ../../../../svportal/module/admin/cms/ObjectType.php:83
+msgid "Handler class"
+msgstr "Handler class"
+
+#: ../../../../svportal/module/admin/cms/ObjectType.php:88
+msgid "Admin class"
+msgstr "Admin class"
+
+#: ../../../../svportal/module/admin/cms/ObjectType.php:93
+msgid "Template file"
+msgstr "Template file"
+
+#: ../../../../svportal/module/admin/cms/ObjectType.php:105
+msgid "Columns"
+msgstr "Columns"
+
+#: ../../../../svportal/module/admin/cms/ObjectType.php:108
+msgid "New column"
+msgstr "New column"
+
+#: ../../../../svportal/module/admin/folder/Tree.php:91
+#: ../../../../svportal/module/admin/folder/Tree.php:94
+#: ../../../../svportal/module/admin/folder/Prop.php:81
+#: ../../../../svportal/module/admin/folder/Prop.php:84
+msgid "New subfolder"
+msgstr "New subfolder"
+
+#: ../../../../svportal/module/admin/folder/Prop.php:75
+msgid "Folder property editor"
+msgstr "Folder property editor"
+
+#: ../../../../svportal/module/admin/folder/Prop.php:90
+msgid "Folder path"
+msgstr "Folder path"
+
+#: ../../../../svportal/module/admin/folder/Prop.php:105
+msgid "Folder name"
+msgstr "Folder name"
+
+#: ../../../../svportal/module/admin/folder/Prop.php:110
+msgid "Folder short name"
+msgstr "Folder short name"
+
+#: ../../../../svportal/module/admin/folder/Prop.php:116
+msgid "Folder type"
+msgstr "Folder type"
+
+#: ../../../../svportal/module/admin/folder/Prop.php:122
+msgid "Active in all languages"
+msgstr "Active in all languages"
+
+#: ../../../../svportal/module/admin/folder/Prop.php:126
+msgid "Visible"
+msgstr "Visible"
+
+#: ../../../../svportal/module/admin/folder/Prop.php:130
+msgid "In sitemap"
+msgstr "In sitemap"
+
+#: ../../../../svportal/module/admin/folder/Prop.php:134
+msgid "Sitemap link"
+msgstr "Sitemap link"
+
+#: ../../../../svportal/module/admin/folder/Prop.php:138
+msgid "Sitemap description"
+msgstr "Sitemap description"
+
+#: ../../../../svportal/module/admin/folder/Prop.php:142
+msgid "Folder order"
+msgstr "Folder order"
+
+#: ../../../../svportal/module/admin/folder/Prop.php:147
+msgid "Folder picture 1"
+msgstr "Folder picture 1"
+
+#: ../../../../svportal/module/admin/folder/Prop.php:151
+msgid "Folder picture 2"
+msgstr "Folder picture 2"
+
+#: ../../../../svportal/module/admin/folder/Prop.php:155
+msgid "Folder page"
+msgstr "Folder page"
+
+#: ../../../../svportal/module/admin/folder/Prop.php:164
+msgid "Document page"
+msgstr "Document page"
+
+#: ../../../../svportal/module/admin/folder/Prop.php:172
+msgid "Virtual subfolders"
+msgstr "Virtual subfolders"
+
+#: ../../../../svportal/module/admin/folder/Prop.php:176
+msgid "Virtual handler"
+msgstr "Virtual handler"
+
+#: ../../../../svportal/module/admin/page/Box.php:104
+msgid "Box not found"
+msgstr "Box not found"
+
+#: ../../../../svportal/module/admin/page/Box.php:114
+msgid "Module name"
+msgstr "Module name"
+
+#: ../../../../svportal/module/admin/page/Box.php:118
+msgid "Module order"
+msgstr "Module order"
+
+#: ../../../../svportal/module/admin/page/Box.php:122
+msgid "Active?"
+msgstr "Active?"
+
+#: ../../../../svportal/module/admin/page/Prop.php:64
+msgid "Page property editor"
+msgstr "Page property editor"
+
+#: ../../../../svportal/module/admin/page/Prop.php:67
+msgid "Page ID"
+msgstr "Page ID"
+
+#: ../../../../svportal/module/admin/page/Prop.php:72
+msgid "Page path"
+msgstr "Page path"
+
+#: ../../../../svportal/module/admin/page/Prop.php:82
+msgid "Page name"
+msgstr "Page name"
+
+#: ../../../../svportal/module/admin/page/Editor.php:82
+msgid "Page not found"
+msgstr "Page not found"
+
+#: ../../../../svportal/sys/admin/AdminModule.php:183
+msgid "Save"
+msgstr "Save"
+
+#: ../../../../svportal/sys/admin/AdminModule.php:184
+msgid "Close"
+msgstr "Close"
+
+#: ../../../../svportal/sys/admin/AdminModule.php:185
+msgid "Delete"
+msgstr "Delete"
+
+#: ../../../../svportal/sys/admin/AdminModule.php:186
+msgid "New"
+msgstr "New"
+
+#: ../../../../svportal/sys/admin/AdminModule.php:285
+msgid "Module mode not set"
+msgstr "Module mode not set"
+
+#: ../../../../svportal/sys/admin/AdminModule.php:406
+msgid "Validation failed"
+msgstr "Validation failed"
+
+#: ../../../../svportal/sys/admin/AdminModule.php:545
+msgid "Data saving not implemented"
+msgstr "Data saving not implemented"
+
+#: ../../../../svportal/sys/admin/AdminModule.php:557
+#: ../../../../svportal/sys/admin/AdminModule.php:568
+msgid "Data loading not implemented"
+msgstr "Data loading not implemented"
+
+#: ../../../../svportal/sys/admin/AdminModule.php:650
+msgid "id"
+msgstr "id"
+
+#: ../../../../svportal/sys/admin/AdminModule.php:654
+msgid "Creation date"
+msgstr "Creation date"
+
+#: ../../../../svportal/sys/admin/AdminModule.php:658
+msgid "Last modification date"
+msgstr "Last modification date"
+
+#: ../../../../svportal/sys/admin/AdminModule.php:665
+msgid "Insufficient rights to view this module"
+msgstr "Insufficient rights to view this module"
+
+#: ../../../../svportal/sys/admin/AdminManager.php:131
+msgid "XML not well formed"
+msgstr "XML not well formed"
+
+#: ../../../../svportal/sys/admin/AdminManager.php:134
+msgid "Invalid XML received"
+msgstr "Invalid XML received"
+
+#: ../../../../svportal/sys/admin/AdminManager.php:152
+#: ../../../../svportal/sys/admin/AdminManager.php:161
+#: ../../../../svportal/sys/admin/AdminManager.php:171
+msgid "Admin module not found"
+msgstr "Admin module not found"
+
+#: ../../../../svportal/sys/admin/AdminManager.php:251
+msgid "Admin locale is invalid"
+msgstr "Admin locale is invalid"
+
+#: ../../../../svportal/sys/admin/AdminManager.php:279
+msgid "Site default locale is invalid"
+msgstr "Site default locale is invalid"
+
+#: ../../../../svportal/sys/admin/AdminManager.php:287
+#: ../../../../svportal/sys/admin/AdminManager.php:291
+msgid "Site locale is invalid"
+msgstr "Site locale is invalid"
+
+#: ../../../../svportal/sys/admin/AdminManager.php:303
+msgid "Invalid admin module name"
+msgstr "Invalid admin module name"
+
+#: ../../../../svportal/sys/admin/AdminManager.php:376
+msgid "Invalid event name"
+msgstr "Invalid event name"
+
+#: ../../../../svportal/sys/admin/control/TextInput.php:104
+msgid "Field is required"
+msgstr "Field is required"
+
+#: ../../../../svportal/sys/admin/control/TextInput.php:378
+msgid "Field must not be empty"
+msgstr "Field must not be empty"
+
+#: ../../../../svportal/sys/admin/control/TextInput.php:388
+msgid "Field value does not match required pattern"
+msgstr "Field value does not match required pattern"
+
+#: ../../../../svportal/sys/admin/control/TextInput.php:398
+msgid "Field value is not numeric"
+msgstr "Field value is not numeric"
+
+#: ../../../../svportal/sys/admin/control/TextInput.php:408
+msgid "Field value is too long"
+msgstr "Field value is too long"
+
+#: ../../../../svportal/sys/admin/control/TextInput.php:418
+msgid "Field value is too short"
+msgstr "Field value is too short"
+
+#: ../../../../svportal/sys/admin/control/ListPanel.php:64
+#: ../../../../svportal/sys/admin/control/ListenerPanel.php:64
+msgid "Listener name empty"
+msgstr "Listener name empty"
+
+#: ../../../../svportal/sys/admin/control/Page.php:66
+msgid "Provided control is not a BoxPlace"
+msgstr "Provided control is not a BoxPlace"
+
+#: ../../../../svportal/sys/admin/control/ListTable.php:180
+msgid "Filters"
+msgstr "Filters"
+
+#: ../../../../svportal/sys/admin/control/SubItemList.php:83
+msgid "Required options not set for control"
+msgstr "Required options not set for control"
+
+#: ../../../../svportal/sys/admin/control/IdSelect.php:62
+msgid "--- New ---"
+msgstr "--- New ---"
+

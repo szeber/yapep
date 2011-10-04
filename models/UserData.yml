@@ -1,0 +1,23 @@
+UserData:
+    inheritance:
+        extends: ObjectData
+        type: concrete
+    tableName: user_data
+    columns:
+        id:
+            type: integer(20)
+            primary: true
+        username:
+            notnull: true
+            notblank: true
+            type: string(10)
+        password:
+            notnull: true
+            notblank: true
+            type: string(60)
+    relations:
+        Created:
+            class: ObjectData
+            local: id
+            foreign: creator
+            type: many

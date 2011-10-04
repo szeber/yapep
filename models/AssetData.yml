@@ -1,0 +1,46 @@
+AssetData:
+    inheritance:
+        extends: ObjectData
+        type: concrete
+    tableName: asset_data
+    columns:
+        id:
+            type: integer(20)
+            primary: true
+        folder_id:
+            notnull: true
+            type: integer(10)
+        asset_type_id:
+            notnull: true
+            type: integer(10)
+        asset_subtype_id: integer(2147483647)
+        description: string(2147483647)
+        info: string(2147483647)
+        path1: string(255)
+        path2: string(255)
+    relations:
+        Type:
+            class: AssetTypeData
+            local: asset_type_id
+            foreign: id
+            type: one
+        Folder:
+            class: AssetFolderData
+            local: folder_id
+            foreign: id
+            type: one
+        Subtype:
+            class: AssetSubtypeData
+            local: asset_subtype_id
+            foreign: id
+            type: one
+        Objects:
+            refClass: ObjectAssetRel
+            class: ObjectData
+            local: asset_id
+            foreign: object_id
+            type: many
+        ObjectAssetRel:
+            local: id
+            foreign: object_id
+            type: many

@@ -1,0 +1,28 @@
+FolderTypeObjectTypeRel:
+    tableName: folder_type_object_type_rel
+    columns:
+        object_type_id:
+            primary: true
+            type: integer(2147483647)
+        folder_type_id:
+            primary: true
+            type: integer(2147483647)
+    relations:
+        FolderType:
+            class: FolderTypeData
+            local: folder_type_id
+            foreign: id
+            type: one
+        ObjectType:
+            class: ObjectTypeData
+            local: object_type_id
+            foreign: id
+            type: one
+        ObjectTypeData:
+            local: object_type_id
+            foreign: id
+            type: one
+        FolderTypeData:
+            local: folder_type_id
+            foreign: id
+            type: one

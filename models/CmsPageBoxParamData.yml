@@ -1,0 +1,46 @@
+CmsPageBoxParamData:
+    tableName: cms_page_box_param_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        module_param_id:
+            notnull: true
+            type: integer(10)
+        page_box_id:
+            notnull: true
+            type: integer(10)
+        is_var:
+            notnull: true
+            default: 0
+            type: boolean(25)
+        inherited:
+            notnull: true
+            default: 0
+            type: boolean(25)
+        parent_id: integer(2147483647)
+        value: string(2147483647)
+    relations:
+        Parent:
+            class: CmsPageBoxParamData
+            local: parent_id
+            foreign: id
+            type: one
+            onDelete: CASCADE
+        PageBox:
+            class: CmsPageBoxData
+            local: page_box_id
+            foreign: id
+            type: one
+            onDelete: CASCADE
+        ModuleParam:
+            class: CmsModuleParamData
+            local: module_param_id
+            foreign: id
+            type: one
+            onDelete: CASCADE
+    indexes:
+        page_box_id_module_param_id:
+            fields: [ module_param_id, page_box_id ]
+            type: unique

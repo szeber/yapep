@@ -1,0 +1,23 @@
+ObjectObjectRel:
+    tableName: object_object_rel
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        parent_id: integer(10)
+        child_id: integer(10)
+        relation_type: integer(4)
+    relations:
+        Parent:
+            class: ObjectData
+            local: parent_id
+            foreign: id
+            type: one
+            onDelete: CASCADE
+        Child:
+            class: ObjectData
+            local: child_id
+            foreign: id
+            type: one
+            onDelete: CASCADE

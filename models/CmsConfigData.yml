@@ -1,0 +1,17 @@
+CmsConfigData:
+    tableName: cms_config_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        name:
+            notnull: true
+            type: string(200)
+        value:
+            notnull: true
+            type: string(2147483647)
+    indexes:
+        name_idx:
+            fields: [ name ]
+            type: unique

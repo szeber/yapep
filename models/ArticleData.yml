@@ -1,0 +1,43 @@
+ArticleData:
+    inheritance:
+        extends: ObjectData
+        type: concrete
+    tableName: article_data
+    columns:
+        id:
+            type: integer(20)
+            primary: true
+        lead: string(2147483647)
+        content: string(2147483647)
+        author: string(100)
+        author_email: string(100)
+        titlepic_1: string(150)
+        titlepic_2: string(150)
+        locale_id: integer(2147483647)
+    relations:
+        Locale:
+            class: LocaleData
+            local: locale_id
+            foreign: id
+            type: one
+        Object:
+            class: ObjectData
+            local: id
+            foreign: id
+            type: one
+        Docs:
+            class: DocData
+            local: id
+            foreign: object_id
+            type: many
+            onDelete: CASCADE
+        Assets:
+            class: ObjectAssetRel
+            local: id
+            foreign: object_id
+            type: many
+        Links:
+            class: LinkData
+            local: id
+            foreign: object_id
+            type: many

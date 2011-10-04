@@ -1,0 +1,1310 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: YAPEP Admin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-12-09 16:07+0100\n"
+"PO-Revision-Date: 2008-12-09 16:08+0100\n"
+"Last-Translator: Zsolt Szeberenyi <szeber@svinformatika.hu>\n"
+"Language-Team: The YAPEP project\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Hungarian\n"
+"X-Poedit-Country: HUNGARY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: {t}\n"
+"X-Poedit-SearchPath-0: ../../../module/admin\n"
+"X-Poedit-SearchPath-1: ../../../../common_system_next/module/admin\n"
+"X-Poedit-SearchPath-2: ../../../../common_system_next/sys/admin\n"
+"X-Poedit-SearchPath-3: ../../../../common_system_next/template/admin\n"
+
+#: ../../../module/admin/Article.php:32
+#: ../../../../common_system_next/module/admin/Article.php:32
+msgid "Title"
+msgstr "Cím"
+
+#: ../../../module/admin/Article.php:37
+#: ../../../../common_system_next/module/admin/Article.php:37
+msgid "Lead"
+msgstr "Lead"
+
+#: ../../../module/admin/Article.php:38
+#: ../../../../common_system_next/module/admin/Article.php:38
+msgid "This is the lead."
+msgstr "Ez a bevezető szöveg"
+
+#: ../../../module/admin/Article.php:43
+#: ../../../../common_system_next/module/admin/Article.php:43
+msgid "Content"
+msgstr "Tartalom"
+
+#: ../../../module/admin/Article.php:47
+#: ../../../../common_system_next/module/admin/Article.php:47
+msgid "Author"
+msgstr "Szerző"
+
+#: ../../../module/admin/Article.php:51
+#: ../../../../common_system_next/module/admin/Article.php:51
+msgid "Author email"
+msgstr "Szerző e-mail címe"
+
+#: ../../../module/admin/Article.php:55
+#: ../../../../common_system_next/module/admin/Article.php:55
+#, fuzzy
+msgid "Related articles"
+msgstr "Sablon fájl"
+
+#: ../../../module/admin/Article.php:64
+#: ../../../../common_system_next/module/admin/Article.php:64
+#, fuzzy
+msgid "Title picture 1"
+msgstr "Mappa kép 1"
+
+#: ../../../module/admin/Article.php:69
+#: ../../../../common_system_next/module/admin/Article.php:69
+#, fuzzy
+msgid "Title picture 2"
+msgstr "Mappa kép 2"
+
+#: ../../../module/admin/List.php:86
+#: ../../../../common_system_next/module/admin/List.php:86
+msgid "Invalid list module"
+msgstr "Érvénytelen lista modul"
+
+#: ../../../module/admin/List.php:95
+#: ../../../module/admin/cms/Module.php:39
+#: ../../../module/admin/cms/ModuleParam.php:47
+#: ../../../module/admin/cms/AdminFunc.php:38
+#: ../../../module/admin/cms/FolderType.php:37
+#: ../../../module/admin/cms/SysConfig.php:36
+#: ../../../module/admin/cms/ObjectType.php:36
+#: ../../../module/admin/asset/Editor.php:43
+#: ../../../../common_system_next/module/admin/List.php:95
+#: ../../../../common_system_next/module/admin/cms/Module.php:39
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:47
+#: ../../../../common_system_next/module/admin/cms/AdminFunc.php:38
+#: ../../../../common_system_next/module/admin/cms/FolderType.php:37
+#: ../../../../common_system_next/module/admin/cms/SysConfig.php:36
+#: ../../../../common_system_next/module/admin/cms/ObjectType.php:36
+#: ../../../../common_system_next/module/admin/asset/Editor.php:43
+msgid "Name"
+msgstr "Név"
+
+#: ../../../module/admin/List.php:95
+#: ../../../module/admin/cms/Module.php:44
+#: ../../../module/admin/cms/ModuleParamValue.php:41
+#: ../../../module/admin/cms/ModuleParam.php:52
+#: ../../../module/admin/cms/FolderType.php:42
+#: ../../../module/admin/asset/Editor.php:47
+#: ../../../../common_system_next/module/admin/List.php:95
+#: ../../../../common_system_next/module/admin/cms/Module.php:44
+#: ../../../../common_system_next/module/admin/cms/ModuleParamValue.php:41
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:52
+#: ../../../../common_system_next/module/admin/cms/FolderType.php:42
+#: ../../../../common_system_next/module/admin/asset/Editor.php:47
+msgid "Description"
+msgstr "Leírás"
+
+#: ../../../module/admin/List.php:95
+#: ../../../module/admin/asset/Editor.php:51
+#: ../../../../common_system_next/module/admin/List.php:95
+#: ../../../../common_system_next/module/admin/asset/Editor.php:51
+msgid "Information"
+msgstr "Információ"
+
+#: ../../../module/admin/List.php:95
+#: ../../../../common_system_next/module/admin/List.php:95
+msgid "File path"
+msgstr "Fájl elérési út"
+
+#: ../../../module/admin/List.php:199
+#: ../../../../common_system_next/module/admin/List.php:199
+msgid "ID"
+msgstr "Azonosító"
+
+#: ../../../module/admin/List.php:301
+#: ../../../../common_system_next/module/admin/List.php:301
+msgid "Invalid mode for this module"
+msgstr "Invalid mode for this module"
+
+#: ../../../module/admin/List.php:305
+#: ../../../../common_system_next/module/admin/List.php:305
+msgid "Invalid list name"
+msgstr "Hibás lista név"
+
+#: ../../../module/admin/Doc.php:40
+#: ../../../module/admin/page/Editor.php:47
+#: ../../../../common_system_next/module/admin/Doc.php:40
+#: ../../../../common_system_next/module/admin/page/Editor.php:47
+msgid "No submodule set"
+msgstr "Nincs megadott almodul"
+
+#: ../../../module/admin/Doc.php:43
+#: ../../../../common_system_next/module/admin/Doc.php:43
+msgid "Submodule not found"
+msgstr "Almodul nem található"
+
+#: ../../../module/admin/Doc.php:53
+#: ../../../../common_system_next/module/admin/Doc.php:53
+#, fuzzy
+msgid "Preview"
+msgstr "Lap nézet"
+
+#: ../../../module/admin/Doc.php:61
+#: ../../../../common_system_next/module/admin/Doc.php:61
+msgid "Document title"
+msgstr "Dokumentum cím"
+
+#: ../../../module/admin/Doc.php:71
+#: ../../../../common_system_next/module/admin/Doc.php:71
+msgid "Start date"
+msgstr "Kezdő dátum"
+
+#: ../../../module/admin/Doc.php:78
+#: ../../../../common_system_next/module/admin/Doc.php:78
+msgid "End date"
+msgstr "Záró dátum"
+
+#: ../../../module/admin/Doc.php:83
+#: ../../../../common_system_next/module/admin/Doc.php:83
+msgid "Active"
+msgstr "Aktív"
+
+#: ../../../module/admin/Doc.php:84
+#: ../../../../common_system_next/module/admin/Doc.php:84
+msgid "Inactive"
+msgstr "Inaktív"
+
+#: ../../../module/admin/Doc.php:85
+#: ../../../../common_system_next/module/admin/Doc.php:85
+msgid "Status"
+msgstr "Státusz"
+
+#: ../../../module/admin/Doc.php:89
+#: ../../../../common_system_next/module/admin/Doc.php:89
+msgid "Docname"
+msgstr "Docnév"
+
+#: ../../../module/admin/Login.php:51
+#: ../../../module/admin/Login.php:79
+#: ../../../../common_system_next/module/admin/Login.php:51
+#: ../../../../common_system_next/module/admin/Login.php:79
+msgid "Please log in"
+msgstr "Kérem jelentkezzen be"
+
+#: ../../../module/admin/Login.php:57
+#: ../../../module/admin/cms/AdminUser.php:47
+#: ../../../../common_system_next/module/admin/Login.php:57
+#: ../../../../common_system_next/module/admin/cms/AdminUser.php:47
+msgid "Username"
+msgstr "Felhasználónév"
+
+#: ../../../module/admin/Login.php:64
+#: ../../../module/admin/cms/AdminUser.php:52
+#: ../../../../common_system_next/module/admin/Login.php:64
+#: ../../../../common_system_next/module/admin/cms/AdminUser.php:52
+msgid "Password"
+msgstr "Jelszó"
+
+#: ../../../module/admin/Login.php:70
+#: ../../../../common_system_next/module/admin/Login.php:70
+msgid "Login"
+msgstr "Bejelentkezés"
+
+#: ../../../module/admin/Login.php:75
+#: ../../../../common_system_next/module/admin/Login.php:75
+msgid "Login failed"
+msgstr "Belépés sikertelen"
+
+#: ../../../module/admin/Main.php:54
+#: ../../../../common_system_next/module/admin/Main.php:54
+msgid "Site locale"
+msgstr "Site nyelv"
+
+#: ../../../module/admin/Main.php:61
+#: ../../../../common_system_next/module/admin/Main.php:61
+msgid "Admin locale"
+msgstr "Admin nyelv"
+
+#: ../../../module/admin/Main.php:71
+#: ../../../../common_system_next/module/admin/Main.php:71
+msgid "Logged in as"
+msgstr "Belépve mint"
+
+#: ../../../module/admin/Main.php:76
+#: ../../../../common_system_next/module/admin/Main.php:76
+msgid "Logout"
+msgstr "Kilépés"
+
+#: ../../../module/admin/Main.php:85
+#: ../../../../common_system_next/module/admin/Main.php:85
+msgid "Object view"
+msgstr "Objektum nézet"
+
+#: ../../../module/admin/Main.php:92
+#: ../../../../common_system_next/module/admin/Main.php:92
+msgid "Asset manager"
+msgstr "Asset kezelő"
+
+#: ../../../module/admin/Main.php:110
+#: ../../../../common_system_next/module/admin/Main.php:110
+#, fuzzy
+msgid "Asset list"
+msgstr "Objektum lista"
+
+#: ../../../module/admin/Main.php:118
+#: ../../../module/admin/Main.php:152
+#: ../../../../common_system_next/module/admin/Main.php:118
+#: ../../../../common_system_next/module/admin/Main.php:152
+msgid "Folder properties"
+msgstr "Mappa tulajdonságok"
+
+#: ../../../module/admin/Main.php:126
+#: ../../../../common_system_next/module/admin/Main.php:126
+msgid "Content manager"
+msgstr "Tartalom kezelő"
+
+#: ../../../module/admin/Main.php:144
+#: ../../../module/admin/object/Browser.php:46
+#: ../../../../common_system_next/module/admin/Main.php:144
+#: ../../../../common_system_next/module/admin/object/Browser.php:46
+msgid "Object list"
+msgstr "Objektum lista"
+
+#: ../../../module/admin/Main.php:160
+#: ../../../../common_system_next/module/admin/Main.php:160
+msgid "Page manager"
+msgstr "Oldal kezelő"
+
+#: ../../../module/admin/Main.php:177
+#: ../../../../common_system_next/module/admin/Main.php:177
+msgid "Page editor"
+msgstr "Lap szerkesztő"
+
+#: ../../../module/admin/Main.php:188
+#: ../../../../common_system_next/module/admin/Main.php:188
+msgid "Page properties"
+msgstr "Lap tulajdonságok"
+
+#: ../../../module/admin/DocLink.php:31
+#: ../../../module/admin/cms/ModuleParam.php:85
+#: ../../../../common_system_next/module/admin/DocLink.php:31
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:85
+#, fuzzy
+msgid "Document"
+msgstr "Dokumentum lista"
+
+#: ../../../module/admin/object/Move.php:45
+#: ../../../../common_system_next/module/admin/object/Move.php:45
+msgid "Can't move object to itself"
+msgstr ""
+
+#: ../../../module/admin/object/Move.php:56
+#: ../../../../common_system_next/module/admin/object/Move.php:56
+msgid "Can't find folder"
+msgstr ""
+
+#: ../../../module/admin/object/Move.php:59
+#: ../../../module/admin/object/Move.php:85
+#: ../../../module/admin/object/Move.php:105
+#: ../../../module/admin/object/Move.php:140
+#: ../../../../common_system_next/module/admin/object/Move.php:59
+#: ../../../../common_system_next/module/admin/object/Move.php:85
+#: ../../../../common_system_next/module/admin/object/Move.php:105
+#: ../../../../common_system_next/module/admin/object/Move.php:140
+msgid "Can't find target folder"
+msgstr ""
+
+#: ../../../module/admin/object/Move.php:62
+#: ../../../../common_system_next/module/admin/object/Move.php:62
+msgid "Can't move a folder into it's subfolder"
+msgstr ""
+
+#: ../../../module/admin/object/Move.php:74
+#: ../../../../common_system_next/module/admin/object/Move.php:74
+msgid "Can't move a folder's contents into the root folder"
+msgstr ""
+
+#: ../../../module/admin/object/Move.php:82
+#: ../../../../common_system_next/module/admin/object/Move.php:82
+msgid "Can't find source folder"
+msgstr ""
+
+#: ../../../module/admin/object/Move.php:88
+#: ../../../../common_system_next/module/admin/object/Move.php:88
+msgid "The source and target folder types can't be different"
+msgstr ""
+
+#: ../../../module/admin/object/Move.php:95
+#: ../../../module/admin/object/Move.php:130
+#: ../../../../common_system_next/module/admin/object/Move.php:95
+#: ../../../../common_system_next/module/admin/object/Move.php:130
+msgid "Can't move a document into the root folder"
+msgstr ""
+
+#: ../../../module/admin/object/Move.php:108
+#: ../../../module/admin/object/Move.php:143
+#: ../../../../common_system_next/module/admin/object/Move.php:108
+#: ../../../../common_system_next/module/admin/object/Move.php:143
+msgid "Can't find document"
+msgstr ""
+
+#: ../../../module/admin/object/Move.php:118
+#: ../../../../common_system_next/module/admin/object/Move.php:118
+msgid "Can't move document to that folder, this document type is not allowed in this folder type"
+msgstr ""
+
+#: ../../../module/admin/object/Move.php:124
+#: ../../../../common_system_next/module/admin/object/Move.php:124
+msgid "Can't move the document to this folder because the document name is in use in the folder"
+msgstr ""
+
+#: ../../../module/admin/object/Move.php:153
+#: ../../../../common_system_next/module/admin/object/Move.php:153
+msgid "Can't copy document to that folder, this document type is not allowed in this folder type"
+msgstr ""
+
+#: ../../../module/admin/object/Move.php:159
+#: ../../../../common_system_next/module/admin/object/Move.php:159
+msgid "Can't copy the document to this folder because the document name is in use in the folder"
+msgstr ""
+
+#: ../../../module/admin/object/Move.php:176
+#: ../../../../common_system_next/module/admin/object/Move.php:176
+#, fuzzy
+msgid "Invalid move type"
+msgstr "Hibás esemény név"
+
+#: ../../../module/admin/cms/Module.php:49
+#: ../../../../common_system_next/module/admin/cms/Module.php:49
+msgid "Caching type"
+msgstr "Gyorsítótár típusa"
+
+#: ../../../module/admin/cms/Module.php:51
+#: ../../../../common_system_next/module/admin/cms/Module.php:51
+msgid "Enabled"
+msgstr "Engedélyezve"
+
+#: ../../../module/admin/cms/Module.php:51
+#: ../../../../common_system_next/module/admin/cms/Module.php:51
+msgid "Disabled"
+msgstr "Letiltva"
+
+#: ../../../module/admin/cms/Module.php:51
+#: ../../../../common_system_next/module/admin/cms/Module.php:51
+msgid "Disabled and veto page caching"
+msgstr "Letiltva és lap gyorsítótárazás tiltása"
+
+#: ../../../module/admin/cms/Module.php:55
+#: ../../../../common_system_next/module/admin/cms/Module.php:55
+msgid "Cache expiration time"
+msgstr "Gyorsítótár lejárati idő"
+
+#: ../../../module/admin/cms/Module.php:60
+#: ../../../../common_system_next/module/admin/cms/Module.php:60
+msgid "Parameters"
+msgstr "Paraméterek"
+
+#: ../../../module/admin/cms/Module.php:64
+#: ../../../../common_system_next/module/admin/cms/Module.php:64
+msgid "New parameter"
+msgstr "Új paraméter"
+
+#: ../../../module/admin/cms/Module.php:80
+#: ../../../module/admin/cms/ObjectType.php:134
+#: ../../../../common_system_next/module/admin/cms/Module.php:80
+#: ../../../../common_system_next/module/admin/cms/ObjectType.php:134
+msgid "Can't create directory:"
+msgstr ""
+
+#: ../../../module/admin/cms/Module.php:86
+#: ../../../module/admin/cms/ObjectType.php:140
+#: ../../../../common_system_next/module/admin/cms/Module.php:86
+#: ../../../../common_system_next/module/admin/cms/ObjectType.php:140
+msgid "Can't write directory:"
+msgstr ""
+
+#: ../../../module/admin/cms/Module.php:90
+#: ../../../module/admin/cms/ObjectType.php:144
+#: ../../../../common_system_next/module/admin/cms/Module.php:90
+#: ../../../../common_system_next/module/admin/cms/ObjectType.php:144
+msgid "File already exists:"
+msgstr ""
+
+#: ../../../module/admin/cms/Module.php:102
+#: ../../../../common_system_next/module/admin/cms/Module.php:102
+msgid "The specified Box module does not exist"
+msgstr ""
+
+#: ../../../module/admin/cms/Module.php:119
+#: ../../../../common_system_next/module/admin/cms/Module.php:119
+msgid "Name can't be empty. Skipping arg."
+msgstr ""
+
+#: ../../../module/admin/cms/Module.php:164
+#: ../../../../common_system_next/module/admin/cms/Module.php:164
+#, fuzzy
+msgid "Invalid type for argument:"
+msgstr "Hibás lista név"
+
+#: ../../../module/admin/cms/AdminUser.php:29
+#: ../../../../common_system_next/module/admin/cms/AdminUser.php:29
+#, fuzzy
+msgid "Administrator user editor"
+msgstr "Admin nyelv szerkesztő"
+
+#: ../../../module/admin/cms/AdminUser.php:42
+#: ../../../../common_system_next/module/admin/cms/AdminUser.php:42
+msgid "Full name"
+msgstr "Teljes név"
+
+#: ../../../module/admin/cms/AdminUser.php:57
+#: ../../../../common_system_next/module/admin/cms/AdminUser.php:57
+msgid "Superuser"
+msgstr "Adminisztrátor"
+
+#: ../../../module/admin/cms/AdminUser.php:61
+#: ../../../../common_system_next/module/admin/cms/AdminUser.php:61
+msgid "Default locale"
+msgstr "Alapértelmezett nyelv"
+
+#: ../../../module/admin/cms/AdminUser.php:97
+#: ../../../../common_system_next/module/admin/cms/AdminUser.php:97
+#: ../../../../common_system_next/sys/admin/AdminModule.php:383
+msgid "Validation failed"
+msgstr "Validáció sikertelen"
+
+#: ../../../module/admin/cms/ModuleParamValue.php:35
+#: ../../../../common_system_next/module/admin/cms/ModuleParamValue.php:35
+msgid "Module parameter ID"
+msgstr "Modul paraméter azonosító"
+
+#: ../../../module/admin/cms/ModuleParamValue.php:46
+#: ../../../../common_system_next/module/admin/cms/ModuleParamValue.php:46
+msgid "value"
+msgstr "érték"
+
+#: ../../../module/admin/cms/ModuleParam.php:35
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:35
+msgid "Module ID"
+msgstr "Modul azonosító"
+
+#: ../../../module/admin/cms/ModuleParam.php:41
+#: ../../../module/admin/page/Prop.php:75
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:41
+#: ../../../../common_system_next/module/admin/page/Prop.php:75
+msgid "Type"
+msgstr "Típus"
+
+#: ../../../module/admin/cms/ModuleParam.php:57
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:57
+msgid "Allow variable"
+msgstr "Változó megengedett"
+
+#: ../../../module/admin/cms/ModuleParam.php:61
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:61
+msgid "Default value"
+msgstr "Alapértelmezett érték"
+
+#: ../../../module/admin/cms/ModuleParam.php:65
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:65
+msgid "Default is variable"
+msgstr "Az alapértelmezett érték változó"
+
+#: ../../../module/admin/cms/ModuleParam.php:69
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:69
+msgid "Parameter values"
+msgstr "Paraméter értékek"
+
+#: ../../../module/admin/cms/ModuleParam.php:70
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:70
+msgid "Only for combobox type parameters"
+msgstr "Csak legördülő típusú paraméterekhez"
+
+#: ../../../module/admin/cms/ModuleParam.php:75
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:75
+msgid "New value"
+msgstr "Új érték"
+
+#: ../../../module/admin/cms/ModuleParam.php:81
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:81
+msgid "Text"
+msgstr "Szöveges"
+
+#: ../../../module/admin/cms/ModuleParam.php:82
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:82
+#, fuzzy
+msgid "Long text"
+msgstr "Tartalom"
+
+#: ../../../module/admin/cms/ModuleParam.php:83
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:83
+msgid "Checkbox"
+msgstr "Jelölőnégyzet"
+
+#: ../../../module/admin/cms/ModuleParam.php:84
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:84
+msgid "Dropdown"
+msgstr ""
+
+#: ../../../module/admin/cms/ModuleParam.php:86
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:86
+msgid "Document list"
+msgstr "Dokumentum lista"
+
+#: ../../../module/admin/cms/ModuleParam.php:87
+#: ../../../module/admin/page/Prop.php:77
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:87
+#: ../../../../common_system_next/module/admin/page/Prop.php:77
+#, fuzzy
+msgid "Folder"
+msgstr "Mappa elérési út"
+
+#: ../../../module/admin/cms/ModuleParam.php:88
+#: ../../../../common_system_next/module/admin/cms/ModuleParam.php:88
+#, fuzzy
+msgid "Folder list"
+msgstr "Mappa elérési út"
+
+#: ../../../module/admin/cms/Locale.php:29
+#: ../../../../common_system_next/module/admin/cms/Locale.php:29
+msgid "Locale editor"
+msgstr "Locale szerkesztő"
+
+#: ../../../module/admin/cms/Locale.php:37
+#: ../../../module/admin/cms/AdminLocale.php:44
+#: ../../../../common_system_next/module/admin/cms/Locale.php:37
+#: ../../../../common_system_next/module/admin/cms/AdminLocale.php:44
+msgid "Locale code"
+msgstr "Locale kód"
+
+#: ../../../module/admin/cms/Locale.php:41
+#: ../../../module/admin/cms/AdminLocale.php:48
+#: ../../../module/admin/cms/Language.php:48
+#: ../../../../common_system_next/module/admin/cms/Locale.php:41
+#: ../../../../common_system_next/module/admin/cms/AdminLocale.php:48
+#: ../../../../common_system_next/module/admin/cms/Language.php:48
+msgid "Locale name"
+msgstr "Locale név"
+
+#: ../../../module/admin/cms/AdminFunc.php:42
+#: ../../../../common_system_next/module/admin/cms/AdminFunc.php:42
+msgid "Admin module name"
+msgstr "Admin modul név"
+
+#: ../../../module/admin/cms/Theme.php:31
+#: ../../../../common_system_next/module/admin/cms/Theme.php:31
+msgid "Theme editor"
+msgstr "Téma szerkesztő"
+
+#: ../../../module/admin/cms/Theme.php:39
+#: ../../../../common_system_next/module/admin/cms/Theme.php:39
+msgid "Theme name"
+msgstr "Téma név"
+
+#: ../../../module/admin/cms/Theme.php:43
+#: ../../../../common_system_next/module/admin/cms/Theme.php:43
+msgid "Theme description"
+msgstr "Téma leírás"
+
+#: ../../../module/admin/cms/AdminLocale.php:36
+#: ../../../../common_system_next/module/admin/cms/AdminLocale.php:36
+msgid "Admin locale editor"
+msgstr "Admin nyelv szerkesztő"
+
+#: ../../../module/admin/cms/FolderTypeObjectTypeRel.php:49
+#: ../../../../common_system_next/module/admin/cms/FolderTypeObjectTypeRel.php:49
+msgid "Folder type ID"
+msgstr "Mappa típus azonosító"
+
+#: ../../../module/admin/cms/FolderTypeObjectTypeRel.php:55
+#: ../../../../common_system_next/module/admin/cms/FolderTypeObjectTypeRel.php:55
+msgid "Object type"
+msgstr "Objektum típus"
+
+#: ../../../module/admin/cms/FolderTypeObjectTypeRel.php:99
+#: ../../../../common_system_next/module/admin/cms/FolderTypeObjectTypeRel.php:99
+msgid "Data modification disabled"
+msgstr "Adat módosítás letiltva"
+
+#: ../../../module/admin/cms/ObjectTypeColumn.php:42
+#: ../../../../common_system_next/module/admin/cms/ObjectTypeColumn.php:42
+msgid "Object type ID"
+msgstr "Objektum típus azonosító"
+
+#: ../../../module/admin/cms/ObjectTypeColumn.php:48
+#: ../../../../common_system_next/module/admin/cms/ObjectTypeColumn.php:48
+msgid "Column name"
+msgstr "Oszlop név"
+
+#: ../../../module/admin/cms/ObjectTypeColumn.php:53
+#: ../../../../common_system_next/module/admin/cms/ObjectTypeColumn.php:53
+msgid "Displayed name"
+msgstr "Megjelenített név"
+
+#: ../../../module/admin/cms/ObjectTypeColumn.php:58
+#: ../../../../common_system_next/module/admin/cms/ObjectTypeColumn.php:58
+msgid "Column number"
+msgstr "Oszlop szám"
+
+#: ../../../module/admin/cms/ObjectTypeColumn.php:64
+#: ../../../../common_system_next/module/admin/cms/ObjectTypeColumn.php:64
+msgid "Displayed in list"
+msgstr "Látszik a listában"
+
+#: ../../../module/admin/cms/ObjectTypeColumn.php:68
+#: ../../../../common_system_next/module/admin/cms/ObjectTypeColumn.php:68
+msgid "Displayed in export"
+msgstr "Exportban látszik"
+
+#: ../../../module/admin/cms/FolderType.php:26
+#: ../../../../common_system_next/module/admin/cms/FolderType.php:26
+msgid "Folder type editor"
+msgstr "Mappa típus szerkesztő"
+
+#: ../../../module/admin/cms/FolderType.php:47
+#: ../../../module/admin/cms/ObjectType.php:61
+#: ../../../../common_system_next/module/admin/cms/FolderType.php:47
+#: ../../../../common_system_next/module/admin/cms/ObjectType.php:61
+msgid "Icon"
+msgstr "Ikon"
+
+#: ../../../module/admin/cms/FolderType.php:52
+#: ../../../module/admin/cms/ObjectType.php:65
+#: ../../../../common_system_next/module/admin/cms/FolderType.php:52
+#: ../../../../common_system_next/module/admin/cms/ObjectType.php:65
+msgid "Active icon"
+msgstr "Aktív ikon"
+
+#: ../../../module/admin/cms/FolderType.php:57
+#: ../../../../common_system_next/module/admin/cms/FolderType.php:57
+msgid "Not document holder"
+msgstr "Nem dokumentum tartó"
+
+#: ../../../module/admin/cms/FolderType.php:61
+#: ../../../../common_system_next/module/admin/cms/FolderType.php:61
+msgid "Don't allow creating new documents"
+msgstr "Új dokumentum létrehozása letiltva"
+
+#: ../../../module/admin/cms/FolderType.php:65
+#: ../../../../common_system_next/module/admin/cms/FolderType.php:65
+msgid "Object types"
+msgstr "Objektum típusok"
+
+#: ../../../module/admin/cms/FolderType.php:66
+#: ../../../../common_system_next/module/admin/cms/FolderType.php:66
+msgid "New object type"
+msgstr "Új objektum típus"
+
+#: ../../../module/admin/cms/Language.php:36
+#: ../../../../common_system_next/module/admin/cms/Language.php:36
+msgid "Language editor"
+msgstr "Nyelv szerkesztő"
+
+#: ../../../module/admin/cms/Language.php:44
+#: ../../../../common_system_next/module/admin/cms/Language.php:44
+msgid "Language code"
+msgstr "Nyelv kód"
+
+#: ../../../module/admin/cms/Language.php:55
+#: ../../../../common_system_next/module/admin/cms/Language.php:55
+msgid "-- Please select --"
+msgstr "-- Kérem válasszon --"
+
+#: ../../../module/admin/cms/FileUpload.php:54
+#: ../../../../common_system_next/module/admin/cms/FileUpload.php:54
+#, fuzzy
+msgid "No uploaded file"
+msgstr "Sablon fájl"
+
+#: ../../../module/admin/cms/FileUpload.php:57
+#: ../../../../common_system_next/module/admin/cms/FileUpload.php:57
+msgid "Upload error"
+msgstr ""
+
+#: ../../../module/admin/cms/Recache.php:26
+#: ../../../module/admin/cms/Recache.php:30
+#: ../../../module/admin/cms/CreateTable.php:30
+#: ../../../../common_system_next/module/admin/cms/Recache.php:26
+#: ../../../../common_system_next/module/admin/cms/Recache.php:30
+#: ../../../../common_system_next/module/admin/cms/CreateTable.php:30
+msgid "Recache"
+msgstr "Recache"
+
+#: ../../../module/admin/cms/Recache.php:33
+#: ../../../../common_system_next/module/admin/cms/Recache.php:33
+msgid "Configuration data cache"
+msgstr "Konfigurációs adatok gyorsítótára"
+
+#: ../../../module/admin/cms/Recache.php:38
+#: ../../../../common_system_next/module/admin/cms/Recache.php:38
+msgid "Module cache"
+msgstr "Modul gyorsítótár"
+
+#: ../../../module/admin/cms/Recache.php:43
+#: ../../../../common_system_next/module/admin/cms/Recache.php:43
+msgid "Page cache"
+msgstr "Lap gyorsítótár"
+
+#: ../../../module/admin/cms/Recache.php:48
+#: ../../../../common_system_next/module/admin/cms/Recache.php:48
+msgid "Folder cache"
+msgstr "Mappa gyorsítótár"
+
+#: ../../../module/admin/cms/Recache.php:53
+#: ../../../../common_system_next/module/admin/cms/Recache.php:53
+msgid "System configuration cache"
+msgstr "Rendszerváltozó gyorsítótár"
+
+#: ../../../module/admin/cms/Recache.php:58
+#: ../../../../common_system_next/module/admin/cms/Recache.php:58
+msgid "Database cache"
+msgstr "Adatbázis gyorsítótár"
+
+#: ../../../module/admin/cms/Recache.php:62
+#: ../../../../common_system_next/module/admin/cms/Recache.php:62
+msgid "Smarty cache"
+msgstr "Smarty gyorsítótár"
+
+#: ../../../module/admin/cms/Recache.php:66
+#: ../../../../common_system_next/module/admin/cms/Recache.php:66
+msgid "Smarty compile cache"
+msgstr "Smarty fordító gyorsítótár"
+
+#: ../../../module/admin/cms/CreateTable.php:26
+#: ../../../../common_system_next/module/admin/cms/CreateTable.php:26
+#, fuzzy
+msgid "Create tables"
+msgstr "Paraméter értékek"
+
+#: ../../../module/admin/cms/CreateTable.php:33
+#: ../../../../common_system_next/module/admin/cms/CreateTable.php:33
+msgid "Connection identifier"
+msgstr ""
+
+#: ../../../module/admin/cms/CreateTable.php:34
+#: ../../../../common_system_next/module/admin/cms/CreateTable.php:34
+msgid "The name of the connection to use. It must be a Doctrine connection!"
+msgstr ""
+
+#: ../../../module/admin/cms/CreateTable.php:40
+#: ../../../../common_system_next/module/admin/cms/CreateTable.php:40
+#, fuzzy
+msgid "Model names"
+msgstr "Modul név"
+
+#: ../../../module/admin/cms/CreateTable.php:59
+#: ../../../../common_system_next/module/admin/cms/CreateTable.php:59
+#, fuzzy
+msgid "Provided connection is not a Doctrine connection."
+msgstr "Provided control is not a BoxPlace"
+
+#: ../../../module/admin/cms/SysConfig.php:25
+#: ../../../../common_system_next/module/admin/cms/SysConfig.php:25
+msgid "System configuration editor"
+msgstr "Rendszerváltozó szerkesztő"
+
+#: ../../../module/admin/cms/SysConfig.php:42
+#: ../../../../common_system_next/module/admin/cms/SysConfig.php:42
+msgid "Value"
+msgstr "Érték"
+
+#: ../../../module/admin/cms/ObjectType.php:41
+#: ../../../module/admin/page/Prop.php:103
+#: ../../../../common_system_next/module/admin/cms/ObjectType.php:41
+#: ../../../../common_system_next/module/admin/page/Prop.php:103
+msgid "Short name"
+msgstr "Rövid név"
+
+#: ../../../module/admin/cms/ObjectType.php:46
+#: ../../../../common_system_next/module/admin/cms/ObjectType.php:46
+msgid "Persistence class"
+msgstr "Perzisztencia osztály"
+
+#: ../../../module/admin/cms/ObjectType.php:51
+#: ../../../../common_system_next/module/admin/cms/ObjectType.php:51
+msgid "Handler class"
+msgstr "Kezelő osztály"
+
+#: ../../../module/admin/cms/ObjectType.php:56
+#: ../../../../common_system_next/module/admin/cms/ObjectType.php:56
+msgid "Admin class"
+msgstr "Admin osztály"
+
+#: ../../../module/admin/cms/ObjectType.php:69
+#: ../../../module/admin/cms/Template.php:47
+#: ../../../../common_system_next/module/admin/cms/ObjectType.php:69
+#: ../../../../common_system_next/module/admin/cms/Template.php:47
+msgid "Template file"
+msgstr "Sablon fájl"
+
+#: ../../../module/admin/cms/ObjectType.php:74
+#: ../../../../common_system_next/module/admin/cms/ObjectType.php:74
+#, fuzzy
+msgid "Create doc module"
+msgstr "Létrehozás dátuma"
+
+#: ../../../module/admin/cms/ObjectType.php:79
+#: ../../../../common_system_next/module/admin/cms/ObjectType.php:79
+msgid "Columns"
+msgstr "Oszlopok"
+
+#: ../../../module/admin/cms/ObjectType.php:82
+#: ../../../../common_system_next/module/admin/cms/ObjectType.php:82
+msgid "New column"
+msgstr "Új oszlop"
+
+#: ../../../module/admin/cms/Template.php:35
+#: ../../../../common_system_next/module/admin/cms/Template.php:35
+#, fuzzy
+msgid "Template editor"
+msgstr "Téma szerkesztő"
+
+#: ../../../module/admin/cms/Template.php:43
+#: ../../../../common_system_next/module/admin/cms/Template.php:43
+#, fuzzy
+msgid "Template name"
+msgstr "Téma név"
+
+#: ../../../module/admin/cms/Template.php:53
+#: ../../../../common_system_next/module/admin/cms/Template.php:53
+#, fuzzy
+msgid "All languages"
+msgstr "Minden nyelven aktív"
+
+#: ../../../module/admin/cms/Template.php:54
+#: ../../../../common_system_next/module/admin/cms/Template.php:54
+#, fuzzy
+msgid "Locale"
+msgstr "Locale kód"
+
+#: ../../../module/admin/cms/Template.php:58
+#: ../../../../common_system_next/module/admin/cms/Template.php:58
+msgid "Reread boxplaces"
+msgstr ""
+
+#: ../../../module/admin/cms/Template.php:75
+#: ../../../../common_system_next/module/admin/cms/Template.php:75
+#, fuzzy
+msgid "Template file not found"
+msgstr "Sablon fájl"
+
+#: ../../../module/admin/folder/Tree.php:59
+#: ../../../module/admin/folder/Tree.php:62
+#: ../../../module/admin/folder/Prop.php:49
+#: ../../../module/admin/folder/Prop.php:52
+#: ../../../module/admin/asset/Tree.php:51
+#: ../../../module/admin/asset/Tree.php:54
+#: ../../../module/admin/asset/Prop.php:47
+#: ../../../module/admin/asset/Prop.php:50
+#: ../../../../common_system_next/module/admin/folder/Tree.php:59
+#: ../../../../common_system_next/module/admin/folder/Tree.php:62
+#: ../../../../common_system_next/module/admin/folder/Prop.php:49
+#: ../../../../common_system_next/module/admin/folder/Prop.php:52
+#: ../../../../common_system_next/module/admin/asset/Tree.php:51
+#: ../../../../common_system_next/module/admin/asset/Tree.php:54
+#: ../../../../common_system_next/module/admin/asset/Prop.php:47
+#: ../../../../common_system_next/module/admin/asset/Prop.php:50
+msgid "New subfolder"
+msgstr "Új almappa"
+
+#: ../../../module/admin/folder/Prop.php:43
+#: ../../../../common_system_next/module/admin/folder/Prop.php:43
+msgid "Folder property editor"
+msgstr "Mappa tulajdonság szerkesztő"
+
+#: ../../../module/admin/folder/Prop.php:59
+#: ../../../module/admin/asset/Prop.php:58
+#: ../../../../common_system_next/module/admin/folder/Prop.php:59
+#: ../../../../common_system_next/module/admin/asset/Prop.php:58
+msgid "Folder path"
+msgstr "Mappa elérési út"
+
+#: ../../../module/admin/folder/Prop.php:74
+#: ../../../module/admin/asset/Prop.php:75
+#: ../../../../common_system_next/module/admin/folder/Prop.php:74
+#: ../../../../common_system_next/module/admin/asset/Prop.php:75
+msgid "Folder name"
+msgstr "Mappa név"
+
+#: ../../../module/admin/folder/Prop.php:79
+#: ../../../module/admin/asset/Prop.php:80
+#: ../../../../common_system_next/module/admin/folder/Prop.php:79
+#: ../../../../common_system_next/module/admin/asset/Prop.php:80
+msgid "Folder short name"
+msgstr "Mappa rövid név"
+
+#: ../../../module/admin/folder/Prop.php:84
+#: ../../../../common_system_next/module/admin/folder/Prop.php:84
+msgid "Folder type"
+msgstr "Mappa típus"
+
+#: ../../../module/admin/folder/Prop.php:86
+#: ../../../../common_system_next/module/admin/folder/Prop.php:86
+#, fuzzy
+msgid "--- Please select ---"
+msgstr "-- Kérem válasszon --"
+
+#: ../../../module/admin/folder/Prop.php:91
+#: ../../../../common_system_next/module/admin/folder/Prop.php:91
+msgid "Active in all languages"
+msgstr "Minden nyelven aktív"
+
+#: ../../../module/admin/folder/Prop.php:95
+#: ../../../../common_system_next/module/admin/folder/Prop.php:95
+msgid "Visible"
+msgstr "Látható"
+
+#: ../../../module/admin/folder/Prop.php:99
+#: ../../../../common_system_next/module/admin/folder/Prop.php:99
+msgid "In sitemap"
+msgstr "Oldaltérképen"
+
+#: ../../../module/admin/folder/Prop.php:103
+#: ../../../../common_system_next/module/admin/folder/Prop.php:103
+msgid "Sitemap link"
+msgstr "Oldaltérképen link"
+
+#: ../../../module/admin/folder/Prop.php:107
+#: ../../../../common_system_next/module/admin/folder/Prop.php:107
+msgid "Sitemap description"
+msgstr "Oldaltérkép leírás"
+
+#: ../../../module/admin/folder/Prop.php:111
+#: ../../../../common_system_next/module/admin/folder/Prop.php:111
+msgid "Folder order"
+msgstr "Mappa sorrend"
+
+#: ../../../module/admin/folder/Prop.php:117
+#: ../../../../common_system_next/module/admin/folder/Prop.php:117
+msgid "Folder picture 1"
+msgstr "Mappa kép 1"
+
+#: ../../../module/admin/folder/Prop.php:121
+#: ../../../../common_system_next/module/admin/folder/Prop.php:121
+msgid "Folder picture 2"
+msgstr "Mappa kép 2"
+
+#: ../../../module/admin/folder/Prop.php:125
+#: ../../../../common_system_next/module/admin/folder/Prop.php:125
+msgid "Folder page"
+msgstr "Mappa lap"
+
+#: ../../../module/admin/folder/Prop.php:133
+#: ../../../../common_system_next/module/admin/folder/Prop.php:133
+msgid "Document page"
+msgstr "Dokumentum lap"
+
+#: ../../../module/admin/folder/Prop.php:141
+#: ../../../../common_system_next/module/admin/folder/Prop.php:141
+msgid "Virtual subfolders"
+msgstr "Virtuális almappák"
+
+#: ../../../module/admin/folder/Prop.php:145
+#: ../../../../common_system_next/module/admin/folder/Prop.php:145
+msgid "Virtual handler"
+msgstr "Virtuális mappa kezelő"
+
+#: ../../../module/admin/asset/Prop.php:41
+#: ../../../../common_system_next/module/admin/asset/Prop.php:41
+#, fuzzy
+msgid "Asset folder property editor"
+msgstr "Mappa tulajdonság szerkesztő"
+
+#: ../../../module/admin/asset/Prop.php:54
+#: ../../../module/admin/asset/Prop.php:62
+#: ../../../../common_system_next/module/admin/asset/Prop.php:54
+#: ../../../../common_system_next/module/admin/asset/Prop.php:62
+#: ../../../../common_system_next/sys/admin/AdminModule.php:670
+msgid "id"
+msgstr "Azonosító"
+
+#: ../../../module/admin/asset/Editor.php:58
+#: ../../../../common_system_next/module/admin/asset/Editor.php:58
+#, fuzzy
+msgid "Picture"
+msgstr "Kép 1"
+
+#: ../../../module/admin/asset/Editor.php:61
+#: ../../../../common_system_next/module/admin/asset/Editor.php:61
+msgid "Video"
+msgstr ""
+
+#: ../../../module/admin/asset/Editor.php:64
+#: ../../../../common_system_next/module/admin/asset/Editor.php:64
+#, fuzzy
+msgid "File"
+msgstr "Szűrők"
+
+#: ../../../module/admin/asset/Editor.php:142
+#: ../../../../common_system_next/module/admin/asset/Editor.php:142
+msgid "Invalid video file. File must be one of \"avi\", \"flv\", \"mpg\", \"wmv\""
+msgstr ""
+
+#: ../../../module/admin/page/Box.php:81
+#: ../../../../common_system_next/module/admin/page/Box.php:81
+msgid "Box not found"
+msgstr "Doboz nem található"
+
+#: ../../../module/admin/page/Box.php:91
+#: ../../../../common_system_next/module/admin/page/Box.php:91
+#, fuzzy
+msgid "Module type"
+msgstr "Mappa típus"
+
+#: ../../../module/admin/page/Box.php:95
+#: ../../../../common_system_next/module/admin/page/Box.php:95
+msgid "Module name"
+msgstr "Modul név"
+
+#: ../../../module/admin/page/Box.php:99
+#: ../../../../common_system_next/module/admin/page/Box.php:99
+msgid "Module order"
+msgstr "Modul sorrend"
+
+#: ../../../module/admin/page/Box.php:104
+#: ../../../../common_system_next/module/admin/page/Box.php:104
+msgid "Active?"
+msgstr "Aktív?"
+
+#: ../../../module/admin/page/Prop.php:41
+#: ../../../../common_system_next/module/admin/page/Prop.php:41
+msgid "Page property editor"
+msgstr "Lap tulajdonság szerkesztő"
+
+#: ../../../module/admin/page/Prop.php:47
+#: ../../../module/admin/page/Prop.php:50
+#: ../../../../common_system_next/module/admin/page/Prop.php:47
+#: ../../../../common_system_next/module/admin/page/Prop.php:50
+#, fuzzy
+msgid "New subpage"
+msgstr "Új almappa"
+
+#: ../../../module/admin/page/Prop.php:54
+#: ../../../../common_system_next/module/admin/page/Prop.php:54
+#, fuzzy
+msgid "Path"
+msgstr "Lap elérési út"
+
+#: ../../../module/admin/page/Prop.php:67
+#: ../../../../common_system_next/module/admin/page/Prop.php:67
+msgid "Page ID"
+msgstr "Lap azonosító"
+
+#: ../../../module/admin/page/Prop.php:71
+#: ../../../../common_system_next/module/admin/page/Prop.php:71
+msgid "Page path"
+msgstr "Lap elérési út"
+
+#: ../../../module/admin/page/Prop.php:77
+#: ../../../../common_system_next/module/admin/page/Prop.php:77
+#, fuzzy
+msgid "Page"
+msgstr "Oldalak"
+
+#: ../../../module/admin/page/Prop.php:77
+#: ../../../../common_system_next/module/admin/page/Prop.php:77
+#, fuzzy
+msgid "Derived page"
+msgstr "Mappa lap"
+
+#: ../../../module/admin/page/Prop.php:83
+#: ../../../../common_system_next/module/admin/page/Prop.php:83
+#, fuzzy
+msgid "Template"
+msgstr "Sablon fájl"
+
+#: ../../../module/admin/page/Prop.php:91
+#: ../../../../common_system_next/module/admin/page/Prop.php:91
+#, fuzzy
+msgid "Theme"
+msgstr "Téma név"
+
+#: ../../../module/admin/page/Prop.php:98
+#: ../../../../common_system_next/module/admin/page/Prop.php:98
+msgid "Page name"
+msgstr "Lap név"
+
+#: ../../../module/admin/page/Prop.php:108
+#: ../../../../common_system_next/module/admin/page/Prop.php:108
+#, fuzzy
+msgid "Default document page"
+msgstr "Dokumentum lap"
+
+#: ../../../module/admin/page/Prop.php:113
+#: ../../../../common_system_next/module/admin/page/Prop.php:113
+msgid "Main page"
+msgstr ""
+
+#: ../../../module/admin/page/Prop.php:147
+#: ../../../../common_system_next/module/admin/page/Prop.php:147
+msgid "Can't create a derived page without a parent!"
+msgstr ""
+
+#: ../../../module/admin/page/Prop.php:151
+#: ../../../../common_system_next/module/admin/page/Prop.php:151
+msgid "Can't create a derived page in a folder!"
+msgstr ""
+
+#: ../../../module/admin/page/Editor.php:50
+#: ../../../../common_system_next/module/admin/page/Editor.php:50
+msgid "Page not found"
+msgstr "Lap nem található"
+
+#: ../../../../common_system_next/sys/admin/AdminModule.php:178
+msgid "Save"
+msgstr "Mentés"
+
+#: ../../../../common_system_next/sys/admin/AdminModule.php:179
+msgid "Close"
+msgstr "Bezárás"
+
+#: ../../../../common_system_next/sys/admin/AdminModule.php:180
+msgid "Delete"
+msgstr "Törlés"
+
+#: ../../../../common_system_next/sys/admin/AdminModule.php:181
+msgid "New"
+msgstr "Új"
+
+#: ../../../../common_system_next/sys/admin/AdminModule.php:280
+msgid "Module mode not set"
+msgstr "Modul nincs beállítva"
+
+#: ../../../../common_system_next/sys/admin/AdminModule.php:565
+msgid "Data saving not implemented"
+msgstr "Mentés nincs implementálva"
+
+#: ../../../../common_system_next/sys/admin/AdminModule.php:577
+msgid "Data loading not implemented"
+msgstr "Töltés nincs implementálva"
+
+#: ../../../../common_system_next/sys/admin/AdminModule.php:588
+#, fuzzy
+msgid "Data deleting not implemented"
+msgstr "Töltés nincs implementálva"
+
+#: ../../../../common_system_next/sys/admin/AdminModule.php:674
+msgid "Creation date"
+msgstr "Létrehozás dátuma"
+
+#: ../../../../common_system_next/sys/admin/AdminModule.php:678
+msgid "Last modification date"
+msgstr "Utolsó módosítás dátuma"
+
+#: ../../../../common_system_next/sys/admin/AdminModule.php:684
+msgid "Insufficient rights to view this module"
+msgstr "Nincs joga megtekinteni ezt a modult"
+
+#: ../../../../common_system_next/sys/admin/AdminManager.php:101
+msgid "XML not well formed"
+msgstr "Nem jól formázott XML"
+
+#: ../../../../common_system_next/sys/admin/AdminManager.php:104
+msgid "Invalid XML received"
+msgstr "Érvénytelen a kapott XML"
+
+#: ../../../../common_system_next/sys/admin/AdminManager.php:128
+#: ../../../../common_system_next/sys/admin/AdminManager.php:137
+#: ../../../../common_system_next/sys/admin/AdminManager.php:147
+msgid "Admin module not found"
+msgstr "Admin modul nem található"
+
+#: ../../../../common_system_next/sys/admin/AdminManager.php:230
+msgid "Admin locale is invalid"
+msgstr "Az admin nyelv érvénytelen"
+
+#: ../../../../common_system_next/sys/admin/AdminManager.php:258
+msgid "Site default locale is invalid"
+msgstr "Érvénytelen a site alapértelmezett locale-ja"
+
+#: ../../../../common_system_next/sys/admin/AdminManager.php:266
+#: ../../../../common_system_next/sys/admin/AdminManager.php:270
+msgid "Site locale is invalid"
+msgstr "A site nyelv érvénytelen"
+
+#: ../../../../common_system_next/sys/admin/AdminManager.php:282
+msgid "Invalid admin module name"
+msgstr "Érvénytelen admin modul név"
+
+#: ../../../../common_system_next/sys/admin/AdminManager.php:359
+msgid "Invalid event name"
+msgstr "Hibás esemény név"
+
+#: ../../../../common_system_next/sys/admin/control/TextInput.php:109
+msgid "Field is required"
+msgstr "A mező kitöltése kötelező"
+
+#: ../../../../common_system_next/sys/admin/control/TextInput.php:430
+msgid "Field must not be empty"
+msgstr "A mező nem lehet üres"
+
+#: ../../../../common_system_next/sys/admin/control/TextInput.php:440
+msgid "Field value does not match required pattern"
+msgstr "A mező értéke nem felel meg az előírt mintának"
+
+#: ../../../../common_system_next/sys/admin/control/TextInput.php:450
+msgid "Field value is not numeric"
+msgstr "A mező értéke nem szám"
+
+#: ../../../../common_system_next/sys/admin/control/TextInput.php:460
+msgid "Field value is too long"
+msgstr "A mező értéke túl hosszú"
+
+#: ../../../../common_system_next/sys/admin/control/TextInput.php:470
+msgid "Field value is too short"
+msgstr "A mező értéke túl rövid"
+
+#: ../../../../common_system_next/sys/admin/control/ListPanel.php:32
+#: ../../../../common_system_next/sys/admin/control/ListenerPanel.php:32
+msgid "Listener name empty"
+msgstr "Listener name empty"
+
+#: ../../../../common_system_next/sys/admin/control/Page.php:34
+msgid "Provided control is not a BoxPlace"
+msgstr "Provided control is not a BoxPlace"
+
+#: ../../../../common_system_next/sys/admin/control/ListTable.php:148
+msgid "Filters"
+msgstr "Szűrők"
+
+#: ../../../../common_system_next/sys/admin/control/SubItemList.php:51
+msgid "Required options not set for control"
+msgstr "A szükséges opciók nincsenek kitöltve"
+
+#: ../../../../common_system_next/sys/admin/control/IdSelect.php:30
+msgid "--- New ---"
+msgstr "--- Új ---"
+
+#~ msgid "Picture 2"
+#~ msgstr "Kép 2"
+#~ msgid "Product code"
+#~ msgstr "Termék kód"
+#~ msgid "Short code"
+#~ msgstr "Rövid kód"
+#~ msgid "Size"
+#~ msgstr "Méret"
+#~ msgid "Publishing year"
+#~ msgstr "Kiadás éve"
+#~ msgid "Price"
+#~ msgstr "Ár"
+#~ msgid "Width"
+#~ msgstr "Szélesség"
+#~ msgid "Height"
+#~ msgstr "Magasság"
+#~ msgid "Click URL"
+#~ msgstr "Kattintás URL-je"
+#~ msgid "Open in new window"
+#~ msgstr "Új ablakba"
+#~ msgid "Folder browser"
+#~ msgstr "Mappa böngésző"
+#~ msgid "Module parameter type editor"
+#~ msgstr "Modul paraméter típus szerkesztő"
+#~ msgid "Display as"
+#~ msgstr "Megjelenítés mint"
+#~ msgid "Combobox"
+#~ msgstr "Legördülő"
+#~ msgid "Document browser"
+#~ msgstr "Dokumentum böngésző"
+

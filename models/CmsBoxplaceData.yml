@@ -1,0 +1,26 @@
+CmsBoxplaceData:
+    tableName: cms_boxplace_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        template_id:
+            notnull: true
+            type: integer(10)
+        boxplace:
+            notnull: true
+            notblank: true
+            type: string(255)
+    relations:
+        Template:
+            class: CmsTemplateData
+            local: template_id
+            foreign: id
+            type: one
+            onDelete: CASCADE
+        PageBoxes:
+            class: CmsPageBoxData
+            local: id
+            foreign: boxplace_id
+            type: many

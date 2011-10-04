@@ -1,0 +1,22 @@
+LinkData:
+    tableName: link_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        object_id:
+            notnull: true
+            type: integer(10)
+        name:
+            notnull: true
+            type: string(255)
+        url:
+            notnull: true
+            type: string(255)
+    relations:
+        Object:
+            class: ObjectData
+            local: object_id
+            foreign: id
+            type: one

@@ -1,0 +1,20 @@
+AdminUserData:
+    inheritance:
+        extends: UserData
+        type: concrete
+    tableName: admin_user_data
+    columns:
+        id:
+            type: integer(20)
+            primary: true
+        superuser:
+            notnull: true
+            default: 0
+            type: boolean(25)
+        locale_id: integer(2147483647)
+    relations:
+        Locale:
+            class: AdminLocaleData
+            local: locale_id
+            foreign: id
+            type: one

@@ -1,0 +1,19 @@
+AssetTypeData:
+    tableName: asset_type_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        name: string(255)
+    relations:
+        Subtypes:
+            class: AssetSubtypeData
+            local: id
+            foreign: asset_type_id
+            type: many
+        Assets:
+            class: AssetData
+            local: id
+            foreign: asset_type_id
+            type: many

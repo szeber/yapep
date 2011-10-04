@@ -1,0 +1,23 @@
+CmsModuleParamValueData:
+    tableName: cms_module_param_value_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        module_param_id:
+            notnull: true
+            type: integer(10)
+        value:
+            notnull: true
+            type: string(100)
+        description:
+            notnull: true
+            type: string(200)
+    relations:
+        Param:
+            class: CmsModuleParamData
+            local: module_param_id
+            foreign: id
+            type: one
+            onDelete: CASCADE

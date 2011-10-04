@@ -1,0 +1,28 @@
+CmsPoeditorTranslationData:
+    tableName: cms_poeditor_translation_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        text_id:
+            notnull: true
+            type: integer(2147483647)
+        translation:
+            notnull: true
+            default: ''
+            type: string(2147483647)
+        locale_code:
+            notnull: true
+            type: string(7)
+        fuzzy:
+            notnull: true
+            default: 0
+            type: boolean(25)
+    relations:
+        Text:
+            class: CmsPoeditorTextData
+            local: text_id
+            foreign: id
+            type: one
+            onDelete: CASCADE

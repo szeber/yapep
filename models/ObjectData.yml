@@ -1,0 +1,56 @@
+ObjectData:
+    actAs:
+        Timestampable:
+    listeners: [ sys_db_ObjectListener ]
+    tableName: object_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        object_type_id:
+            notnull: true
+            type: integer(10)
+        locked:
+            notnull: true
+            default: 0
+            type: boolean(25)
+        name: string(255)
+        creator: integer(2147483647)
+        updater: integer(2147483647)
+    relations:
+        Creator:
+            class: UserData
+            local: creator
+            foreign: id
+            type: one
+        Modifier:
+            class: UserData
+            local: updater
+            foreign: id
+            type: one
+        ObjectType:
+            class: ObjectTypeData
+            local: object_type_id
+            foreign: id
+            type: one
+        Docs:
+            class: DocData
+            local: id
+            foreign: object_id
+            type: many
+        Children:
+            class: ObjectObjectRel
+            local: id
+            foreign: parent_id
+            type: many
+        Parents:
+            class: ObjectObjectRel
+            local: id
+            foreign: child_id
+            type: many
+    indexes:
+        locked:
+            fields: [ locked ]
+        name:
+            fields: [ name ]

@@ -1,0 +1,19 @@
+CmsPoeditorTextData:
+    tableName: cms_poeditor_text_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        text:
+            notnull: true
+            type: string(255)
+        type:
+            notnull: true
+            type: integer(4)
+    relations:
+        Translations:
+            class: CmsPoeditorTranslationData
+            local: id
+            foreign: text_id
+            type: many

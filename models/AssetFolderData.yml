@@ -1,0 +1,33 @@
+AssetFolderData:
+    tableName: asset_folder_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        name:
+            notnull: true
+            type: string(255)
+        docpath:
+            notnull: true
+            notblank: true
+            nospace: true
+            type: string(255)
+        short:
+            notnull: true
+            notblank: true
+            nospace: true
+            type: string(32)
+        parent_id: integer(2147483647)
+    relations:
+        Assets:
+            class: AssetData
+            local: id
+            foreign: folder_id
+            type: many
+    indexes:
+        docpath_idx:
+            fields: [ docpath ]
+            type: unique
+        short_idx:
+            fields: [ short ]

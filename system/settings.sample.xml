@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE xml>
+<Setups>
+	<Setup site="dev">
+		<Databases>
+			<Database connectionId="site" type="mysqli" server="mysql" user="" password="" host="" dbName="" options="" charset="utf8" />
+		</Databases>
+		<Options>
+			<Option name="debugging" type="bool" value="true" />
+			<Option name="final" type="bool" value="false" />
+			<Option name="caching" type="bool" value="false" />
+			<Option name="mailerSMTP" type="string" value="localhost" />
+			<Option name="adminCreateFiles" type="bool" value="true" />
+		</Options>
+		<Paths>
+			<Path name="ffmpegBin" parent="" value="/usr/bin/ffmpeg" />
+		</Paths>
+	</Setup>
+	<Setup site="beta">
+		<Databases>
+			<Database connectionId="site" type="mysqli" server="mysql" user="" password="" host="" dbName="" options="" charset="utf8" />
+		</Databases>
+		<Options>
+			<Option name="debugging" type="bool" value="false" />
+			<Option name="final" type="bool" value="false" />
+			<Option name="caching" type="bool" value="false" />
+		</Options>
+		<Paths>
+			<Path name="ffmpegBin" parent="" value="/usr/bin/ffmpeg" />
+		</Paths>
+	</Setup>
+	<Setup site="live">
+		<Databases>
+			<Database connectionId="site" type="mysqli" server="mysql" user="" password="" host="" dbName="" options="" charset="utf8" />
+		</Databases>
+		<Options>
+			<Option name="debugging" type="bool" value="false" />
+			<Option name="final" type="bool" value="false" />
+			<Option name="caching" type="bool" value="false" />
+		</Options>
+		<Paths>
+			<Path name="ffmpegBin" parent="" value="/usr/bin/ffmpeg" />
+		</Paths>
+	</Setup>
+	<Setup site="general">
+		<Options>
+			<Option name="errorHandler" type="string" value="module_utility_ErrorDocHandler" />
+			<Option name="defaultLanguage" type="string" value="hu" />
+			<Option name="smartyCache" type="bool" value="false" />
+			<Option name="pageCache" type="bool" value="false" />
+			<Option name="pageCacheTime" type="integer" value="300" />
+			<Option name="docSuffix" type="string" value="" />
+			<Option name="dbCache" type="bool" value="false" />
+			<Option name="defaultDbCacheTime" type="integer" value="3600" />
+			<Option name="mailerLanguage" type="string" value="en" />
+			<Option name="mailerSMTP" type="string" value="localhost" />
+			<Option name="mailerCharSet" type="string" value="utf-8" />
+			<Option name="useGettext" type="boolean" value="false" />
+			<Option name="siteGettextDomain" type="string" value="" />
+			<Option name="siteLangCookieExpire" type="integer" value="604800" /><!-- 1 week -->
+			<Option name="adminWebInterface" type="string" value="flex" />
+			<Option name="defaultAdminLocale" type="string" value="hu_HU" />
+			<Option name="makeAssetThumbnails" type="boolean" value="false" />
+			<Option name="assetThumbnailWidth" type="integer" value="100" />
+			<Option name="assetThumbnailHeight" type="integer" value="100" />
+            <Option name="assetThumbnailCrop" type="boolean" value="false" />
+		</Options>
+		<Paths>
+			<Path name="lib" parent="SYS_PATH" value="lib/" />
+			<Path name="dbCacheDir" parent="CACHE_DIR" value="db/" />
+			<Path name="smartyCompileDir" parent="CACHE_DIR" value="templates_c/" />
+			<Path name="smartyCacheDir" parent="CACHE_DIR" value="smarty/" />
+			<Path name="smartyTemplateDir" parent="PROJECT_PATH" value="template/" />
+			<Path name="wwwRoot" parent="PROJECT_PATH" value="public_html/" />
+			<Path name="rootUrl" parent="" value="/" />
+			<Path name="uploadDir" parent="" value="images/upload/" />
+			<Path name="uploadTempDir" parent="" value="/tmp/" />
+			<Path name="videoQueueDir" parent="CACHE_DIR" value="video_queue/" />
+		</Paths>
+	</Setup>
+</Setups>

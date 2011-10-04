@@ -1,0 +1,18 @@
+AdminFuncData:
+    inheritance:
+        extends: ObjectData
+        type: concrete
+    tableName: admin_func_data
+    columns:
+        id:
+            type: integer(20)
+            primary: true
+        class:
+            notnull: true
+            type: string(100)
+    relations:
+        Object:
+            class: ObjectData
+            local: id
+            foreign: id
+            type: one

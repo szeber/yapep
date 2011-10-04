@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<project name="YAPEP" basedir="." default="build">
+	<property name="report.dir" value="${project.basedir}/report"/>
+	<property name="build.dir" value="${project.basedir}/build"/>
+	<property name="doc.dir" value="${project.basedir}/doc/phpDoc"/>
+	<fileset id="php-sources" dir=".">
+		<include name="**/*.php" />
+		<exclude name="lib/**" />
+		<exclude name="**/.svn/**" />
+		<exclude name=".*" />
+		<exclude name=".*/**" />
+		<exclude name="build/**" />
+		<exclude name="report/**" />
+		<exclude name="work/**" />
+		<exclude name="cache/**" />
+	</fileset>
+	<fileset id="project-sources" dir=".">
+		<include name="**" />
+		<exclude name="lib/**" />
+		<exclude name="**/.svn/**" />
+		<exclude name=".*" />
+		<exclude name=".*/**" />
+		<exclude name="**/*build.xml" />
+		<exclude name="build/**" />
+		<exclude name="report/**" />
+		<exclude name="work/**" />
+		<exclude name="cache/**" />
+	</fileset>
+	<target name="clean">
+		<delete dir="${report.dir}" includeemptydirs="true" />
+		<delete dir="${doc.dir}" includeemptydirs="true" />
+	</target>
+	<target name="distclean" depends="clean">
+		<delete dir="${build.dir}" includeemptydirs="true" />
+	</target>
+	<target name="build" depends="clean, prepare, test, dist, package, generate-report, generate-docs">
+	</target>
+	<target name="prepare">
+		<mkdir dir="${report.dir}"/>
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${doc.dir}"/>
+	</target>
+	<target name="dist">
+		<tar destfile="${build.dir}/release-${xinc.buildlabel}.tar.gz" compression="gzip">
+			<fileset refid="project-sources"/>
+		</tar>
+	</target>
+	<target name="package">
+	</target>
+	<target name="test">
+		<phplint haltonfailure="true">
+			<fileset refid="php-sources"/>
+		</phplint>
+		<phpunit haltonfailure="true" printsummary="true">
+			<batchtest>
+				<fileset dir="./test">
+					<include name="AllTests.php"/>
+				</fileset>
+			</batchtest>
+			<formatter type="xml" todir="${report.dir}" outfile="logfile.xml"/>
+		</phpunit>
+	</target>
+	<target name="generate-report">
+		<phpunit2report infile="${report.dir}/logfile.xml" styledir="resources/xsl" todir="report" format="noframes"/>
+	</target>
+	<target name="generate-docs">
+		<phpdocext destdir="${doc.dir}" sourcecode="no" output="HTML:frames:DOM/default" programpath="/usr/bin/phpdoc" pear="true">
+			<fileset refid="project-sources"/>
+		</phpdocext>
+	</target>
+</project>

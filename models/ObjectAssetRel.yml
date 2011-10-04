@@ -1,0 +1,26 @@
+ObjectAssetRel:
+    tableName: object_asset_rel
+    columns:
+        object_id:
+            notnull: true
+            primary: true
+            type: integer(10)
+        asset_id:
+            notnull: true
+            primary: true
+            type: integer(10)
+    relations:
+        Object:
+            class: ObjectData
+            local: object_id
+            foreign: id
+            type: one
+        Asset:
+            class: AssetData
+            local: asset_id
+            foreign: id
+            type: one
+        AssetData:
+            local: asset_id
+            foreign: id
+            type: one

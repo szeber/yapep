@@ -1,0 +1,61 @@
+DocData:
+    inheritance:
+        extends: ObjectData
+        type: concrete
+    actAs:
+        sys_db_MultiLanguageTemplate:
+    tableName: doc_data
+    columns:
+        id:
+            type: integer(20)
+            primary: true
+        object_id:
+            notnull: true
+            type: integer(10)
+        ref_object_type_id:
+            notnull: true
+            type: integer(10)
+        folder_id:
+            notnull: true
+            type: integer(10)
+        docname:
+            notnull: true
+            notblank: true
+            nospace: true
+            type: string(100)
+        status:
+            notnull: true
+            type: integer(1)
+        start_date: timestamp(notnull)
+        end_date: timestamp(notnull)
+        locale_id: integer(2147483647)
+    relations:
+        RefObjectType:
+            class: ObjectTypeData
+            local: ref_object_type_id
+            foreign: id
+            type: one
+        Object:
+            class: ObjectData
+            local: object_id
+            foreign: id
+            type: one
+        Folder:
+            class: FolderData
+            local: folder_id
+            foreign: id
+            type: one
+        Pages:
+            class: CmsPageObjectRel
+            local: id
+            foreign: object_id
+            type: many
+        Locale:
+            class: LocaleData
+            local: locale_id
+            foreign: id
+            type: one
+    indexes:
+        docname_idx:
+            fields: [ docname, folder_id, locale_id ]
+            type: unique

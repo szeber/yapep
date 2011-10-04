@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<book>
+  <title>YAPEP documentation</title>
+
+  <chapter>
+    <title>Introduction</title>
+
+    <section>
+      <title></title>
+
+      <para></para>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>File system</title>
+
+    <section>
+      <title>Layout</title>
+
+      <para>The classes in the framework follow the PEAR naming conventions,
+      so their names contain their path relative to the root of the
+      framework's directory. The notable exception to this rule are the
+      classes stored in the models directory. The third party libraries may
+      also use different naming conventions.</para>
+
+      <para>The file system contains the following directories</para>
+
+      <para><programlisting>cache
+configs
+doc
+locale
+lib
+models
+module
+public_html
+sys
+system
+template</programlisting></para>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Cache</title>
+
+      <para>This directory stores all application cache and therefore needs to
+      be writable by the web server. It also stores sensitive information
+      (database access information), so care should be taken setting up
+      permissions.</para>
+
+      <para>It contains the following subdirectories:</para>
+
+      <programlisting>cms
+db
+smarty
+templates_c</programlisting>
+
+      <section>
+        <title>cms</title>
+
+        <para>This directory contains the caches for the YAPEP system. All of
+        these files are PHP source files.</para>
+
+        <para>The files inside and their functions is as follows:</para>
+
+        <section>
+          <title>applicationConfiguration.php</title>
+
+          <para>This file stores the cached version of the XML configuration
+          file.</para>
+
+          <para><emphasis>Extra care should be taken for this file, because it
+          contains the database access information too!</emphasis></para>
+        </section>
+
+        <section>
+          <title>folderCache.php</title>
+
+          <para>This file stores all of the folders for all languages cached
+          from the database.</para>
+        </section>
+
+        <section>
+          <title>moduleCache.php</title>
+
+          <para>Stores all modules and their parameters.</para>
+        </section>
+
+        <section>
+          <title>pageCache.php</title>
+
+          <para>Stores all pages with their box places, boxes and
+          parameters.</para>
+        </section>
+
+        <section>
+          <title>sysConfigCache.php</title>
+
+          <para>Stores the system configuration variables.</para>
+        </section>
+      </section>
+
+      <section>
+        <title>db</title>
+
+        <para>Stores the database cache if it's enabled.</para>
+
+        <para>The structure in this directory depends on the database
+        abstraction layer, that's used.</para>
+      </section>
+
+      <section>
+        <title>smarty</title>
+
+        <para>Smarty cache directory</para>
+      </section>
+
+      <section>
+        <title>templates_c</title>
+
+        <para>Smarty template compile directory</para>
+      </section>
+    </section>
+
+    <section>
+      <title>configs</title>
+
+      <para>Smarty and other library or module configuration files</para>
+    </section>
+
+    <section>
+      <title>doc</title>
+
+      <para>The framework's documentation</para>
+    </section>
+
+    <section>
+      <title>locale</title>
+
+      <para>Locale files for Gettext</para>
+    </section>
+
+    <section>
+      <title>lib</title>
+
+      <para>Third party libraries.</para>
+
+      <para>Mandatory libraries:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>PHPPass - Portable password hashing class with BCRYPT
+          implementation for PHP. Required for authentication.</para>
+        </listitem>
+
+        <listitem>
+          <para>Smarty - Templating engine. Used throughout the
+          framework.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>Optional libraries:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>AdoDB - Database abstraction layer</para>
+        </listitem>
+
+        <listitem>
+          <para>Doctrine - Database abstraction and ORM layer. Required by the
+          installer.</para>
+        </listitem>
+
+        <listitem>
+          <para>PHPMailer - Mailing and SMTP classes. Recommended for mailing
+          in modules.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section>
+      <title>models</title>
+
+      <para>Database models for Doctine ORM.</para>
+    </section>
+
+    <section>
+      <title>module</title>
+
+      <para>Holds the various modules for the framework.</para>
+
+      <para>Contains the following subdirectories:</para>
+
+      <programlisting>admin
+box
+db
+doc</programlisting>
+
+      <section>
+        <title>admin</title>
+
+        <para>Stores the administration modules.</para>
+
+        <para>These modules describe the fields, and database bindings for the
+        administration interface. All modules in this directory should extend
+        sys_AdminModule, and at the very least implement it's buildForm
+        method.</para>
+      </section>
+
+      <section>
+        <title>box</title>
+
+        <para>Stores the box modules.</para>
+
+        <para>These modules are the building blocks for displaying the pages
+        generated by the front end of the framework. Each module should
+        generate a self contained piece of (X)HTML code, that will be inserted
+        in the correct box place of the page.</para>
+      </section>
+
+      <section>
+        <title>db</title>
+
+        <para>Stores the database access modules.</para>
+
+        <para>The directory contains at least 3 folders and 2 files.</para>
+
+        <para>The directories are:</para>
+
+        <programlisting>Doctrine
+generic
+interface</programlisting>
+
+        <para>The <emphasis>interface</emphasis> directory contains the
+        interfaces that the database modules must implement.</para>
+
+        <para>The <emphasis>generic</emphasis> and
+        <emphasis>Doctrine</emphasis> directories contain the classes
+        containing the database queries. These classes must extend the
+        <emphasis>module_db_DbModule</emphasis> and
+        <emphasis>module_db_DoctrineDbModule</emphasis> classes respectively.
+        SQL or DQL code must only exist in these modules, and every other
+        module should only access the database through these classes.</para>
+
+        <para>The classes in the generic directory should not contain any
+        vendor specific or optimized code, the SQL in these classes should be
+        as generic as possible.</para>
+
+        <para>The db directory may contain other subdirectories named after
+        specific database engines (for example: mysql, postgres, etc...). The
+        classes in these directories should extend the ones with the same name
+        in the generic directory, and these can contain SQL optimized for the
+        specific database engine.</para>
+
+        <para>The framework will first check if it can find an optimized
+        version of the database module for the current database server and use
+        that if it finds one, otherwise it will use the generic
+        version.</para>
+      </section>
+
+      <section>
+        <title>doc</title>
+
+        <para>Stores the document modules.</para>
+
+        <para>These modules should implement functionality that extends the
+        basic document handler.</para>
+      </section>
+    </section>
+
+    <section>
+      <title>public_html</title>
+
+      <para>The document root for the site.</para>
+
+      <para>This directory should be set as the document root for the web
+      server. The files in this directory can be accessed directly.</para>
+
+      <para>It must contain at least 2 files:</para>
+
+      <programlisting>get_admin.php
+get_doc.php</programlisting>
+
+      <para>These files are responsible for displaying the administration and
+      the front end interfaces.</para>
+
+      <para>URL rewriting should be set up on the web server either with
+      .htaccess file, or if possible through the server's configuration. A
+      sample .htaccess file is provided with the source.</para>
+
+      <para>This directory should store the files required for debugging
+      (debug.css), and the files and directories required by the front end of
+      the administration interface.</para>
+    </section>
+
+    <section>
+      <title>sys</title>
+
+      <para>This directory stores the core files for the framework.</para>
+
+      <para>It contains the following directories:</para>
+
+      <programlisting>admin
+cache
+db
+exception</programlisting>
+
+      <section>
+        <title>Files in the sys directory</title>
+
+        <section>
+          <title>AdminManager.php</title>
+
+          <para>Manager class for the administration interface</para>
+
+          <para>This file gets called by the get_admin.php file in the
+          public_html directory.</para>
+
+          <para>It's responsibilities include:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Verifying authentication through sys_Auth</para>
+            </listitem>
+
+            <listitem>
+              <para>Optionally verifying authorization through it's event
+              listener interface</para>
+            </listitem>
+
+            <listitem>
+              <para>Processing the received XML</para>
+            </listitem>
+
+            <listitem>
+              <para>Setting up the locales for the modules</para>
+            </listitem>
+
+            <listitem>
+              <para>Verifying that the modules exist</para>
+            </listitem>
+
+            <listitem>
+              <para>Instantiating and executing the modules</para>
+            </listitem>
+          </itemizedlist>
+        </section>
+
+        <section>
+          <title>AdminModule.php</title>
+
+          <para>Base class for the administration modules. sys_AdminManager
+          instantiates this class.</para>
+
+          <para>It's responsibilities include:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Further processing the received XML, and setting up the
+              environment for the module</para>
+            </listitem>
+
+            <listitem>
+              <para>Calling the form building method of the admin
+              modules</para>
+            </listitem>
+
+            <listitem>
+              <para>Loading the requested data from the database</para>
+            </listitem>
+
+            <listitem>
+              <para>Saving the received data to the database</para>
+            </listitem>
+          </itemizedlist>
+        </section>
+
+        <section>
+          <title>ApplicationConfiguration.php</title>
+
+          <para>This singleton class handles the configuration.</para>
+
+          <para>It's responsibilities include:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Validating the configuration cache</para>
+            </listitem>
+
+            <listitem>
+              <para>Recreating the configuration cache if it becomes
+              necessary</para>
+            </listitem>
+
+            <listitem>
+              <para>Reading and parsing the configuration XML file if the
+              cache needs to be recreated</para>
+            </listitem>
+
+            <listitem>
+              <para>Providing the other classes with the configuration
+              information</para>
+            </listitem>
+
+            <listitem>
+              <para>Implementing an application level registry if
+              needed</para>
+            </listitem>
+          </itemizedlist>
+        </section>
+
+        <section>
+          <title>Auth.php</title>
+
+          <para>This class provides authentication functions.</para>
+
+          <para>The responsibilities include:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Checking if the user is already logged in</para>
+            </listitem>
+
+            <listitem>
+              <para>Validating the user's session to prevent session
+              hijacking</para>
+            </listitem>
+
+            <listitem>
+              <para>Logging in the user</para>
+            </listitem>
+
+            <listitem>
+              <para>Logging the user out</para>
+            </listitem>
+
+            <listitem>
+              <para>Locking the user out on too many failed attempts</para>
+            </listitem>
+          </itemizedlist>
+        </section>
+
+        <section>
+          <title>autoload.php</title>
+
+          <para>This file contains the autoloading functions used by
+          spl_autoload()</para>
+        </section>
+
+        <section>
+          <title>BoxModule.php</title>
+
+          <para>This is the base class for the box modules.</para>
+        </section>
+
+        <section>
+          <title>Debugger.php</title>
+
+          <para>This file contains 2 classes, sys_Debugger and
+          sys_DummyDebugger.</para>
+
+          <para>sys_Debugger is used if debugging is enabled on the site to
+          provide module, database and performance information in a popup
+          window. sys_DummyDebugger is a class that does nothing. It's used
+          when debugging is disabled (live site).</para>
+        </section>
+
+        <section>
+          <title>DocFactory.php</title>
+
+          <para>This static class is responsible for making document objects
+          and performing searches for documents.</para>
+        </section>
+
+        <section>
+          <title>ErrorHandler.php</title>
+
+          <para>This is the basic error handler class.</para>
+        </section>
+
+        <section>
+          <title>ErrorneousBoxModule.php</title>
+
+          <para>This class gets instantiated if an error occurs while running
+          a module.</para>
+
+          <para>When debugging is enabled it displays a box showing where the
+          error occurred and information on the error. Without debugging it
+          displays nothing.</para>
+        </section>
+
+        <section>
+          <title>LibFactory.php</title>
+
+          <para>This static class is responsible for making database
+          connections, Smarty instances, and providing other library
+          access.</para>
+        </section>
+
+        <section>
+          <title>MissingBoxModule.php</title>
+
+          <para>This class gets run if a requested box module can't be found.
+          It's behavior is very similar to sys_ErrorneousBoxModule</para>
+        </section>
+
+        <section>
+          <title>PageManager.php</title>
+
+          <para>This class gets called from the get_doc.php file in the
+          public_html directory.</para>
+
+          <para>It's responsibilities include:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Having the requested URL processed by
+              sys_UrlHandler</para>
+            </listitem>
+
+            <listitem>
+              <para>Handling redirects</para>
+            </listitem>
+
+            <listitem>
+              <para>Loading the requested page from the cache</para>
+            </listitem>
+
+            <listitem>
+              <para>Loading, setting up and running the modules on the
+              page</para>
+            </listitem>
+          </itemizedlist>
+        </section>
+
+        <section>
+          <title>session.php</title>
+
+          <para>This file starts the session for the user and contains session
+          handling helper functions</para>
+        </section>
+
+        <section>
+          <title>ThemeManager.php</title>
+
+          <para>This class is responsible for managing themes</para>
+        </section>
+
+        <section>
+          <title>UrlHandler.php</title>
+
+          <para>This class parses the requested URLs, determines the requested
+          locale and loads the folder information from the cache.</para>
+        </section>
+
+        <section>
+          <title>utility_funcs.php</title>
+
+          <para>This file contains helper functions</para>
+        </section>
+      </section>
+
+      <section>
+        <title>Subdirectories of the sys directory</title>
+
+        <section>
+          <title>admin</title>
+
+          <para>This directory contains the controls, interfaces and
+          validators for the administration interface.</para>
+        </section>
+
+        <section>
+          <title>cache</title>
+
+          <para>This directory contains the cache manager classes</para>
+        </section>
+
+        <section>
+          <title>db</title>
+
+          <para>This directory contains database access classes</para>
+        </section>
+
+        <section>
+          <title>exception</title>
+
+          <para>This directory contains the exception classes</para>
+        </section>
+      </section>
+    </section>
+
+    <section>
+      <title>system</title>
+
+      <para>This directory contains the configuration files.</para>
+
+      <para>The settings.xml and paths.php files must be present here.</para>
+
+      <section>
+        <title>paths.php</title>
+
+        <para>This file defines the SYS_PATH, PROJECT_PATH and CACHE_DIR
+        constants, and it's responsible for determining which site
+        configuration the site must run.</para>
+      </section>
+
+      <section>
+        <title>settings.xml</title>
+
+        <para>This is the main configuration file.</para>
+      </section>
+    </section>
+
+    <section>
+      <title>template</title>
+
+      <para>The site's templates are stored here.</para>
+
+      <para>It contains the following directories:</para>
+
+      <programlisting>admin
+box
+doc
+page</programlisting>
+
+      <section>
+        <title>admin</title>
+
+        <para>Stores the admin templates.</para>
+
+        <para>These templates are XML excerpts, and the administration
+        interface builds the XML from these files.</para>
+      </section>
+
+      <section>
+        <title>box</title>
+
+        <para>Stores the box templates.</para>
+
+        <para>Box templates are used by the box modules to display parts of
+        the requested page</para>
+      </section>
+
+      <section>
+        <title>doc</title>
+
+        <para>Stores the document templates.</para>
+
+        <para>The document templates are specialized box templates, used by
+        the document box module (module_box_Doc).</para>
+      </section>
+
+      <section>
+        <title>page</title>
+
+        <para>Stores the page templates.</para>
+
+        <para>Page templates are complete, but mostly empty (X)HTML files.
+        They contain box places where the box modules output will be displayed
+        on page generation.</para>
+      </section>
+    </section>
+  </chapter>
+</book>

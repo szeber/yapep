@@ -1,0 +1,61 @@
+CmsPageData:
+    tableName: cms_page_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        page_type:
+            notnull: true
+            type: integer(1)
+        name:
+            notnull: true
+            notblank: true
+            type: string(255)
+        short_name:
+            notnull: true
+            notblank: true
+            nospace: true
+            type: string(64)
+        path:
+            notnull: true
+            type: string(255)
+        parent_id: integer(10)
+        template_id: integer(10)
+        theme_id: integer(10)
+        locale_id: integer(10)
+    relations:
+        Parent:
+            class: CmsPageData
+            local: parent_id
+            foreign: id
+            type: one
+        Template:
+            class: CmsTemplateData
+            local: template_id
+            foreign: id
+            type: one
+        Theme:
+            class: CmsThemeData
+            local: theme_id
+            foreign: id
+            type: one
+        Locale:
+            class: LocaleData
+            local: locale_id
+            foreign: id
+            type: one
+        Boxes:
+            class: CmsPageBoxData
+            local: id
+            foreign: page_id
+            type: many
+        Rels:
+            class: CmsPageObjectRel
+            local: id
+            foreign: page_id
+            type: many
+    indexes:
+        path_idx:
+            fields: [ path ]
+            type: unique

@@ -1,0 +1,43 @@
+CmsModuleParamData:
+    tableName: cms_module_param_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        module_id:
+            notnull: true
+            type: integer(10)
+        param_type_id:
+            notnull: true
+            type: integer(10)
+        name:
+            notnull: true
+            type: string(120)
+        allow_variable:
+            notnull: true
+            default: 0
+            type: boolean(25)
+        default_is_variable:
+            notnull: true
+            default: 0
+            type: boolean(25)
+        description: string(2147483647)
+        default_value: string(2147483647)
+    relations:
+        Module:
+            class: CmsModuleData
+            local: module_id
+            foreign: id
+            type: one
+            onDelete: CASCADE
+        Values:
+            class: CmsModuleParamValueData
+            local: id
+            foreign: module_param_id
+            type: many
+        BoxParams:
+            class: CmsPageBoxParamData
+            local: id
+            foreign: module_param_id
+            type: many

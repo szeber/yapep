@@ -1,0 +1,36 @@
+ObjectTypeColumnData:
+    tableName: object_type_column_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        object_type_id:
+            notnull: true
+            type: integer(10)
+        name:
+            notnull: true
+            notblank: true
+            type: string(255)
+        title:
+            notnull: true
+            notblank: true
+            type: string(255)
+        column_number:
+            notnull: true
+            type: integer(1)
+        in_list:
+            notnull: true
+            default: 0
+            type: boolean(25)
+        in_export:
+            notnull: true
+            default: 0
+            type: boolean(25)
+    relations:
+        ObjectType:
+            class: ObjectTypeData
+            local: object_type_id
+            foreign: id
+            type: one
+            onDelete: CASCADE

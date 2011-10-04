@@ -1,0 +1,24 @@
+DocLinkData:
+    inheritance:
+        extends: ObjectData
+        type: concrete
+    tableName: doc_link_data
+    columns:
+        id:
+            type: integer(20)
+            primary: true
+        folder_id:
+            notnull: true
+            type: integer(10)
+        doc_id: integer(10)
+    relations:
+        Folder:
+            class: FolderData
+            local: folder_id
+            foreign: id
+            type: one
+        Doc:
+            class: DocData
+            local: doc_id
+            foreign: id
+            type: one
