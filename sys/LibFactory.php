@@ -52,7 +52,7 @@ class sys_LibFactory {
 	 * Returns the requested database connection
 	 *
 	 * @param string $connection
-	 * @return sys_db_Database|Doctrine_Connection
+	 * @return sys_db_Database
 	 */
 	public static function getDbConnection($connection = 'site') {
 		if (!is_array (self::$DATABASE_INSTANCES) || !isset (self::$DATABASE_INSTANCES [$connection])) {
@@ -69,9 +69,6 @@ class sys_LibFactory {
 	 */
 	public static function restartDbConnection($connection = 'site') {
 		if (isset (self::$DATABASE_INSTANCES [$connection])) {
-			if (self::$DATABASE_INSTANCES [$connection] instanceof Doctrine_Connection) {
-				self::$DATABASE_INSTANCES [$connection]->close ();
-			}
 			unset (self::$DATABASE_INSTANCES [$connection]);
 		}
 		return self::getDbConnection ($connection);
@@ -91,21 +88,6 @@ class sys_LibFactory {
 		}
 		$dbData = self::$CONFIG->getDatabase ($connection);
 		switch ( $dbData ['type']) {
-			case 'Doctrine' :
-                if (!is_dir(CACHE_DIR.'dbSchema/Doctrine/')) {
-                    $cache = new sys_cache_DbSchema();
-                    $cache->recreateCache();
-                }
-
-				$manager = Doctrine_Manager::getInstance ();
-				$conn = $manager->openConnection ($dbData ['dsn'], $connection);
-				self::$DATABASE_INSTANCES [$connection] = $conn;
-				$conn->setCharset ($dbData ['charset']);
-				if (DEBUGGING) {
-					$conn->addListener (new sys_db_DoctrineDebugListener (), $connection);
-				}
-				return;
-				break;
 			case 'Adodb' :
 				$conn = new sys_db_AdodbDatabase (self::$CONFIG, $connection);
 				if (DEBUGGING) {

@@ -8,7 +8,7 @@
  * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>
  * @copyright	2008 The YAPEP Project All rights reserved.
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
- * @version	$Rev$
+ * @version	$Rev: 7827 $
  */
 
 /**
@@ -19,7 +19,7 @@
  * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>
  * @copyright	2008 The YAPEP Project All rights reserved.
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
- * @version	$Rev$
+ * @version	$Rev: 7827 $
  */
 class module_db_generic_UploadTmp extends module_db_DbModule implements module_db_interface_UploadTmp
 {

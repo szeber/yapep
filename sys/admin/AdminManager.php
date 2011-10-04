@@ -71,6 +71,12 @@ class sys_admin_AdminManager {
 	 */
 	private $module;
 
+    /**
+     *
+     * @var sys_Debugger
+     */
+    private $debugger;
+
 	/**
 	 * Constructor
 	 *
@@ -82,6 +88,10 @@ class sys_admin_AdminManager {
 		} else {
 			$this->config = $config;
 		}
+        if(DEBUGGING) {
+            $this->debugger = sys_Debugger::getInstance();
+            $this->debugger->startTimer();
+        }
 		$this->auth = new sys_Auth ('LoggedInAdminData', 'AdminUser');
 		$smartyProto = sys_LibFactory::getSmartyProto();
 		$smartyProto->caching = false;
@@ -328,6 +338,7 @@ class sys_admin_AdminManager {
 		if (!DEBUGGING) {
 			return;
 		}
+        $this->debugger->getAdminDebugInfo(get_class($this->module), $_POST['admin_xml'], ob_get_contents());
 		if (file_exists(CACHE_DIR.'debug_sent_xml_9.xml')) {
 			unlink(CACHE_DIR.'debug_sent_xml_9.xml');
 		}

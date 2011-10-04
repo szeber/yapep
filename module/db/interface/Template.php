@@ -45,5 +45,13 @@ interface module_db_interface_Template {
 	 */
 	public function addTemplateBoxplaces($templateId, $boxplaces);
 
+    /**
+     * Deletes boxplaces from the specified template
+     *
+     * @param integer
+     * @param array $boxplaces Name of the boxplaces to delete
+     */
+    public function deleteTemplateBoxplaces($templateId, array $boxplaces);
+
 }
 ?>

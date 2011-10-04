@@ -13,10 +13,10 @@
  /**
  * Displays the latest documents from a given folder
  *
- * @arg			text "docCount" "Document count" 0 "1" 0
- * @arg			folder "folder" "Folder" 1 "" 0
- * @arg			text "objectTypeId" "Object type ID" 0 "" 0
- * @arg			text "template" "Template used" 0 "" 0
+ * @arg			text "docCount" "Dokumentumok száma" 0 "1" 0
+ * @arg			folder "folder" "Mappa" 1 "" 0
+ * @arg			text "objectTypeId" "Objektum tipus id" 0 "" 0
+ * @arg			text "template" "Hasznalt template neve" 0 "" 0
  * @package	YAPEP
  * @subpackage	BoxModule
  * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>

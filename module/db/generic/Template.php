@@ -8,7 +8,7 @@
  * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>
  * @copyright	2008 The YAPEP Project All rights reserved.
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
- * @version	$Rev$
+ * @version	$Rev: 11068 $
  */
 
 /**
@@ -19,7 +19,7 @@
  * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>
  * @copyright	2008 The YAPEP Project All rights reserved.
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
- * @version	$Rev$
+ * @version	$Rev: 11068 $
  */
 class module_db_generic_Template extends module_db_DbModule implements module_db_interface_Template,
     module_db_interface_Admin
@@ -34,11 +34,32 @@ class module_db_generic_Template extends module_db_DbModule implements module_db
     public function addTemplateBoxplaces ($templateId, $boxplaces)
     {
         $templateId = (int) $templateId;
-        foreach ($boxplaces as $boxplace) {
-            $data = array();
-            $data['template_id'] = $templateId;
-            $data['boxplace'] = $boxplace;
-            $this->conn->insert('cms_boxplace_data', $data);
+        foreach ($boxplaces as $idx=>$boxplace) {
+            $currBoxplace = $this->conn->selectFirst(
+                array(
+                    'table'=>'cms_boxplace_data',
+                    'where'=>'template_id='.$templateId.' AND boxplace='.$this->conn->quote($boxplace)
+                )
+            );
+            if ($currBoxplace['id']) {
+                $data = array(
+                    'boxplace_order' => $idx,
+                );
+                $this->conn->update(
+                    array(
+                        'table'=>'cms_boxplace_data' ,
+                        'where'=>'id='.(int)$currBoxplace['id']
+                        ), 
+                        $data
+                    );
+
+            } else {
+                $data = array();
+                $data['template_id'] = $templateId;
+                $data['boxplace'] = $boxplace;
+                $data['boxplace_order'] = $idx;
+                $this->conn->insert('cms_boxplace_data', $data);
+            }
         }
     }
 
@@ -50,7 +71,20 @@ class module_db_generic_Template extends module_db_DbModule implements module_db
      */
     public function getTemplateBoxplaces ($templateId)
     {
-        return $this->conn->select(array('table'=>'cms_boxplace_data', 'where'=>'template_id='.(int)$templateId));
+        return $this->conn->select(array('table'=>'cms_boxplace_data', 'where'=>'template_id='.(int)$templateId, 'orderBy'=>'boxplace_order'));
+    }
+
+    /**
+     * @see module_db_interface_Template::deleteTemplateBoxplaces()
+     *
+     * @param integer $templateId
+     * @param array $boxplaces
+     */
+    public function deleteTemplateBoxplaces($templateId, array $boxplaces) {
+        foreach($boxplaces as $key=>$boxplace) {
+            $boxplaces[$key] = $this->conn->quote($boxplace);
+        }
+        $this->conn->delete('cms_boxplace_data', 'template_id='.(int)$templateId.' AND boxplace IN ('.implode(', ', $boxplaces).')');
     }
 
     /**

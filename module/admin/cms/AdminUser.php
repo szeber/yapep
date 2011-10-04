@@ -62,7 +62,15 @@ class module_admin_cms_AdminUser extends sys_admin_AdminModule {
 		$control->setRequired();
 		$control->addOptions($this->getLocales());
 		$this->addControl($control, 'locale_id');
-	}
+	
+		$control = new sys_admin_control_SubItemList();
+		$control->setLabel(_('Groups'));
+		$control->setValueField('name');
+		$control->setNameField('id');
+		$control->setAddFieldLabel(_('New user'));
+		$control->setSubForm('cms_AdminUserGroup/u');
+		$this->addControl($control, 'Groups');
+    }
 
 	protected function getLocales() {
 		$localeHandler = getPersistClass('LangLocale');
@@ -80,6 +88,8 @@ class module_admin_cms_AdminUser extends sys_admin_AdminModule {
 	 */
 	protected function processLoadData() {
 		$this->data['password'] = '';
+        $handler = getPersistClass('AdminGroup');
+        $this->data['Groups'] = $handler->getGroupsForUser($this->id);
 	}
 
 	/**

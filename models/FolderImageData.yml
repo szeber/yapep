@@ -21,6 +21,7 @@ FolderImageData:
             type: string(255)
     relations:
         FolderData:
+            class: FolderData
             local: folder_id
             foreign: id
             type: one

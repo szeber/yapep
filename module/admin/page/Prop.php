@@ -198,7 +198,7 @@ class module_admin_page_Prop extends sys_admin_AdminModule {
          *
          * Flex admin sends the full docpath instead of the doc ID. Workaround to fix  it.
          */
-        if(is_array($this->data['DocPage'])) {
+        if (is_array($this->data['DocPage'])) {
             foreach($this->data['DocPage'] as $key=>$docPage) {
                 if (is_numeric($docPage)) {
                     continue;

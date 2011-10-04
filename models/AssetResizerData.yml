@@ -18,3 +18,11 @@ AssetResizerData:
             notnull: true
             default: 1
             type: boolean(25)
+        thumb_width:
+            type: integer(4)
+        thumb_height:
+            type: integer(4)
+        thumb_crop:
+            type: boolean
+            notnull: true
+            default: false

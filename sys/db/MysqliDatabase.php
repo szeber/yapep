@@ -94,6 +94,13 @@ class sys_db_MysqliDatabase extends sys_db_Database
      * @var array
      */
     protected $_schemas = array();
+    
+    /**
+     * The last auto incremented insert id
+     * 
+     * @var integer
+     */
+    protected $lastInsertId;
 
     /**
      *
@@ -362,7 +369,7 @@ class sys_db_MysqliDatabase extends sys_db_Database
      */
     public function getLastInsertId ()
     {
-        return $this->db->insert_id;
+        return $this->lastInsertId;
     }
 
     /**
@@ -575,7 +582,11 @@ class sys_db_MysqliDatabase extends sys_db_Database
         if ($this->execute($cmd, array(), 0)) {
             $pkField = reset($schema['primaryKey']);
             if ((!isset($values[$pkField]) || 'NULL'==$values[$pkField]) && ('id' == $pkField || $schema['columns'][$pkField]['autoincrement'])) {
-                $values[$pkField] = $this->getLastInsertId();
+            	$insertId = $this->db->insert_id;
+            	if ($insertId > 0) {
+	                $this->lastInsertId = $insertId;
+            	}
+            	$values[$pkField] = $this->getLastInsertId();
             }
             return true;
         }
@@ -721,8 +732,7 @@ class sys_db_MysqliDatabase extends sys_db_Database
      * @param string $type
      * @return integer|float|string
      */
-    protected function getQuotedVal($value, $type) {
-        // Missing doctrine types: enum, gzip
+    public function getQuotedVal($value, $type) {
         if (is_null($value)) {
             return 'NULL';
         }

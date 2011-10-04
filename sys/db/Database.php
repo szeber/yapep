@@ -466,7 +466,7 @@ abstract class sys_db_Database
      * @param string $type
      * @return integer|float|string
      */
-    abstract protected function getQuotedVal($value, $type);
+    abstract public function getQuotedVal($value, $type);
 
 
     /**
@@ -531,5 +531,13 @@ abstract class sys_db_Database
     public function disableListeners() {
         $this->useListeners = false;
     }
+
+    /**
+     * Returns the currently used db configuration
+     *
+     * @return array
+     */
+    public function getDbConfig() {
+        return $this->dbConfig;
+    }
 }
-?>

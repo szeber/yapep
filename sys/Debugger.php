@@ -34,6 +34,12 @@ class sys_Debugger {
 	 */
 	private $unhandledQueries=array();
 
+    /**
+     *
+     * @var array
+     */
+    private $unhandledLogs = array();
+
 	/**
 	 * DB access
 	 *
@@ -62,6 +68,12 @@ class sys_Debugger {
 	 */
 	private $sysQueries=array();
 
+    /**
+     *
+     * @var array
+     */
+    private $sysLogs = array();
+
 	/**
 	 * Module debug information
 	 *
@@ -69,6 +81,16 @@ class sys_Debugger {
 	 */
 	private $moduleDebug=array();
 
+    /**
+     *
+     * @var FirePHP
+     */
+    private $firePhp;
+
+    /**
+     *
+     * @var integer
+     */
 	private $startTime;
 
 	/**
@@ -78,6 +100,8 @@ class sys_Debugger {
 	protected function __construct() {
 		self::$INSTANCE = $this;
 		$this->db=sys_LibFactory::getDbConnection('site');
+        require_once(LIB_DIR.'FirePHPCore/FirePHP.class.php');
+        $this->firePhp = FirePHP::getInstance(true);
 	}
 
 	/**
@@ -88,7 +112,7 @@ class sys_Debugger {
 	public static function getInstance() {
 		if (empty(self::$INSTANCE)) {
 			sys_ApplicationConfiguration::getInstance();
-			if (DEBUGGING) {
+			if (DEBUGGING || (isset($_SESSION['debug_enable']) && defined('ADMIN_PREVIEW') && ADMIN_PREVIEW)) {
 				new sys_Debugger();
 			} else {
 				new sys_DummyDebugger();
@@ -111,17 +135,26 @@ class sys_Debugger {
 		}
 		unset($smartyVars['argArr'], $smartyVars['moduleInfo'], $smartyVars['MODULE']);
 		ksort($smartyVars);
-		self::$INSTANCE->moduleDebug[]=array('info'=>$moduleInfo, 'args'=>$args, 'smarty'=>$smartyVars, 'queries'=>self::$INSTANCE->getUnhandledQueries(), 'cached'=>$cached);
+		self::$INSTANCE->moduleDebug[]=array('info'=>$moduleInfo, 'args'=>$args, 'smarty'=>$smartyVars, 'queries'=>self::$INSTANCE->getUnhandledQueries(), 'logs' => self::$INSTANCE->getUnhandledLogs(), 'cached'=>$cached);
 		self::$INSTANCE->clearUnhandledQueries();
+        self::$INSTANCE->clearUnhandledLogs();
 	}
 
 	public function getUnhandledQueries() {
 		return $this->unhandledQueries;
 	}
 
+    public function getUnhandledLogs() {
+        return $this->unhandledLogs;
+    }
+
 	public function clearUnhandledQueries() {
 		$this->unhandledQueries=array();
 	}
+
+    public function clearUnhandledLogs() {
+        $this->unhandledLogs = array();
+    }
 
 	/**
 	 * Sets an error
@@ -134,24 +167,128 @@ class sys_Debugger {
 	}
 
 	/**
-	 * Returns the debug information
-	 *
-	 * @return string
+	 * Transmits the debug information
 	 */
 	public function getDebugInfo() {
-		$smarty = sys_LibFactory::getSmarty();
-		$smarty->caching=false;
-		$this->addSystemQueries();
-		$smarty->assign('systemQueries', $this->sysQueries);
-		$smarty->assign('queryInfo', $this->getQueryInfo());
-		$smarty->assign('errors', $this->errorList);
-		$smarty->assign('moduleDebug', $this->moduleDebug);
-		$smarty->assign('loadTime', (microtime(true) - $this->startTime));
-		$smarty->assign('ipAddr', $_SERVER['REMOTE_ADDR']);
-		$smarty->assign('peakMem', memory_get_peak_usage(true));
-		$smarty->assign('includedFiles', $this->getIncludedFiles());
-		return $smarty->fetch('yapep:debug.tpl');
+        foreach($this->errorList as $error) {
+            $this->firePhp->error($error);
+        }
+        $this->firePhp->table('System queries', $this->getFirePhpQueryTable($this->sysQueries));
+        $this->addSystemQueries();
+        if (is_array($this->sysLogs) && count($this->sysLogs)) {
+            $this->firePhp->table('System logs', $this->getFirePhpLogTable($this->sysLogs));
+        }
+        $this->firePhp->group('Module information', array('Collapsed'=>true));
+        foreach($this->moduleDebug as $module) {
+            if ($module['cached']) {
+                $this->firePhp->group($module['info']['name'].' ('.$module['info']['description'].') Cached', array('Collapsed'=>true, 'Color'=>'#00FF00'));
+            } else {
+                $this->firePhp->group($module['info']['name'].' ('.$module['info']['description'].')', array('Collapsed'=>true, 'Color'=>'#0000FF'));
+            }
+            $this->firePhp->table('Module info', $this->getFirePhpDataTable($module['info']));
+            $this->firePhp->table('Module args', $this->getFirePhpDataTable($module['args']));
+            $this->firePhp->table('Smarty variables', $this->getFirePhpDataTable($module['smarty']));
+            $this->firePhp->table('Database queries', $this->getFirePhpQueryTable($module['queries']));
+            if (is_array($module['logs']) && count($module['logs'])) {
+                $this->firePhp->table('LogData', $this->getFirePhpLogTable($module['logs']));
+            }
+            $this->firePhp->groupEnd();
+        }
+        $this->firePhp->groupEnd();
+        $files = $this->getIncludedFiles();
+        $this->firePhp->group('Included files', array('Collapsed'=>true));
+        foreach($files as $file) {
+            $this->firePhp->log($file);
+        }
+        $this->firePhp->groupEnd();
+        $this->firePhp->info('Page loaded in '.round((microtime(true) - $this->startTime)*1000).' ms.');
+        $queryInfo = $this->getQueryInfo();
+        $this->firePhp->info($queryInfo['count'].' queries run ('.$queryInfo['cacheCount'].' cached) in '.$queryInfo['timeFormat'].' ms.');
+        $this->firePhp->info('Average query execution time: '.$queryInfo['avgTimeFormat'].' ms.');
+        $this->firePhp->info('IP: '.$_SERVER['REMOTE_ADDR']);
+        $this->firePhp->info('Peak memory usage: '.(memory_get_peak_usage(true)/1024).' KiB');
 	}
+
+    /**
+	 * Transmits the admin debug information
+	 */
+	public function getAdminDebugInfo($module, $receivedXml, $sentXml) {
+        foreach($this->errorList as $error) {
+            $this->firePhp->error($error);
+        }
+        $this->firePhp->info('Module used: '.$module);
+        $this->firePhp->info(array('Received'=>$receivedXml, 'Sent'=>$sentXml), 'XMLs');
+        $this->addSystemQueries();
+        $this->firePhp->table('System queries', $this->getFirePhpQueryTable($this->sysQueries));
+        if (is_array($this->sysLogs) && count($this->sysLogs)) {
+            $this->firePhp->table('System logs', $this->getFirePhpLogTable($this->sysLogs));
+        }
+        $files = $this->getIncludedFiles();
+        $this->firePhp->group('Included files', array('Collapsed'=>true));
+        foreach($files as $file) {
+            $this->firePhp->log($file);
+        }
+        $this->firePhp->groupEnd();
+        $this->firePhp->info('Page loaded in '.round((microtime(true) - $this->startTime)*1000).' ms.');
+        $queryInfo = $this->getQueryInfo();
+        $this->firePhp->info($queryInfo['count'].' queries run ('.$queryInfo['cacheCount'].' cached) in '.$queryInfo['timeFormat'].' ms.');
+        $this->firePhp->info('Average query execution time: '.$queryInfo['avgTimeFormat'].' ms.');
+        $this->firePhp->info('IP: '.$_SERVER['REMOTE_ADDR']);
+        $this->firePhp->info('Peak memory usage: '.(memory_get_peak_usage(true)/1024).' KiB');
+	}
+
+
+    private function getFirePhpQueryTable($queries) {
+        $table = array(
+            array(
+                'SQL',
+                'Result',
+                'Info',
+                'Rows',
+                'Time',
+                'Cached'
+            )
+        );
+        foreach($queries as $query) {
+            $tmp = array($query->getFormattedQuery(), $query->getSuccess(), $query->getErrorMessage());
+            $tmp2 = $query->getRows();
+            if ($tmp2 > -1) {
+                $tmp [] = $tmp2;
+            } else {
+                $tmp[] = '';
+            }
+            $tmp[] = $query->getTime();
+            if ($query->getCacheHit()) {
+                $tmp[] = 'CACHED';
+            } else {
+                $tmp [] = '';
+            }
+            $table[] = $tmp;
+        }
+        return $table;
+    }
+
+    private function getFirePhpLogTable($logs) {
+        $table = array(
+            array(
+                'Level',
+                'Source',
+                'Type',
+                'Description',
+                'Data',
+                'User ID'
+            )
+        );
+        return array_merge($table, $logs);
+    }
+
+    private function getFirePhpDataTable(array $data) {
+        $table = array(array('name', 'value'));
+        foreach($data as $key=>$val) {
+            $table [] = array($key, $val);
+        }
+        return $table;
+    }
 
 	private function getIncludedFiles() {
 		$config = sys_ApplicationConfiguration::getInstance();
@@ -214,7 +351,9 @@ class sys_Debugger {
 	 */
 	public function addSystemQueries() {
 		$this->sysQueries += $this->unhandledQueries;
+        $this->sysLogs += $this->unhandledLogs;
 		$this->unhandledQueries=array();
+        $this->unhandledLogs=array();
 	}
 
 	/**
@@ -226,6 +365,17 @@ class sys_Debugger {
 		$this->unhandledQueries[]=$debug;
 	}
 
+    public function addLog($level, $source, $type = null, $description = '', $data = null, $userId = null) {
+        $this->unhandledLogs[] = array(
+            'level'=>$level,
+            'source'=>$source,
+            'type'=>$type,
+            'description'=>$description,
+            'data'=>$data,
+            'userId'=>$userId,
+        );
+    }
+
 	/**
 	 * Starts the page load timer
 	 *
@@ -236,29 +386,22 @@ class sys_Debugger {
 		}
 		self::$INSTANCE->startTime = microtime(true);
 	}
+
+    /**
+     * Returns the FirePHP instance
+     *
+     * @return FirePHP
+     */
+    public function getFirePhp() {
+        return $this->firePhp;
+    }
+
+    public static function debug($message) {
+		if (!self::$INSTANCE) {
+			self::getInstance();
+		}
+        self::$INSTANCE->firePhp->log($message);
+    }
 }
 
-/**
- * Dummy debugger class
- *
- * Overrides all public methods of the Debugger class to disable debugging
- *
- * @package YAPEP
- * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>
- * @copyright	2008 The YAPEP Project All rights reserved.
-
- * @version	$Rev$
- */
-class sys_DummyDebugger extends sys_Debugger {
-
-	public static function addModuleDebugInfo($moduleInfo,$args,$smartyVars,$cached) {}
-
-	public function getDebugInfo() {
-		return '';
-	}
-
-	public function setError($message) {}
-
-	public function addSystemQueries() {}
-}
 ?>

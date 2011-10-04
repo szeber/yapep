@@ -11,7 +11,7 @@
  */
 
  /**
- * Doctrine model helper class
+ * Model helper class
  *
  * @package	YAPEP
  * @subpackage	Database
@@ -44,4 +44,3 @@ class sys_db_ModelHelper {
 		return $dirs;
 	}
 }
-?>

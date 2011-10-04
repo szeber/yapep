@@ -20,5 +20,7 @@
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  * @version	$Rev$
  */
-class sys_exception_SiteException extends Exception {}
+class sys_exception_SiteException extends Exception {
+	const ERR_HANDLED = 1001;
+}
 ?>

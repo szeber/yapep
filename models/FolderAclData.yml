@@ -1,0 +1,43 @@
+FolderAclData:
+    columns:
+        id:
+            type: integer(20)
+            primary: true
+            autoincrement: true
+        folder_id:
+            type: integer(20)
+            primary: true
+        admin_object_id:
+            type: integer(20)
+            primary: true
+        can_list:
+            type: boolean
+            notnull: true
+        can_create:
+            type: boolean
+            notnull: true
+        can_delete:
+            type: boolean
+            notnull: true
+        can_edit_props:
+            type: boolean
+            notnull: true
+        doc_can_read:
+            type: boolean
+            notnull: true
+        doc_can_write:
+            type: boolean
+            notnull: true
+    relations:
+        FolderData:
+            class: FolderData
+            local: folder_id
+            foreign: id
+            type: one
+            onDelete: CASCADE
+        AdminObject:
+            class: ObjectData
+            local: admin_object_id
+            foreign: id
+            type: one
+            onDelete: CASCADE

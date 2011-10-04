@@ -93,7 +93,17 @@ class module_admin_Doc extends sys_admin_AdminModule {
 		$control->setReadOnly();
 		$docPanel->addControl($control, 'object_id');
 
-		$moduleName = 'module_admin_'.$this->subModule[0];
+        if ($_SESSION['LoggedInAdminData']['superuser']) {
+            $control = new sys_admin_control_SubItemList();
+            $control->setLabel(_('Access control'));
+            $control->setValueField('name');
+            $control->setNameField('id');
+            $control->setAddFieldLabel(_('New user or group'));
+            $control->setSubForm('cms_DocAcl');
+            $docPanel->addControl($control, 'DocAcl');
+        }
+
+        $moduleName = 'module_admin_'.$this->subModule[0];
 
 		$this->module = new $moduleName($this->manager);
 		$this->module->setLocale($this->locale);
@@ -155,6 +165,8 @@ class module_admin_Doc extends sys_admin_AdminModule {
 			$this->data['PreviewButton'] = '/'.$this->locale.'/'.$folderData['docpath'].'/'.$this->data['docname'];
 			$this->data['docPath'] = $folderData['docpath'];
 		}
+        $aclHandler = getPersistClass('AdminGroup');
+        $this->data['DocAcl'] = $aclHandler->loadObjectAcls(module_db_interface_AdminGroup::MODE_DOC, $this->id);
 	}
 
 }

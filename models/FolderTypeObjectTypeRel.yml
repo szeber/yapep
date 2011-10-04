@@ -13,16 +13,9 @@ FolderTypeObjectTypeRel:
             local: folder_type_id
             foreign: id
             type: one
+            onDelete: CASCADE
         ObjectType:
             class: ObjectTypeData
             local: object_type_id
-            foreign: id
-            type: one
-        ObjectTypeData:
-            local: object_type_id
-            foreign: id
-            type: one
-        FolderTypeData:
-            local: folder_type_id
             foreign: id
             type: one

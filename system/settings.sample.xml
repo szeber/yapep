@@ -9,21 +9,6 @@
 			<Option name="debugging" type="bool" value="true" />
 			<Option name="final" type="bool" value="false" />
 			<Option name="caching" type="bool" value="false" />
-			<Option name="mailerSMTP" type="string" value="localhost" />
-			<Option name="adminCreateFiles" type="bool" value="true" />
-		</Options>
-		<Paths>
-			<Path name="ffmpegBin" parent="" value="/usr/bin/ffmpeg" />
-		</Paths>
-	</Setup>
-	<Setup site="beta">
-		<Databases>
-			<Database connectionId="site" type="mysqli" server="mysql" user="" password="" host="" dbName="" options="" charset="utf8" />
-		</Databases>
-		<Options>
-			<Option name="debugging" type="bool" value="false" />
-			<Option name="final" type="bool" value="false" />
-			<Option name="caching" type="bool" value="false" />
 		</Options>
 		<Paths>
 			<Path name="ffmpegBin" parent="" value="/usr/bin/ffmpeg" />
@@ -60,10 +45,6 @@
 			<Option name="siteLangCookieExpire" type="integer" value="604800" /><!-- 1 week -->
 			<Option name="adminWebInterface" type="string" value="flex" />
 			<Option name="defaultAdminLocale" type="string" value="hu_HU" />
-			<Option name="makeAssetThumbnails" type="boolean" value="false" />
-			<Option name="assetThumbnailWidth" type="integer" value="100" />
-			<Option name="assetThumbnailHeight" type="integer" value="100" />
-            <Option name="assetThumbnailCrop" type="boolean" value="false" />
 		</Options>
 		<Paths>
 			<Path name="lib" parent="SYS_PATH" value="lib/" />

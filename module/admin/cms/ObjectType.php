@@ -96,7 +96,7 @@ class module_admin_cms_ObjectType extends sys_admin_AdminModule {
 		}
 		if ($this->data['persist_class']) {
 			if (!class_exists($this->data['persist_class'])) {
-				$this->makeFile('models', $this->data['persist_class'], 'doctrinemodel', array(), 'yml');
+				$this->makeFile('models', $this->data['persist_class'], 'model', array(), 'yml');
 			}
 		}
 		if ($this->data['handler_class']) {
@@ -111,9 +111,6 @@ class module_admin_cms_ObjectType extends sys_admin_AdminModule {
 			}
 			if (!class_exists('module_db_generic_'.$this->data['handler_class'])) {
 				$this->makeFile('', 'module_db_generic_'.$this->data['handler_class'], 'dbmodule', $params);
-			}
-			if (!class_exists('module_db_Doctrine_'.$this->data['handler_class'])) {
-				$this->makeFile('', 'module_db_Doctrine_'.$this->data['handler_class'], 'doctrinemodule', $params);
 			}
 		}
 		if ($this->data['admin_class']) {

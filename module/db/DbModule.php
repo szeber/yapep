@@ -97,7 +97,7 @@ abstract class module_db_DbModule
      *
      * @see module_db_interface_Admin::insertItem()
      *
-     * @param string $tableName The name of the table to work on (Doctrine model class name)
+     * @param string $tableName The name of the table to work on
      * @param array $itemData Associative array with the values to insert (name=>value)
      * @param array $ignoreFields Array containing the name of the fields not to be touched
      * @param integer $objectTypeId
@@ -123,7 +123,7 @@ abstract class module_db_DbModule
      *
      * @see module_db_interface_Admin::deleteItem()
      *
-     * @param string $tableName The name of the table to work on (Doctrine model class name)
+     * @param string $tableName The name of the table to work on
      * @param integer $itemID The ID of the item to be deleted
      * @return boolean
      */
@@ -137,7 +137,7 @@ abstract class module_db_DbModule
      *
      * @see module_db_interface_Admin::updateItem()
      *
-     * @param string $tableName The name of the table to work on (Doctrine model class name)
+     * @param string $tableName The name of the table to work on
      * @param integer $itemID The ID of the item to be deleted
      * @param array $itemData Associative array with the values to insert (name=>value)
      * @param array $ignoreFields Array containing the name of the fields not to be touched
@@ -161,7 +161,7 @@ abstract class module_db_DbModule
     /**
      * Generates an associative array that can be used for ID Select inputs
      *
-     * @param string $tableName The name of the table to work from (Doctrine model class name)
+     * @param string $tableName The name of the table to work from
      * @param string $idField The name of the field that should be used as the array's key. Defaults to 'id'
      * @param string $nameField Optional. The name of the field that should be used as the array's value. Defaults to 'name'
      * @param string $filter Optional. Any filtering that should be done as a valid WHERE clause without the WHERE keyword

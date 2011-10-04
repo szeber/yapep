@@ -47,12 +47,8 @@ class sys_cache_DbSchema extends sys_cache_DummyCacheManager
             mkdir($this->getCachePath(),0775);
         }
         $cacheDir = $this->getCachePath().'YAPEP/';
-        $doctrineCacheDir = $this->getCachePath().'Doctrine/';
         if (!file_exists($cacheDir)) {
             mkdir($cacheDir,0775);
-        }
-        if (!file_exists($doctrineCacheDir)) {
-            mkdir($doctrineCacheDir,0775);
         }
         $this->loadYamlSchema();
         $tables = array_keys($this->_yamlData);
@@ -60,27 +56,6 @@ class sys_cache_DbSchema extends sys_cache_DummyCacheManager
             $model = $this->processTable($table);
             file_put_contents($cacheDir.$model['tableName'].'.php', "<?php\n\$tableData = ".var_export($model, true).';');
         }
-        sys_LibFactory::getDbConnection();
-        Doctrine::generateModelsFromYaml(array(SYS_PATH.'models/', PROJECT_PATH.'models/'), $doctrineCacheDir, array('generateBaseClasses' => false));
-        $dir = opendir($doctrineCacheDir);
-        while (false !== ($file = readdir($dir))) {
-            if (!is_file($doctrineCacheDir.$file)) {
-                continue;
-            }
-            if (!preg_match('/^(.+)(\.php)$/', $file)) {
-                continue;
-            }
-            // FIXME Remove hack
-            if ('ObjectData.php' == $file) {
-                $objectData = file_get_contents($doctrineCacheDir.$file);
-                $objectData = preg_replace('/^.*?new sys_db_ObjectListener.*?$/m', '', $objectData);
-                $objectData = preg_replace('/^}\s*$/m', '', $objectData);
-                $objectData.= "\n\n  public function construct() {\n    \$this->addListener(new sys_db_ObjectListener());\n  }\n}";
-                file_put_contents($doctrineCacheDir.$file, $objectData);
-            }
-            file_put_contents($doctrineCacheDir.$file, preg_replace('/^\s*parent::.*$/m', '', file_get_contents($doctrineCacheDir.$file)));
-        }
-        closedir($dir);
     }
 
     /**
@@ -93,8 +68,15 @@ class sys_cache_DbSchema extends sys_cache_DummyCacheManager
         return CACHE_DIR.'dbSchema/';
     }
 
-    public static function makeTableName($tableName) {
-        return strtolower(preg_replace_callback('/(?<!^)[A-Z]/', create_function('$matches', 'return "_".$matches[0];'), $tableName));
+    public static function makeTableName($modelName) {
+        return strtolower(preg_replace_callback('/(?<!^)[A-Z]/', create_function('$matches', 'return "_".$matches[0];'), $modelName));
+    }
+
+    public static function makeModelName($tableName) {
+        while(false !== ($idx = strpos($tableName, '_'))) {
+            $tableName = substr($tableName, 0, $idx).strtoupper(substr($tableName, $idx+1, 1)).substr($tableName, $idx+2);
+        }
+        return $tableName;
     }
 
     protected function processTable($tableName) {
@@ -136,7 +118,13 @@ class sys_cache_DbSchema extends sys_cache_DummyCacheManager
         if (is_array($table['inheritance'])) {
             $parentTable = $this->processTable($table['inheritance']['extends']);
             $table['inheritance']['extendsTable'] = $this->makeTableName($table['inheritance']['extends']);
-            $table['columns'] = array_merge($table['columns'], $parentTable['columns']);
+            $parentColumns = $parentTable['columns'];
+            foreach($parentColumns as $key=>$val) {
+                if(isset($val['autoincrement'])) {
+                    unset($parentColumns[$key]['autoincrement']);
+                }
+            }
+            $table['columns'] = array_merge($table['columns'], $parentColumns);
             $table['listeners'] = array_merge($table['listeners'], $parentTable['listeners']);
         }
         if (is_array($table['relations'])) {

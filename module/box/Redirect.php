@@ -7,7 +7,7 @@
  * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>
  * @copyright	2008 The YAPEP Project All rights reserved.
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
- * @version	$Rev$
+ * @version	$Rev: 11068 $
  */
 
  /**
@@ -21,9 +21,9 @@
  * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>
  * @copyright	2008 The YAPEP Project All rights reserved.
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
- * @version	$Rev$
+ * @version	$Rev: 11068 $
  */
-class module_box_Redirect extends sys_BoxModule {
+class module_box_HtmlTemplate extends sys_BoxModule {
 	protected function main() {
         switch((int)$this->argArr['code']) {
             case 301:

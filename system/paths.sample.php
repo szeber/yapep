@@ -1,18 +1,11 @@
 <?php
-/**
- * Path configuration file
- *
- * @package YAPEP
- */
 define('PROJECT_PATH', realpath(dirname(dirname(__FILE__))) . '/');
 
 if(preg_match('@.dev$@', $_SERVER['SERVER_NAME'])) {
-	// DEV
 	define('SITE', 'dev');
 	define('CLI', false);
 	define('SYS_PATH', realpath(PROJECT_PATH.'../yapep').'/');
 } elseif($_SERVER['SERVER_NAME']) {
-	// ELES
 	define('SITE', 'live');
 	define('CLI', false);
 	define('SYS_PATH', realpath(PROJECT_PATH.'../yapep').'/');

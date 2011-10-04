@@ -7,7 +7,7 @@
  * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>
  * @copyright	2008 The YAPEP Project All rights reserved.
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
- * @version	$Rev$
+ * @version	$Rev: 11068 $
  */
 
 /**
@@ -18,7 +18,7 @@
  * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>
  * @copyright	2008 The YAPEP Project All rights reserved.
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
- * @version	$Rev$
+ * @version	$Rev: 11068 $
  */
 class module_admin_asset_Resizer extends sys_admin_AdminModule {
 
@@ -57,7 +57,26 @@ class module_admin_asset_Resizer extends sys_admin_AdminModule {
 		$control->setDescription(_('This option sets the image size to exactly fit the specified values, regardless of aspect ratio. It also allows upscaling of the image.'));
 		$control->setDefaultValue(0);
 		$this->addControl($control, 'force_exact');
-	}
+
+        $control = new sys_admin_control_TextInput ();
+		$control->setLabel (_ ('Thumbnail Width'));
+		$control->setRequired();
+		$control->setValidateNumeric();
+		$this->addControl ($control, 'thumb_width');
+
+		$control = new sys_admin_control_TextInput ();
+		$control->setLabel (_ ('Thumbnail Height'));
+		$control->setRequired();
+		$control->setValidateNumeric();
+		$this->addControl ($control, 'thumb_height');
+
+		$control = new sys_admin_control_CheckBox();
+		$control->setLabel (_ ('Crop thumbnail'));
+		$control->setDescription(_('This option sets the thumbnail size to exactly fit the specified size, by croping it and also allows upscaling'));
+		$control->setDefaultValue(0);
+		$this->addControl($control, 'thumb_crop');
+
+    }
 
 	/**
 	 * @see sys_admin_AdminModule::doDelete()

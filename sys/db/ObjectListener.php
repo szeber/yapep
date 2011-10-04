@@ -20,45 +20,8 @@
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  * @version	$Rev$
  */
-class sys_db_ObjectListener extends Doctrine_Record_Listener implements sys_db_ModifyListener {
+class sys_db_ObjectListener implements sys_db_ModifyListener {
 
-	/**
-	 * preInsert
-	 *
-	 * @param object $Doctrine_Event
-	 * @return void
-	 */
-	public function preInsert(Doctrine_Event $event) {
-		$invoker = $event->getInvoker ();
-		$invoker->created_at = $this->getTimestamp ();
-		$invoker->updated_at = $this->getTimestamp ();
-		if (is_null ($invoker->creator)) {
-			$invoker->creator = $this->getCurrentUser ();
-		} else if (0 === $invoker->creator) {
-			$invoker->creator = null;
-		}
-		if (is_null($invoker->updater)) {
-		    $invoker->updater = $invoker->creator;
-		} else if (0 === $invoker->updater) {
-		    $invoker->updater = null;
-		}
-	}
-
-	/**
-	 * preUpdate
-	 *
-	 * @param object $Doctrine_Event
-	 * @return void
-	 */
-	public function preUpdate(Doctrine_Event $event) {
-		$invoker = $event->getInvoker ();
-		$invoker->updated_at = $this->getTimestamp ();
-        if (is_null($invoker->updater)) {
-            $invoker->updater = $this->getCurrentUser();
-        } else if (0 === $invoker->updater) {
-            $invoker->updater = null;
-        }
-	}
 
 	/**
 	 * getTimestamp

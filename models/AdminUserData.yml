@@ -18,3 +18,9 @@ AdminUserData:
             local: locale_id
             foreign: id
             type: one
+        Groups:
+            refClass: AdminUserGroupRel
+            class: AdminGroupData
+            local: admin_user_id
+            foreign: admin_group_id
+            type: many

@@ -20,7 +20,3 @@ ObjectAssetRel:
             local: asset_id
             foreign: id
             type: one
-        AssetData:
-            local: asset_id
-            foreign: id
-            type: one

@@ -29,7 +29,7 @@ class module_admin_object_Move extends sys_admin_AdminModule
      *
      * @param SimpleXMLElement $xml
      */
-    public function parseXml (SimpleXMLElement $xml)
+    public function parseXml ($xml)
     {
         $type = (string) $xml->adminData->type;
         $id = (int) $xml->adminData->id;

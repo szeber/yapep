@@ -60,6 +60,12 @@ class module_admin_cms_Template extends sys_admin_AdminModule {
 		$control->setLabel(_('Reread boxplaces'));
 		$control->setDefaultValue(false);
 		$this->addControl($control, 'rereadBoxplaces');
+
+        $control = new sys_admin_control_CheckBox();
+		$control->setLabel(_('Delete unused boxplaces'));
+        $control->setDescription(_('Only works if "Reread boxplaces" is also enabled. WARNING! Deleting a boxplace also deletes all boxes in this boxplace on all the pages using this template!'));
+		$control->setDefaultValue(false);
+		$this->addControl($control, 'deleteUnusedBoxplaces');
 	}
 
 	protected function sanitizeFileName($filename) {
@@ -87,22 +93,34 @@ class module_admin_cms_Template extends sys_admin_AdminModule {
 			return;
 		}
 		$template = file_get_contents(PROJECT_PATH.'template/page/'.$this->data['file']);
-		preg_match_all('/\{\$boxplaces\.([^}]+)\}/', $template, $boxplaces);
-		$boxplaces = $boxplaces[1];
-		$headerIdx = array_search('header', $boxplaces);
+		preg_match_all('/\{\$boxplaces\.([^}]+)\}/', $template, $tmp);
+		$tmp = $tmp[1];
+		$headerIdx = array_search('header', $tmp);
 		if (false !== $headerIdx) {
-			unset($boxplaces[$headerIdx]);
+            $this->addWarning(_('The header boxplace is a reserved name. Please do not use it in your template.'));
+			unset($tmp[$headerIdx]);
 		}
-		array_unshift($boxplaces, 'header');
-		if ($this->mode == sys_admin_AdminModule::MODE_EDIT) {
-			$data = $this->templateHandler->getTemplateBoxplaces($this->id);
-			foreach($data as $val) {
-				if (in_array($val['boxplace'], $boxplaces)) {
-					unset($boxplaces[array_search($val['boxplace'], $boxplaces)]);
-				}
-			}
-		}
+        $boxplaces = array('header');
+        foreach($tmp as $boxplace) {
+            $boxplaces[] = $boxplace;
+        }
 		$this->templateHandler->addTemplateBoxplaces($this->id, $boxplaces);
+        $data = $this->templateHandler->getTemplateBoxplaces($this->id);
+        $unusedBoxplaces = array();
+        foreach($data as $key=>$val) {
+            $idx = array_search($val['boxplace'], $boxplaces);
+            if (false === $idx) {
+                $unusedBoxplaces[] = $val['boxplace'];
+            }
+        }
+        if (count($unusedBoxplaces) > 0) {
+            if ($this->data['deleteUnusedBoxplaces']) {
+                $this->templateHandler->deleteTemplateBoxplaces($this->id, $unusedBoxplaces);
+                $this->addWarning("Removed the following boxplaces:\n\n".implode("\n", $unusedBoxplaces));
+            } else {
+                $this->addWarning("The following boxplaces are not used in the template:\n\n".implode("\n", $unusedBoxplaces));
+            }
+        }
 	}
 
 }

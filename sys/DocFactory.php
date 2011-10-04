@@ -234,12 +234,11 @@ final class sys_DocFactory {
 	 * @param array $doctypes Array containing the document types to search for
 	 * @param string $text The text to search for
 	 * @param array $includeFolders Folder IDs or docpaths that should be included in the search
-	 * @param array $excludeFolders Folder IDs or docpaths that should be excluded from the search
+	 * @param array $includeFolders Folder IDs or docpaths that should be excluded from the search
 	 * @param boolean $inactive If true the search includes inactive documents
 	 * 	 * @return sys_DocModule[] 2 dimensional array containing the docs found. First key is the doctype
 	 */
 	static public function findDoc($localeId, $startPath, $doctypes, $text, $limit = -1, $offset = 0, $includeFolders = array(), $excludeFolders = array(), $inactive = false) {
-        self::init ();
 		if (is_string ($doctypes)) {
 			$doctypes = explode (',', $doctypes);
 			foreach($doctypes as $key=>$doctype) {

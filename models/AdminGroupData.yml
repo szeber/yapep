@@ -1,0 +1,38 @@
+AdminGroupData:
+    inheritance:
+        extends: ObjectData
+        type: concrete
+    columns:
+        id:
+            type: integer(20)
+            primary: true
+        folder_def_list:
+            type: boolean
+            notnull: true
+        folder_def_create:
+            type: boolean
+            notnull: true
+        folder_def_delete:
+            type: boolean
+            notnull: true
+        folder_def_edit_props:
+            type: boolean
+            notnull: true
+        doc_def_read:
+            type: boolean
+            notnull: true
+        doc_def_write:
+            type: boolean
+            notnull: true
+    relations:
+        ObjectData:
+            class: ObjectData
+            local: id
+            foreign: id
+            type: one
+        Users:
+            refClass: AdminUserGroupRel
+            class: AdminUserData
+            local: admin_group_id
+            foreign: admin_user_id
+            type: many

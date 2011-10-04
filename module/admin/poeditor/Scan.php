@@ -7,7 +7,7 @@
  * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>
  * @copyright	2008 The YAPEP Project All rights reserved.
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
- * @version	$Rev$
+ * @version	$Rev: 11068 $
  */
 
 /**
@@ -23,7 +23,7 @@ ini_set('memory_limit', '100M');
  * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>
  * @copyright	2008 The YAPEP Project All rights reserved.
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
- * @version	$Rev$
+ * @version	$Rev: 11068 $
  */
 class module_admin_poeditor_Scan extends sys_admin_AdminModule {
 

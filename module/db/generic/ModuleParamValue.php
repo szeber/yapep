@@ -7,7 +7,7 @@
  * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>
  * @copyright	2008 The YAPEP Project All rights reserved.
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
- * @version	$Rev$
+ * @version	$Rev: 11068 $
  */
 
  /**
@@ -18,7 +18,7 @@
  * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>
  * @copyright	2008 The YAPEP Project All rights reserved.
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
- * @version	$Rev$
+ * @version	$Rev: 11068 $
  */
 class module_db_generic_ModuleParamValue extends module_db_DbModule implements module_db_interface_ModuleParamValue, module_db_interface_Admin {
 

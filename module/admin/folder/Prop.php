@@ -113,14 +113,6 @@ class module_admin_folder_Prop extends sys_admin_AdminModule {
 		$control->setDefaultValue(10);
 		$this->addControl ($control, 'folder_order');
 
-		$control = new sys_admin_control_FileInput ();
-		$control->setLabel (_ ('Folder picture 1'));
-		$this->addControl ($control, 'folder_img_1');
-
-		$control = new sys_admin_control_FileInput ();
-		$control->setLabel (_ ('Folder picture 2'));
-		$this->addControl ($control, 'folder_img_2');
-
 		$control = new sys_admin_control_BrowserList ();
 		$control->setLabel (_ ('Folder page'));
 		$control->setDataForm ('page_Prop');
@@ -144,6 +136,16 @@ class module_admin_folder_Prop extends sys_admin_AdminModule {
 		$control = new sys_admin_control_TextInput ();
 		$control->setLabel (_ ('Virtual handler'));
 		$this->addControl ($control, 'virtual_handler');
+
+        if ($_SESSION['LoggedInAdminData']['superuser']) {
+            $control = new sys_admin_control_SubItemList();
+            $control->setLabel(_('Access control'));
+            $control->setValueField('name');
+            $control->setNameField('id');
+            $control->setAddFieldLabel(_('New user or group'));
+            $control->setSubForm('cms_FolderAcl');
+            $this->addControl($control, 'FolderAcl');
+        }
 	}
 
 	protected function getFolderTypes() {
@@ -169,7 +171,8 @@ class module_admin_folder_Prop extends sys_admin_AdminModule {
 	 *
 	 */
 	protected function processLoadData() {
-		$this->data['folder_img_3'] = $this->data['folder_img_1'];
+        $aclHandler = getPersistClass('AdminGroup');
+        $this->data['FolderAcl'] = $aclHandler->loadObjectAcls(module_db_interface_AdminGroup::MODE_FOLDER, $this->id);
 		$allLang = $this->getControl ('allLanguages');
 		if ($this->data ['locale_id']) {
 			$allLang->setValue (false, true);

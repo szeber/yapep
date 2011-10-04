@@ -2,13 +2,13 @@
 /**
  *
  *
- * @version $Rev$
+ * @version $Rev: $
  */
 
 /**
  *
  *
- * @version $Rev$
+ * @version $Rev: $
  */
 class module_admin_poeditor_Translate extends sys_admin_AdminModule {
 

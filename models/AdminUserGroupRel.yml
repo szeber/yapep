@@ -1,0 +1,23 @@
+AdminUserGroupRel:
+    columns:
+        id:
+            type: integer(20)
+            primary: true
+            autoincrement: true
+        admin_user_id:
+            type: integer(20)
+            notnull: true
+        admin_group_id:
+            type: integer(20)
+            notnull: true
+    relations:
+        AddminUserData:
+            class: AdminUserData
+            local: admin_user_id
+            foreign: id
+            type: one
+        AdminGroupData:
+            class: AdminGroupData
+            local: admin_group_id
+            foreign: id
+            type: one

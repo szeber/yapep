@@ -53,6 +53,16 @@ class sys_db_DatabaseDebugListener implements sys_db_Listener {
 		$query ['time'] = microtime (true) - $query ['startTime'];
 		$debug = new sys_db_DatabaseDebug ($query ['query'], $event ['success'], $event ['rows'], $query ['limit'], $query ['offset'], $event ['errorCode'], $event ['errorMessage'], $event ['cache'], $event ['cacheHit'], $query ['time']);
 		$this->debugger->addQuery ($debug);
+        if (!$event['success']) {
+            $data = array(
+                'POST'      => $_POST,
+                'GET'       => $_GET,
+                'trace'     => debug_backtrace(false),
+                'query'     => $event['query'],
+                'error'     => $event ['errorMessage'],
+            );
+            sys_Log::log(sys_Log::LEVEL_ERROR, 'Database', 'QueryError', 'Query: "'.$event['query'].'" Error: "'.$event ['errorMessage'].'"', $data);
+        }
 	}
 
 	/**

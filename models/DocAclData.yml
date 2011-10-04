@@ -1,0 +1,31 @@
+DocAclData:
+    columns:
+        id:
+            type: integer(20)
+            primary: true
+            autoincrement: true
+        doc_id:
+            type: integer(20)
+            primary: true
+        admin_object_id:
+            type: integer(20)
+            primary: true
+        can_read:
+            type: boolean
+            notnull: true
+        can_write:
+            type: boolean
+            notnull: true
+    relations:
+        DocData:
+            class: DocData
+            local: doc_id
+            foreign: id
+            type: one
+            onDelete: CASCADE
+        AdminObject:
+            class: ObjectData
+            local: admin_object_id
+            foreign: id
+            type: one
+            onDelete: CASCADE

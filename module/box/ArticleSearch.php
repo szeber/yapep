@@ -1,31 +1,20 @@
 <?php
 /**
- * This file is part of YAPEP.
  *
- * @package	YAPEP
- * @subpackage	BoxModule
- * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>
- * @copyright	2008 The YAPEP Project All rights reserved.
- * @license http://www.opensource.org/licenses/bsd-license.php BSD License
- * @version	$Rev$
+ *
+ * @version	$Rev: 10719 $
  */
 
 /**
- * Article search box module
  *
- * @arg			folder "root_folder" "Root folder" 0 "" 0
- * @arg			folderlist "include_folders" "Extra folders included in search" 0 "" 0
- * @arg			folderlist "exclude_folders" "Folders excluded from search" 0 "" 0
- * @arg			text "doc_count" "Document count per page" 0 "6" 0
- * @package	YAPEP
- * @subpackage	BoxModule
- * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>
- * @copyright	2008 The YAPEP Project All rights reserved.
- * @license http://www.opensource.org/licenses/bsd-license.php BSD License
- * @version	$Rev$
+ *
+ * @arg			folder "root_folder" "Gyoker konyvtar" 0 "" 0
+ * @arg			folderlist "include_folders" "Keresesben befoglalt mappak" 0 "" 0
+ * @arg			folderlist "exclude_folders" "Keresesbol kihagyott mappak" 0 "" 0
+ * @arg			text "doc_count" "Oldalankenti dokumentumok szama" 0 "6" 0
+ * @version	$Rev: 10719 $
  */
 class module_box_ArticleSearch extends sys_BoxModule {
-    
 	protected function main() {
 		if (!$_GET['search']) {
 			return $this->smartyFetch();

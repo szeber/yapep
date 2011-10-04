@@ -168,7 +168,11 @@ class module_admin_asset_Editor extends sys_admin_AdminModule
                     $this->getControl('imageData')->setValue('', true);
                 }
                 if ($this->data['resizeImage']) {
+                    $dbHandler = getPersistClass('Asset');
+                    $resizeInfo = $dbHandler->loadResizeItem($this->data['resizeImage']);
                     $newName = $this->resizeImage($tmpFile, $newName);
+                } else {
+                    $resizeInfo = array('thumb_width'=>0, 'thumb_height'=>0, 'thumb_crop'=>false);
                 }
                 $imageData = getimagesize($tmpFile);
                 $this->data['info'] = $imageData[0] . ' x ' . $imageData[1] . ' - ' . round(
@@ -176,8 +180,8 @@ class module_admin_asset_Editor extends sys_admin_AdminModule
                 preg_match('/^(.+)\.([^.]+)$/', $newName, $fileNameParts);
                 $fileName = $fileNameParts[1];
                 $ext = $fileNameParts[2];
-                if ($this->config->getOption('makeAssetThumbnails')) {
-                    $this->makeThumbnail($tmpFile, $fileName, $urlDir);
+                if ($this->config->getOption('makeAssetThumbnails') || ($resizeInfo['thumb_width'] && $resizeInfo['thumb_height']) || $resizeInfo['crop_thumb']) {
+                    $this->makeThumbnail($tmpFile, $fileName, $urlDir, $resizeInfo['thumb_width'], $resizeInfo['thumb_height'], $resizeInfo['crop_thumb']);
                 }
                 $this->data['path1'] = $urlDir . $this->saveAssetFile($tmpFile,
                     $fileName, $ext, $urlDir);
@@ -250,10 +254,8 @@ class module_admin_asset_Editor extends sys_admin_AdminModule
      *
      * @param string $file
      */
-    protected function resizeImage ($file, $fileName)
+    protected function resizeImage ($file, $fileName, $resizeInfo)
     {
-        $dbHandler = getPersistClass('Asset');
-        $resizeInfo = $dbHandler->loadResizeItem($this->data['resizeImage']);
         if (! $resizeInfo || ! count($resizeInfo)) {
             return $fileName;
         }
@@ -319,10 +321,18 @@ class module_admin_asset_Editor extends sys_admin_AdminModule
         return $fileName . '.' . $fileExt;
     }
 
-    protected function makeThumbnail ($currFile, $origName, $urlDir)
+    protected function makeThumbnail ($currFile, $origName, $urlDir, $width=0, $height=0, $crop=false)
     {
         $thumbWidth = (int)$this->config->getOption('assetThumbnailWidth');
         $thumbHeight = (int)$this->config->getOption('assetThumbnailHeight');
+        $thumbCrop = (bool)$this->config->getOption('assetThumbnailCrop');
+        if ($width >= 1 && $height >= 1) {
+            $thumbWidth = $width;
+            $thumbHeight = $height;
+            $thumbCrop = $crop;
+        } else if ($crop) {
+            $thumbCrop = true;
+        }
         if ($thumbHeight < 1 || $thumbWidth < 1) {
             return;
         }
@@ -331,7 +341,7 @@ class module_admin_asset_Editor extends sys_admin_AdminModule
         $pic = sys_LibFactory::getImage();
         $pic->readImage($currFile);
         $pic->setImageFormat('jpg');
-        if ($this->config->getOption('assetThumbnailCrop')) {
+        if ($thumbCrop) {
             $pic->cropThumbnailImage($thumbWidth, $thumbHeight);
         } else {
             if ($pic->getImageWidth() > $thumbWidth) {

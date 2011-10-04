@@ -35,8 +35,7 @@ class module_doc_Article extends sys_DocModule
     {
         $data = $this->objectDb->getRelList($this->docData['FullObject']['id'],
             module_db_interface_Article::REL_FILE);
-        $assetDb = getPersistClass('Asset');
-        return $assetDb->addAssetTypeData($data);
+        return $data;
     }
 
     public function getRelatedPictures ()

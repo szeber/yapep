@@ -4,9 +4,6 @@ AdminFuncData:
         type: concrete
     tableName: admin_func_data
     columns:
-        id:
-            type: integer(20)
-            primary: true
         class:
             notnull: true
             type: string(100)

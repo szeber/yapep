@@ -76,5 +76,12 @@ interface sys_IApplicationConfiguration extends sys_cache_CacheManager {
 	 * @return string The path or NULL if not found
 	 */
 	public function getPath($name);
+
+    /**
+     * Returns the names of all available database connections
+     *
+     * @return array
+     */
+    public function getDatabaseNames();
 }
 ?>

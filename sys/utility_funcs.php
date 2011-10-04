@@ -104,11 +104,7 @@ function makeValidDocnameFromString($localeId, $string, $folderId, $excludeId = 
  */
 function getPersistClass($name, $connectionName = 'site') {
 	$conn = sys_LibFactory::getDbConnection ($connectionName);
-	if (method_exists ($conn, 'getType')) {
-		$type = $conn->getType ();
-	} else {
-		$type = 'Doctrine';
-	}
+    $type = $conn->getType ();
 	if (strstr ($type . '_' . $name, '.') || strstr ($type . '_' . $name, '/')) {
 		throw new sys_exception_SiteException ('Bad database type or persistance class name!', 901);
 	}

@@ -136,11 +136,16 @@ class sys_ApplicationConfiguration implements sys_IApplicationConfiguration {
 	 */
 	private function processXML() {
 		$xml = simplexml_load_file(PROJECT_PATH . 'system/settings.xml');
-		foreach($xml->Setup as $setup) {
-			if($setup['site'] == SITE || $setup['site'] == 'general') {
-				$this->loadElementsFromXML($setup);
-			}
-		}
+		$result = $xml->xpath("//Setup[@site='general']");
+        $node = reset($result);
+        if ($node instanceof SimpleXMLElement) {
+            $this->loadElementsFromXML($node);
+        }
+        $result = $xml->xpath("//Setup[@site='".SITE."']");
+        $node = reset($result);
+        if ($node instanceof SimpleXMLElement) {
+            $this->loadElementsFromXML($node);
+        }
 		if (!self::$disableCache) {
 			$this->saveCache();
 		}
@@ -343,5 +348,14 @@ class sys_ApplicationConfiguration implements sys_IApplicationConfiguration {
 		}
 		return null;
 	}
+
+    /**
+     * Returns the names of all available database connections
+     *
+     * @return array
+     */
+    public function getDatabaseNames() {
+        return array_keys($this->globalProperties['Databases']);
+    }
 }
 ?>

@@ -8,7 +8,7 @@
  * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>
  * @copyright	2008 The YAPEP Project All rights reserved.
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
- * @version	$Rev$
+ * @version	$Rev: 12611 $
  */
 
 /**
@@ -19,7 +19,7 @@
  * @author		Zsolt Szeberenyi <szeber@svinformatika.hu>
  * @copyright	2008 The YAPEP Project All rights reserved.
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
- * @version	$Rev$
+ * @version	$Rev: 12611 $
  */
 class module_db_generic_Object extends module_db_DbModule implements module_db_interface_Object
 {
@@ -142,14 +142,14 @@ class module_db_generic_Object extends module_db_DbModule implements module_db_i
             'table' => 'object_object_rel r JOIN object_data o ON o.id=r.parent_id JOIN object_type_data ot ON ot.id=o.object_type_id' ,
             'fields' => 'ot.short_name, ot.persist_class, o.id' ,
             'where' => 'r.child_id=' . (int) $objectId . $extra,
-            'orderBy'=>'r.id ASC',
+            'orderBy' => 'r.id ASC',
         ));
         $children = $this->conn->select(
             array(
             'table' => 'object_object_rel r JOIN object_data o ON o.id=r.child_id JOIN object_type_data ot ON ot.id=o.object_type_id' ,
             'fields' => 'ot.short_name AS ot__short_name, ot.persist_class AS ot__persist_class, o.id AS o__id' ,
             'where' => 'r.parent_id=' . (int) $objectId . $extra,
-            'orderBy'=>'r.id ASC',
+            'orderBy' => 'r.id ASC',
         ));
         $parents = array_merge($parents, $children);
         $docFieldMap = $this->getMappableFields(

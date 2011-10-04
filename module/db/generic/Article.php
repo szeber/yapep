@@ -101,9 +101,6 @@ class module_db_generic_Article extends module_db_DbModule implements module_db_
             $docData[$key]['d']['Folder'] = $doc['f'];
         }
         $objIds = array_unique($objIds);
-        if (!count($objIds)) {
-            return array();
-        }
         $query = array(
         'table' => 'article_data a INNER JOIN doc_data d ON d.object_id=a.id' ,
         'fields' => 'a.*' , 'orderBy' => 'name ASC');
@@ -156,9 +153,6 @@ class module_db_generic_Article extends module_db_DbModule implements module_db_
         $objIds = array();
         foreach ($docData as $doc) {
             $objIds[] = $doc['object_id'];
-        }
-        if (!count($objIds)) {
-            return 0;
         }
         $objIds = array_unique($objIds);
         $query = array(

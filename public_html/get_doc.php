@@ -25,7 +25,6 @@ try {
 } catch ( Exception $e ) {
 	if (DEBUGGING) {
 		echo 'ERROR: ' . $e->getMessage ();
-        echo $e->getTraceAsString();
 	} else {
 		$handler = new sys_ErrorHandler ();
 		$handler->handleError (500);

@@ -1,0 +1,24 @@
+CmsLogData:
+    tableName: cms_log_data
+    columns:
+        id:
+            type: integer(20)
+            autoincrement: true
+            primary: true
+        event_date:
+            type: timestamp
+            notnull: true
+        event_level:
+            type: integer(1)
+            notnull: true
+        event_source:
+            type: string(255)
+            notnull: true
+        event_type:
+            type: string(255)
+        event_description:
+            type: string
+        event_data:
+            type: blob
+        user_id:
+            type: integer(20)

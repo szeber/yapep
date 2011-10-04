@@ -137,7 +137,7 @@ class sys_PageManager
 
     /**
      * Returns the requested URL
-     * 
+     *
      * @return string
      */
     static public function getUrl() {
@@ -237,17 +237,25 @@ class sys_PageManager
 
     private function processSiteException(sys_exception_SiteException $e)
     {
+        if (sys_exception_SiteException::ERR_HANDLED == $e->getCode()) {
+            throw $e;
+        }
+        // don't log all 404 errors
+        if (404 != $e->getCode()) {
+            // DEBUG level, because modules can change the page generation flow with exceptions
+            sys_Log::log(sys_Log::LEVEL_DEBUG, 'Page', __METHOD__, 'site exception caught. URL' . $this->url, $e);
+        }
         $this->debugger->setError(
             'Error occured during page preparation. Error code: ' .
                  $e->getCode());
+        $this->debugger->getDebugInfo();
         if ($this->pageMode == self::ERROR) {
             $this->emergencyMode();
-            exit();
+            return;
         }
         switch ($e->getCode()) {
             case 500:
                 $this->emergencyMode();
-                exit();
                 break;
             case 403:
                 $this->handleForbidden();
@@ -474,7 +482,7 @@ class sys_PageManager
         $smarty->assign('pageMetas', $this->pageMetas);
         $smarty->assign('pageTags', $this->pageHeadTags);
         $smarty->assign('boxplaces', $boxplaces);
-        $smarty->assign('debugInfo', $this->debugger->getDebugInfo());
+        $this->debugger->getDebugInfo();
         return $smarty->fetch('page/' . $this->pageData['template_file'],
             $this->makeCacheId(), null, $display);
     }
@@ -566,8 +574,13 @@ class sys_PageManager
     private function emergencyMode ()
     {
         header('HTTP/1.1 500 Internal server error');
+        $data = array(
+            'trace' => debug_backtrace(false),
+        );
+        sys_Log::log(sys_Log::LEVEL_ERROR, 'Page', __METHOD__, 'Entered emergency mode during page generation', $data);
+        $this->debugger->getDebugInfo();
         echo '<h1>500 Internal server error</h1>';
-        exit();
+        throw new sys_exception_SiteException('Emergency mode entered', sys_exception_SiteException::ERR_HANDLED);
     }
 
     /**

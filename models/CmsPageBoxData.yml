@@ -46,6 +46,7 @@ CmsPageBoxData:
             local: boxplace_id
             foreign: id
             type: one
+            onDelete: CASCADE
         Module:
             class: CmsModuleData
             local: module_id
