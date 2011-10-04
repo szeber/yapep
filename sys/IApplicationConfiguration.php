@@ -70,6 +70,14 @@ interface sys_IApplicationConfiguration extends sys_cache_CacheManager {
 	public function getDatabase($name);
 
 	/**
+	 * Returns a cache's configuration information
+	 *
+	 * @param string $name The name of the cache
+	 * @return array The cache's configuration information
+	 */
+	public function getCache($name);
+
+	/**
 	 * Returns a path
 	 *
 	 * @param string $name The name of the path
