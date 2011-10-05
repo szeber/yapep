@@ -266,7 +266,9 @@ class sys_ApplicationConfiguration implements sys_IApplicationConfiguration {
 	 * @param mixed $value
 	 */
 	private function defineConstant($name, $value) {
-		define($name, $value);
+	    if (!defined($name)) {
+		    define($name, $value);
+	    }
 		$this->constants[$name] = $value;
 
 	}

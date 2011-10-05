@@ -329,7 +329,7 @@ class module_db_generic_Page extends module_db_DbModule implements module_db_int
      */
     public function getDefaultDocPageIdsForLocale ($localeId)
     {
-        if (! self::$defaultDocIds[$localeId]) {
+        if (empty( self::$defaultDocIds[$localeId])) {
             self::$defaultDocIds[$localeId] = $this->conn->select(
                 array(
                 'table' => 'cms_page_object_rel r JOIN cms_page_data p ON .p.id=r.page_id' ,

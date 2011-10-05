@@ -47,7 +47,7 @@ class sys_cache_SysConfigCacheManager extends sys_cache_BaseCacheManager {
 		$configData=array();
 		$defines='';
 		foreach($variables as $val) {
-			if (is_object($va)) {
+			if (is_object($val)) {
 				$val=$val->toArray();
 			}
 			$defines .= "define(".var_export($val['name'],true).", ".var_export($val['value'],true).");\n";

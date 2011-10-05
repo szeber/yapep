@@ -41,6 +41,7 @@ AssetData:
             foreign: object_id
             type: many
         ObjectAssetRel:
+            class: ObjectAssetRel
             local: id
             foreign: object_id
             type: many

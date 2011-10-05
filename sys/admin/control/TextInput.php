@@ -282,10 +282,10 @@ class sys_admin_control_TextInput extends sys_admin_Control implements sys_admin
 			$this->value = $value;
 			return true;
 		}
-		if ($this->options ['readOnly']) {
+		if (isset($this->options ['readOnly']) && $this->options['readOnly']) {
 			return true;
 		}
-		if ($this->options ['trim']) {
+		if (isset($this->options ['trim']) && $this->options ['trim']) {
 			$value = trim ($value);
 		}
 		if ($this->validateValue ($value)) {

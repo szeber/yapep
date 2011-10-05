@@ -142,9 +142,9 @@ class sys_PageManager
      */
     static public function getUrl() {
         $result = '';
-        if ($_SERVER['SCRIPT_URL'] && $_SERVER['REDIRECT_URL']) {
+        if (!empty($_SERVER['SCRIPT_URL']) && !empty($_SERVER['REDIRECT_URL'])) {
             $result = $_SERVER['SCRIPT_URL'];
-        } elseif ($_SERVER['REDIRECT_URL']) {
+        } elseif (!empty($_SERVER['REDIRECT_URL'])) {
             $result = $_SERVER['REDIRECT_URL'];
         } else {
             $url = array();

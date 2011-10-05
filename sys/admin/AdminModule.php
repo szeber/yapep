@@ -175,7 +175,7 @@ abstract class sys_admin_AdminModule {
 		$this->manager = $manager;
 		$this->panel = new sys_admin_control_Panel ();
 		$this->panel->setAddForm (true);
-		$this->userId = $_SESSION ['LoggedInAdminData'] ['UserId'];
+		$this->userId = (isset($_SESSION ['LoggedInAdminData'] ['UserId']) ? $_SESSION ['LoggedInAdminData'] ['UserId'] : null);
 		preg_match ('/^module_admin_(.*)$/', get_class ($this), $name);
 		$this->setName ($name [1]);
 		$this->smarty = sys_LibFactory::getSmarty ();
@@ -295,7 +295,7 @@ abstract class sys_admin_AdminModule {
 	public function parseXml(SimpleXMLElement $xml) {
 		$this->manager->runEvent ('preParse');
 		preg_match ('@^([-_a-zA-Z0-9]+)(/(.*))?$@', urldecode ((string) $xml->adminData->name), $name);
-		if ($name [3]) {
+		if (!empty($name[3])) {
 			$this->subModule = explode('/',$name [3]);
 		}
 		if (!isset ($xml->adminData->id) || !(string)$xml->adminData->id) {

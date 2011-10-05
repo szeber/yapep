@@ -385,7 +385,7 @@ abstract class module_db_DbModule
     private function doGetRowFromMappedFields(array $fieldMap, array $row) {
         $converted = array();
         foreach($fieldMap as $alias=>$map) {
-            if (!is_array($converted[$map['table']])) {
+            if (!isset($converted[$map['table']]) || !is_array($converted[$map['table']])) {
                 $converted[$map['table']] = array();
             }
             if (isset($row[$alias])) {

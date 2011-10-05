@@ -12,7 +12,7 @@
 /**
  * Include PasswordHash library
  */
-if (defined(PHPPASS_PATH)) {
+if (defined('PHPPASS_PATH')) {
 	require_once (PHPPASS_PATH.'PasswordHash.php');
 } else {
 	require_once (LIB_DIR . 'PHPPass/PasswordHash.php');
