@@ -163,15 +163,19 @@ class sys_PageManager
      */
     public function __construct ($url = false, $config = null)
     {
-        if ($url) {
-            $this->url = $url;
-        } else {
-            $this->url = self::getUrl();
-        }
         if (is_null($config)) {
             $this->config = sys_ApplicationConfiguration::getInstance();
         } else {
             $this->config = $config;
+        }
+
+        // load system configuration constants
+        new sys_cache_SysConfigCacheManager();
+
+        if ($url) {
+            $this->url = $url;
+        } else {
+            $this->url = self::getUrl();
         }
         $this->db = sys_LibFactory::getDbConnection('site');
         $this->themeId = sys_ThemeManager::getTheme();
@@ -182,7 +186,6 @@ class sys_PageManager
              0) {
                 define('ADMIN_PREVIEW', true);
         }
-        new sys_cache_SysConfigCacheManager();
         $this->debugger = sys_Debugger::getInstance();
     }
 
