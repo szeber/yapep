@@ -182,8 +182,11 @@ class sys_PageManager
         if ($this->config->getOption('pageCache') && CACHING) {
             $this->caching = true;
         }
-        if (isset($_SESSION['LoggedInAdminData']) && $_SESSION['LoggedInAdminData']['UserId'] >
-             0) {
+        if (
+            !defined('ADMIN_PREVIEW')
+            && isset($_SESSION['LoggedInAdminData'])
+            && $_SESSION['LoggedInAdminData']['UserId'] > 0
+        ) {
                 define('ADMIN_PREVIEW', true);
         }
         $this->debugger = sys_Debugger::getInstance();
@@ -394,7 +397,7 @@ class sys_PageManager
         'locale' => $this->urlHandler->locale ,
         'locale_id' => $this->urlHandler->locale_id ,
         'request_path' => $this->urlHandler->docPath ,
-        'doc_id' => $this->folderInfo['doc_id'] ,
+        'doc_id' => (isset($this->folderInfo['doc_id']) ? $this->folderInfo['doc_id'] : null) ,
         'real_request_path' => $this->folderInfo['requestPath']);
         if (isset($this->folderInfo['virtual_path'])) {
             $argArr['virtual_path'] = $this->folderInfo['virtual_path'];

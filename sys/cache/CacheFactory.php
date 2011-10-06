@@ -64,7 +64,7 @@ class sys_cache_CacheFactory {
         }
         $cacheConfig = self::$config->getCache($cacheId);
         if ($cacheConfig) {
-            // kivalasztott cache kezelo
+            // selected cache backend
             switch($cacheConfig['type']) {
                 case 'memcache':
                     $cacheOptions = array('memcacheProjectPrefix' => self::$config->getOption('memcacheProjectPrefix'));

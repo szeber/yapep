@@ -202,7 +202,7 @@ class sys_UrlHandler {
 		$this->docPath = $this->folderInfo ['docpath'];
 		if ($this->folderInfo ['virtual_subfolders']) {
 			$this->isVirtual = true;
-		} elseif (!$this->folderInfo ['doc_id']) {
+		} elseif (empty($this->folderInfo ['doc_id'])) {
 			$this->isDir = true;
 		} else {
 			$this->docName = array_pop ($pathParts);

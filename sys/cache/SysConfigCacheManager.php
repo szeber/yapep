@@ -72,7 +72,10 @@ class sys_cache_SysConfigCacheManager extends sys_cache_BaseCacheManager {
 	 */
 	protected function loadCacheData() {
 		if (is_null(self::$cacheData) && $this->cacheEnabled()) {
-			self::$cacheData=$this->backend->get($this->cacheKey);
+			self::$cacheData=(array)$this->backend->get($this->cacheKey);
+			foreach(self::$cacheData as $key => $value) {
+			    define($key, $value);
+			}
 		}
 	}
 
