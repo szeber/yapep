@@ -128,7 +128,7 @@ class sys_LibFactory {
 		if (is_null (self::$CONFIG)) {
 			self::loadConfig ();
 		}
-		if (defined (PHPMAILER_PATH)) {
+		if (defined ('PHPMAILER_PATH')) {
 			require_once (PHPMAILER_PATH . 'class.phpmailer.php');
 			$phpmailerPath = PHPMAILER_PATH;
 		} else {
@@ -181,7 +181,7 @@ class sys_LibFactory {
 		if (is_null (self::$CONFIG)) {
 			self::loadConfig ();
 		}
-		if (defined (SMARTY_PATH)) {
+		if (defined ('SMARTY_PATH')) {
 			require_once (SMARTY_PATH . 'Smarty.class.php');
 		} else {
 			require_once (LIB_DIR . 'Smarty/Smarty.class.php');

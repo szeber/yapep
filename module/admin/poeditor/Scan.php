@@ -116,6 +116,9 @@ class module_admin_poeditor_Scan extends sys_admin_AdminModule {
 	}
 
 	protected function processDir($dirName, $target) {
+	    if (!is_dir($dirName)) {
+	        return;
+	    }
 		$dir = opendir($dirName);
 		$file = true;
 		while(false !== $file) {

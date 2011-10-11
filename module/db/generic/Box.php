@@ -92,7 +92,7 @@ class module_db_generic_Box extends module_db_DbModule implements module_db_inte
         }
         $values = array();
         foreach($tmp as $row) {
-            if (!is_array($values[$row['module_param_id']])) {
+            if (!isset($values[$row['module_param_id']]) || !is_array($values[$row['module_param_id']])) {
                 $values[$row['module_param_id']] = array($row);
             } else {
                 $values[$row['module_param_id']][] = $row;

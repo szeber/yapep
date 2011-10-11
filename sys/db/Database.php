@@ -358,33 +358,32 @@ abstract class sys_db_Database
             if (isset($query['what'])) {
                 $query['fields'] = $query['what'];
             }
-        if (is_array($query['fields'])) {
+        if (isset($query['fields']) && is_array($query['fields'])) {
             $query['fields'] = implode(',', $query['fields']);
         }
-        if (! $query['fields']) {
+        if (empty($query['fields'])) {
             $query['fields'] = '*';
         }
-        if (! $query['where']) {
+        if (empty($query['where'])) {
             $query['where'] = null;
         }
-        if (! $query['more']) {
+        if (empty($query['more'])) {
             $query['more'] = null;
         }
-        if ($query['order']) {
+        if (!empty($query['order'])) {
             $query['orderBy'] = $query['order'];
-        } else
-            if ($query['orderby']) {
-                $query['orderBy'] = $query['orderby'];
-            }
-        if (! $query['orderBy']) {
+        } elseif (!empty($query['orderby'])) {
+            $query['orderBy'] = $query['orderby'];
+        }
+        if (!empty($query['orderBy'])) {
             $query['orderBy'] = null;
         }
-        if (! $query['limit']) {
+        if (empty($query['limit'])) {
             $query['limit'] = - 1;
         } else {
             $query['limit'] = (int) $query['limit'];
         }
-        if (! $query['offset']) {
+        if (empty($query['offset'])) {
             $query['offset'] = - 1;
         } else {
             $query['offset'] = (int) $query['offset'];

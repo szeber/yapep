@@ -82,13 +82,13 @@ class sys_cache_DbSchema extends sys_cache_DummyCacheManager
     protected function processTable($tableName) {
         $typeParts = array();
         $table = $this->_yamlData[$tableName];
-        if (!$table['tableName']) {
+        if (empty($table['tableName'])) {
             $table['tableName'] = $this->makeTableName($tableName);
         }
-        if (!is_array($table['columns'])) {
+        if (!isset($table['columns']) || !is_array($table['columns'])) {
             $table['columns'] = array();
         }
-        if (is_array($table['actAs'])) {
+        if (isset($table['actAs']) && is_array($table['actAs'])) {
             if (isset($table['actAs']['Timestampable'])) {
                 $table['columns']['created_at'] = array('type'=>'timestamp');
                 $table['columns']['updated_at'] = array('type'=>'timestamp');
@@ -112,10 +112,10 @@ class sys_cache_DbSchema extends sys_cache_DummyCacheManager
                 $table['columns'][$columnName]['length'] = null;
             }
         }
-        if (!is_array($table['listeners'])) {
+        if (!isset($table['listeners']) || !is_array($table['listeners'])) {
             $table['listeners'] = array();
         }
-        if (is_array($table['inheritance'])) {
+        if (isset($table['inheritance']) && is_array($table['inheritance'])) {
             $parentTable = $this->processTable($table['inheritance']['extends']);
             $table['inheritance']['extendsTable'] = $this->makeTableName($table['inheritance']['extends']);
             $parentColumns = $parentTable['columns'];
@@ -127,7 +127,7 @@ class sys_cache_DbSchema extends sys_cache_DummyCacheManager
             $table['columns'] = array_merge($table['columns'], $parentColumns);
             $table['listeners'] = array_merge($table['listeners'], $parentTable['listeners']);
         }
-        if (is_array($table['relations'])) {
+        if (isset($table['relations']) && is_array($table['relations'])) {
             foreach($table['relations'] as $relationName=>$relation) {
                 $table['relations'][$relationName]['table'] = $this->makeTableName($relation['class']);
             }
@@ -137,14 +137,14 @@ class sys_cache_DbSchema extends sys_cache_DummyCacheManager
                 $primaryKeys[] = $columnName;
             }
         }
-        if (!count($primaryKeys)) {
+        if (empty($primaryKeys)) {
             $primaryKeys[] = 'id';
             if (!$table['columns']['id']) {
                 $table['columns']['id'] = array('type'=>'integer', 'length'=>null, 'autoincrement'=>true);
             }
             $table['colunms']['id']['primary'] = true;
         }
-        if (count($table['listeners'])) {
+        if (!empty($table['listeners'])) {
             foreach($table['listeners'] as $key=>$listener) {
                 $table['listeners'][$key] = trim($listener);
             }

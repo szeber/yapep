@@ -162,7 +162,7 @@ class sys_UrlHandler {
 			$this->language = $lang ['language_code'];
 			$this->locale = $lang ['Locale'] ['locale_code'];
 			$this->locale_id = $lang ['Locale'] ['id'];
-			$path = $parts [2];
+			$path = (isset($parts[2]) ? $parts[2] : null);
 		} elseif (preg_match ('@^' . $this->rootUrl . '/?([a-zA-Z0-9]{2,3})([-_][-_a-zA-Z0-9]+)(/.*)?$@', $url, $parts)) {
 			$localeid = $parts [1] . str_replace ('-', '_', strtoupper ($parts [2]));
 			$locale = $this->db->getLocaleByCode ($localeid);

@@ -165,11 +165,11 @@ class module_db_generic_Asset extends module_db_DbModule implements module_db_in
             switch (strtolower($orderDir)) {
                 case 'desc':
                 case '-':
-                    $query['orderBy'] .= $orderBy .
+                    $query['orderBy'] = $orderBy .
                          ' DESC';
                     break;
                 default:
-                    $query['orderBy'] .= $orderBy .
+                    $query['orderBy'] = $orderBy .
                          ' ASC';
                     break;
             }

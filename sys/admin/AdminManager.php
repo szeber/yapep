@@ -103,8 +103,8 @@ class sys_admin_AdminManager {
 	 *
 	 */
 	public function getAdmin() {
-		$this->runEvent ('preProcess', array ('xml' => $_POST ['admin_xml']));
-		if (!$_POST ['admin_xml']) {
+		$this->runEvent ('preProcess', array ('xml' => (!empty($_POST ['admin_xml']) ? $_POST ['admin_xml'] : null)));
+		if (empty($_POST ['admin_xml'])) {
 			$this->getInterface ();
 			return;
 		}

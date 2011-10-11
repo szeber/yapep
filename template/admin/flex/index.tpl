@@ -14,8 +14,8 @@
 {/literal}
 </head>
 <body>
-<iframe id="hiframe" name="hiframe" style="visibility:hidden;display:none"></iframe> 
-<form method="post" action="" target="hiframe" id="export_form" style="visibility:hidden;display:none"> 
+<iframe id="hiframe" name="hiframe" style="visibility:hidden;display:none"></iframe>
+<form method="post" action="" target="hiframe" id="export_form" style="visibility:hidden;display:none">
 	<input type="hidden" name="admin_xml" id="export_admin_xml">
 </form>
 <div id="FlexDiv" style="width:100%; height:100%; clear:none; float:left">Az oldal megtekintéséhez 9.0.28-as Flash Player szükséges</div>
@@ -33,7 +33,7 @@
 {literal}
 	function exportList(xml,postUrl){
 		document.getElementById('export_admin_xml').value=xml;
-		document.getElementById('export_form').action=postUrl;	
+		document.getElementById('export_form').action=postUrl;
 		document.getElementById('export_form').submit();
 	}
 	function ShowEditor(richstr, name)
@@ -42,15 +42,15 @@
 		RichTextName = name;
 		window.open("/js/WYSIWYG.html", "WYSIWYGEditor_"+name, "width=960,height=704,toolbars=yes,resizeable=yes,resize=yes")
 	}
-	
-	function SaveWYSIWYG(richstr, name) 
+
+	function SaveWYSIWYG(richstr, name)
 	{
 		RichTextString = richstr;
 		PlainTextString = richstr.replace(/\n/g, "").replace(/<br[^>]*>/g, "\n").replace(/<[^>]*>/g, "");
         var x = adminswf.saveWYSIWYG(RichTextString, PlainTextString, name);
     }
 {/literal}
-	
-</script>	
+
+</script>
 </body>
 </html>

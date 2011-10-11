@@ -44,7 +44,7 @@ class module_admin_folder_Prop extends sys_admin_AdminModule {
 
 		$this->panel->refreshForm ('folder_Tree');
 
-		if (!$this->subModule [0]) {
+		if (empty($this->subModule [0])) {
 			$control = new sys_admin_control_PopupFormButton ();
 			$control->setLabel (_ ('New subfolder'));
 			$control->setTargetForm ('folder_Prop');
@@ -63,7 +63,7 @@ class module_admin_folder_Prop extends sys_admin_AdminModule {
 		}
 
 		$control = new sys_admin_control_HiddenInput ();
-		if ($this->subModule [0]) {
+		if (!empty($this->subModule [0])) {
 			$control->setDefaultValue ($this->subModule [0]);
 			$control->setValue ($this->subModule [0], true);
 			$control->setReadOnly ();

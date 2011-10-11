@@ -174,7 +174,7 @@ class module_admin_List extends sys_admin_AdminModule {
 			} else {
 				$prefix = 'Doc/';
 			}
-			$postfix.='/'.$this->folder['id'];
+			$postfix ='/'.$this->folder['id'];
 			$types = array();
 			if ($this->folder['FolderType']['ObjectTypes']) {
 				foreach($this->folder['FolderType']['ObjectTypes'] as $type) {
@@ -323,7 +323,7 @@ class module_admin_List extends sys_admin_AdminModule {
 		if (count($listData) > 4) {
 			$this->virtualId = $listData[4];
 		}
-		if ($listData[4]) {
+		if (!empty($listData[4])) {
 			$this->listSuffix = $listData[4];
 		}
 		if (isset($xml->options)) {

@@ -142,9 +142,9 @@ class sys_PageManager
      */
     static public function getUrl() {
         $result = '';
-        if ($_SERVER['SCRIPT_URL'] && $_SERVER['REDIRECT_URL']) {
+        if (!empty($_SERVER['SCRIPT_URL']) && !empty($_SERVER['REDIRECT_URL'])) {
             $result = $_SERVER['SCRIPT_URL'];
-        } elseif ($_SERVER['REDIRECT_URL']) {
+        } elseif (!empty($_SERVER['REDIRECT_URL'])) {
             $result = $_SERVER['REDIRECT_URL'];
         } else {
             $url = array();
@@ -178,8 +178,10 @@ class sys_PageManager
         if ($this->config->getOption('pageCache') && CACHING) {
             $this->caching = true;
         }
-        if (isset($_SESSION['LoggedInAdminData']) && $_SESSION['LoggedInAdminData']['UserId'] >
-             0) {
+        if (
+            isset($_SESSION['LoggedInAdminData']) && $_SESSION['LoggedInAdminData']['UserId'] > 0
+            && !defined('ADMIN_PREVIEW')
+         ) {
                 define('ADMIN_PREVIEW', true);
         }
         new sys_cache_SysConfigCacheManager();

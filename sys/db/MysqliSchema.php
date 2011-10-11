@@ -278,8 +278,14 @@ class sys_db_MysqliSchema extends sys_db_DatabaseSchema
     protected function processFieldRow(&$table, $matches) {
         $name = $matches[1];
         $typeStr = $matches[2];
-        $opts = preg_replace('/\s*,$/', '', trim($matches[3]));
+        $opts = (!empty($matches[3]) ? preg_replace('/\s*,$/', '', trim($matches[3])) : '');
         preg_match('/^([a-zA-Z0-9]+)(?:\((\d+)\))?$/', $typeStr, $typeMatches);
+        if (!isset($typeMatches[1])) {
+            $typeMatches[1] = null;
+        }
+        if (!isset($typeMatches[2])) {
+            $typeMatches[2] = null;
+        }
         $column = $this->getGenericType($typeMatches[1], $typeMatches[2]);
         if (strstr(strtolower($opts), 'auto_increment')) {
             $column['autoincrement'] = 1;
@@ -330,10 +336,10 @@ class sys_db_MysqliSchema extends sys_db_DatabaseSchema
             'type' => 'one',
             'keyName' => $matches[1],
         );
-        if ($matches[5]) {
+        if (!empty($matches[5])) {
             $table['relations'][$relName]['onDelete'] = $matches[5];
         }
-        if ($matches[6]) {
+        if (!empty($matches[6])) {
             $table['relations'][$relName]['onUpdate'] = $matches[6];
         }
     }
@@ -428,7 +434,7 @@ class sys_db_MysqliSchema extends sys_db_DatabaseSchema
     }
 
     protected function _getSimpleGenericType(array $type) {
-        if ($type['primary'] && isset($type['notnull'])) {
+        if (isset($type['primary']) && $type['primary'] && isset($type['notnull'])) {
             unset($type['notnull']);
         }
         switch($type['type']) {
@@ -498,15 +504,15 @@ class sys_db_MysqliSchema extends sys_db_DatabaseSchema
                 .$this->_db->quoteField($fieldName).' '
                 .$this->_db->quoteField($fieldName).' '
                 .$this->getNativeType($model);
-        if ($model['notnull'] || $model['primary']) {
+        if (!empty($model['notnull']) || !empty($model['primary'])) {
             $sql .= ' NOT NULL';
         } else {
             $sql .= ' NULL';
         }
-        if ($model['primary'] && $model['autoincrement']) {
+        if (!empty($model['primary']) && !empty($model['autoincrement'])) {
             $sql .= ' auto_increment';
         }
-        if (isset($model['default']) && !is_null($model['default'])) {
+        if (isset($model['default'])) {
             $sql .= ' DEFAULT '.$this->_db->getQuotedVal($model['default'], $model['type']);
         }
       return $sql.';';
@@ -564,7 +570,7 @@ class sys_db_MysqliSchema extends sys_db_DatabaseSchema
         }
         $sql .= ' ('.implode(', ', $fields).')';
         return $sql.';';
-        
+
     }
 
     protected function _getDropPrimaryKeySql($tableName) {

@@ -119,11 +119,11 @@ class module_db_generic_Doc extends module_db_DbModule implements module_db_inte
             switch (strtolower($orderDir)) {
                 case 'desc':
                 case '-':
-                    $query['orderBy'] .= 'd.'.$orderBy .
+                    $query['orderBy'] = 'd.'.$orderBy .
                          ' DESC';
                     break;
                 default:
-                    $query['orderBy'] .= 'd.'.$orderBy .
+                    $query['orderBy'] = 'd.'.$orderBy .
                          ' ASC';
                     break;
             }

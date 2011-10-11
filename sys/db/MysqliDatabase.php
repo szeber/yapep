@@ -94,10 +94,10 @@ class sys_db_MysqliDatabase extends sys_db_Database
      * @var array
      */
     protected $_schemas = array();
-    
+
     /**
      * The last auto incremented insert id
-     * 
+     *
      * @var integer
      */
     protected $lastInsertId;
@@ -608,10 +608,10 @@ class sys_db_MysqliDatabase extends sys_db_Database
         if (! is_null($query['where'])) {
             $cmd .= ' WHERE ' . $query['where'];
         }
-        if (! is_null($query['more'])) {
+        if (! empty($query['more'])) {
             $cmd .= ' ' . $query['more'];
         }
-        if (! is_null($query['orderBy'])) {
+        if (! empty($query['orderBy'])) {
             $cmd .= ' ORDER BY ' . $query['orderBy'];
         }
         return $this->execute($cmd, $params, $cache, $query['limit'], $query['offset']);

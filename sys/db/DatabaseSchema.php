@@ -39,7 +39,7 @@ abstract class sys_db_DatabaseSchema {
 
     /**
      *
-     * @param sys_db_Database $db 
+     * @param sys_db_Database $db
      */
     public function __construct (sys_db_Database $db)
     {
@@ -109,24 +109,27 @@ abstract class sys_db_DatabaseSchema {
     public function checkGenericTypesAreCompatible(array $modelType, array $dbType) {
         $modelType = $this->_getSimpleGenericType($modelType);
         $ok = true;
-        if (!$modelType['notnull'] && !$modelType['primary'] && ($dbType['notnull'] || $dbType['primary'])) {
+        if (
+            empty($modelType['notnull'])
+            && empty($modelType['primary'])
+            && (!empty($dbType['notnull']) || !empty($dbType['primary']))
+        ) {
             return false;
         }
         if ((isset($modelType['autoincrement']) || isset($dbType['autoincrement'])) && $modelType['autoincrement'] != $dbType['autoincrement']) {
             return false;
         }
-        if ($modelType['fixed'] != $dbType['fixed']) {
+        if (empty($modelType['fixed']) != empty($dbType['fixed'])) {
             return false;
         }
         if (
             ($modelType['type'] == $dbType['type'])
-            && ((!is_null($modelType['length']) && $modelType['length'] <= $dbType['length']) || is_null($dbType['length']))
+            && (empty($dbType['length']) || (isset($modelType['length']) && $modelType['length'] <= $dbType['length']))
         ) {
             return true;
         }
         switch($modelType['type']) {
             case 'string':
-                if ($modelType['fixed'])
                 if (is_null($modelType['length'])) {
                     if ($dbType['type'] == 'clob' && (is_null($dbType['length']) || $dbType['length'] > 255)) {
                         return true;
@@ -154,18 +157,22 @@ abstract class sys_db_DatabaseSchema {
      */
     public function checkGenericTypesAreSame(array $modelType, array $dbType) {
         $modelType = $this->_getSimpleGenericType($modelType);
-        if (($modelType['primary'] || $modelType['notnull']) != ($dbType['notnull'] || $dbType['primary'])) {
+        if (
+            (!empty($modelType['primary']) || !empty($modelType['notnull']))
+            != (!emptY($dbType['notnull']) || !empty($dbType['primary']))
+        ) {
             return false;
         }
         if ((isset($modelType['autoincrement']) || isset($dbType['autoincrement'])) && $modelType['autoincrement'] != $dbType['autoincrement']) {
             return false;
         }
-        if ($modelType['fixed'] != $dbType['fixed']) {
+        if (empty($modelType['fixed']) != empty($dbType['fixed'])) {
             return false;
         }
         if (
             ($modelType['type'] == $dbType['type'])
-            && ($modelType['length'] == $dbType['length'] || (is_null($dbType['length']) && is_null($modelType['length'])))
+            && isset($dbType['length']) == isset($modelType['length'])
+            && (!isset($dbType['length']) ||$modelType['length'] == $dbType['length'])
         ) {
             return true;
         }
@@ -250,7 +257,7 @@ abstract class sys_db_DatabaseSchema {
 
         // indexes
         $dbTable = $orgTable;
-        if (is_array($modelTable['indexes'])) {
+        if (isset($modelTable['indexes']) && is_array($modelTable['indexes'])) {
             foreach($modelTable['indexes'] as $indexName=>$index) {
                 if (!isset($dbTable['indexes'][$indexName ])) {
                     $differences[] = array(
@@ -302,7 +309,7 @@ abstract class sys_db_DatabaseSchema {
                 }
             }
         }
-        if (count($dbTable['indexes'])) {
+        if (!empty($dbTable['indexes'])) {
             foreach($dbTable['indexes'] as $indexName=>$index) {
                 if ($index['type'] == 'unique') {
                     $differences[] = array(
@@ -321,10 +328,10 @@ abstract class sys_db_DatabaseSchema {
                 }
             }
         }
-        
+
         // relations
         $dbTable = $orgTable;
-        if(is_array($modelTable['relations'])) {
+        if(isset($modelTable['relations']) && is_array($modelTable['relations'])) {
             foreach($modelTable['relations'] as $relName=>$relation) {
                 if($relation['type'] != 'one') {
                     continue;
@@ -359,7 +366,7 @@ abstract class sys_db_DatabaseSchema {
                 );
             }
         }
-        if(is_array($dbTable['relations']) && count($dbTable['relations']) > 0) {
+        if(!empty($dbTable['relations']) && is_array($dbTable['relations'])) {
             foreach($dbTable['relations'] as $relation) {
                 $differences[] = array(
                     'name' => $relName,

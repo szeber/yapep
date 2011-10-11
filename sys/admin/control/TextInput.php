@@ -249,9 +249,23 @@ class sys_admin_control_TextInput extends sys_admin_Control implements sys_admin
 	 * @return boolean
 	 */
 	public function setBoxValue($value, $load=false) {
+	    $usedFields = array(
+	        'isInherited',
+	        'allowVariable',
+	        'isVariable',
+	        'useInherited',
+	        'value'
+	    );
+
+	    foreach($usedFields as $field) {
+	        if (!isset($value[$field])) {
+	            $value[$field] = null;
+	        }
+	    }
+
 		if ($load) {
 			$this->boxIsInherited = (bool)$value['isInherited'];
-			$this->boxAllowVariable = (bool)$value['allowVariable'];
+			$this->boxAllowVariable = !(!isset($value['allowVariable']) || !(bool)$value['allowVariable']);
 		}
 		$this->boxIsVariable = (bool)$value['isVariable'];
 		$this->boxUseInherited= (bool)$value['useInherited'];
@@ -282,10 +296,10 @@ class sys_admin_control_TextInput extends sys_admin_Control implements sys_admin
 			$this->value = $value;
 			return true;
 		}
-		if ($this->options ['readOnly']) {
+		if (isset($this->options ['readOnly']) && $this->options ['readOnly']) {
 			return true;
 		}
-		if ($this->options ['trim']) {
+		if (isset($this->options ['trim']) && $this->options ['trim']) {
 			$value = trim ($value);
 		}
 		if ($this->validateValue ($value)) {

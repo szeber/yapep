@@ -113,7 +113,7 @@ class sys_log_File implements sys_ILog {
         }
         while($counter > 1) {
             $counter--;
-            if (file_exists($baseName.'.'.$counter)) {
+            if (file_exists($baseFile.'.'.$counter)) {
                 rename($baseFile.'.'.$counter, $baseFile.'.'.($counter+1));
             }
         }

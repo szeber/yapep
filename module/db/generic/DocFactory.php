@@ -95,7 +95,7 @@ class module_db_generic_DocFactory extends module_db_DbModule implements module_
                  module_db_interface_Doc::STATUS_ACTIVE;
         }
         $docData = $this->conn->selectFirst($query);
-        if (! $docData['id']) {
+        if (empty($docData['id'])) {
             return null;
         }
         return $docData['id'];

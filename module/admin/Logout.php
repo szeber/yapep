@@ -23,7 +23,7 @@
 class module_admin_Logout extends sys_admin_AdminModule {
 	protected function init() {
 		$auth = new sys_Auth('LoggedInAdminData', 'AdminUser');
-		if (!is_array($_POST['Login']) && (!$_POST['username'] || !$_POST['password'])) {
+		if ((!isset($_POST['Login']) || !is_array($_POST['Login'])) && (empty($_POST['username']) || empty($_POST['password']))) {
 			$auth->logout();
 			$this->manager->replaceModule(new module_admin_Login($this->manager));
 		} elseif ($auth->checkLoggedIn()) {

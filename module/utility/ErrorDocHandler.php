@@ -29,7 +29,10 @@ class module_utility_ErrorDocHandler implements sys_ErrorHandlerInterface {
 	 */
 	public function handleError($errorCode) {
 		$config = sys_ApplicationConfiguration::getInstance();
-		 new sys_cache_SysConfigCacheManager();
+		new sys_cache_SysConfigCacheManager();
+	    if (!defined('ERROR_DOC_FOLDER')) {
+	        throw new sys_exception_SiteException('ERROR_DOC_FOLDER is not defined', $errorCode);
+	    }
 		$message = sys_ErrorHandler::getErrorMessageByCode($errorCode);
 		header('HTTP/1.1 '.$errorCode.' '.$message);
         $lang = $config->getOption('defaultLanguage');

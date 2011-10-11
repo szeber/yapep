@@ -40,6 +40,7 @@ ObjectTypeData:
             foreign: folder_type_id
             type: many
         FolderTypeObjectTypeRel:
+            class: FolderTypeObjectTypeRel
             local: id
             foreign: object_type_id
             type: many

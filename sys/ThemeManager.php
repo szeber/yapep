@@ -37,7 +37,7 @@ class sys_ThemeManager {
 		if (!self::$db) {
 			self::getDb();
 		}
-		if ($_SESSION['cms_theme']) {
+		if (!empty($_SESSION['cms_theme'])) {
 			return $_SESSION['cms_theme'];
 		}
 		if (is_null($config)) {
