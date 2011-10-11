@@ -183,6 +183,17 @@ class sys_ApplicationConfiguration implements sys_IApplicationConfiguration {
 				$this->globalProperties['Databases'][$tmp['connectionId']] = $tmp;
 			}
 		}
+		if(isset($xml->Caches)) {
+			foreach($xml->Caches->Cache as $cache) {
+				$tmp = array(
+
+				);
+				foreach($cache->attributes() as $key => $val) {
+					$tmp[$key] = (string) $val;
+				}
+				$this->globalProperties['Caches'][$tmp['cacheId']] = $tmp;
+			}
+		}
 		if(isset($xml->Options)) {
 			foreach($xml->Options->Option as $option) {
 				switch((string) $option['type']) {
@@ -256,6 +267,7 @@ class sys_ApplicationConfiguration implements sys_IApplicationConfiguration {
 	 */
 	private function defineConstant($name, $value) {
 		$this->constants[$name] = $value;
+
 	    if (!defined($name)) {
 	        define($name, $value);
 	    }
@@ -336,6 +348,20 @@ class sys_ApplicationConfiguration implements sys_IApplicationConfiguration {
 		}
 		return null;
 	}
+
+	/**
+	 * Returns a cache's configuration information
+	 *
+	 * @param string $name The name of the cache
+	 * @return array|bool The cache's configuration information or FALSE if it's not set
+	 */
+	public function getCache($name) {
+		if(isset($this->globalProperties['Caches'][$name])) {
+			return $this->globalProperties['Caches'][$name];
+		}
+		return null;
+	}
+
 
 	/**
 	 * Returns a path

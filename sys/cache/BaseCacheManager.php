@@ -21,14 +21,21 @@
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  * @version	$Rev$
  */
-abstract class sys_cache_FileCacheManager implements sys_cache_CacheManager {
+abstract class sys_cache_BaseCacheManager implements sys_cache_CacheManager {
 
 	/**
 	 * Cache file's name
 	 *
 	 * @var string
 	 */
-	protected $cacheFile;
+	protected $cacheKey;
+
+	/**
+	 * Cache backend
+	 *
+	 * @var sys_cache_ICacheBackend
+	 */
+	protected $backend;
 
 	/**
 	 * Configuration data
@@ -49,7 +56,7 @@ abstract class sys_cache_FileCacheManager implements sys_cache_CacheManager {
 	 *
 	 */
 	public function clearCache() {
-		unlink($this->cacheFile);
+		$this->backend->delete($this->cacheKey);
 		if ($this->cacheEnabled()) {
 			$this->recreateCache();
 		}
@@ -76,16 +83,17 @@ abstract class sys_cache_FileCacheManager implements sys_cache_CacheManager {
 		} else {
 			$this->config = $config;
 		}
-		$this->setCacheFile();
+		$this->setCacheKey();
+		$this->backend = sys_cache_CacheFactory::getCache('system');
 		$this->loadCacheData();
 		$this->getDb();
 	}
 
 	/**
-	 * Sets the cache file name
+	 * Sets the cache key
 	 *
 	 */
-	abstract protected function setCacheFile();
+	abstract protected function setCacheKey();
 
 	/**
 	 * Makes database connection

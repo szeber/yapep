@@ -347,17 +347,16 @@ abstract class sys_db_Database
         if (isset($query['from']) && !isset($query['table'])) {
             $query['table'] = $query['from'];
         }
-        if (! $query['table']) {
+        if (empty($query['table'])) {
             throw new sys_exception_DatabaseException(
                 'Table parameter is missing',
                 sys_exception_DatabaseException::ERR_INVALID_SELECT_QUERY);
         }
         if (isset($query['field'])) {
             $query['fields'] = $query['field'];
-        } else
-            if (isset($query['what'])) {
-                $query['fields'] = $query['what'];
-            }
+        } else if (isset($query['what'])) {
+            $query['fields'] = $query['what'];
+        }
         if (isset($query['fields']) && is_array($query['fields'])) {
             $query['fields'] = implode(',', $query['fields']);
         }
@@ -375,16 +374,16 @@ abstract class sys_db_Database
         } elseif (!empty($query['orderby'])) {
             $query['orderBy'] = $query['orderby'];
         }
-        if (!empty($query['orderBy'])) {
+        if (empty($query['orderBy'])) {
             $query['orderBy'] = null;
         }
         if (empty($query['limit'])) {
-            $query['limit'] = - 1;
+            $query['limit'] = -1;
         } else {
             $query['limit'] = (int) $query['limit'];
         }
         if (empty($query['offset'])) {
-            $query['offset'] = - 1;
+            $query['offset'] = -1;
         } else {
             $query['offset'] = (int) $query['offset'];
         }

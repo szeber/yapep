@@ -20,7 +20,7 @@
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  * @version	$Rev$
  */
-class sys_cache_FolderCacheManager extends sys_cache_FileCacheManager {
+class sys_cache_FolderCacheManager extends sys_cache_BaseCacheManager {
 
 	const WITHOUT_SUBFOLDER=0;
 	const WITH_SUBFOLDER=1;
@@ -62,7 +62,7 @@ class sys_cache_FolderCacheManager extends sys_cache_FileCacheManager {
 			$folder->loadFolderData();
 			self::$cacheData[$val['id']]=$folder;
 		}
-		file_put_contents($this->cacheFile, "<?php\n\$cache = ".var_export(self::$cacheData, true).";\n?>");
+		$this->backend->set($this->cacheKey, self::$cacheData);
 	}
 
 
@@ -89,17 +89,16 @@ class sys_cache_FolderCacheManager extends sys_cache_FileCacheManager {
 	 * @see sys_cache_CacheManagerBase::setCacheFile()
 	 *
 	 */
-	protected function setCacheFile() {
-		$this->cacheFile = CACHE_DIR.'cms/folderCache.php';
+	protected function setCacheKey() {
+		$this->cacheKey = 'folderCache';
 	}
 
 	/**
 	 * @see sys_cache_CacheManagerBase::loadCacheData()
 	 */
 	protected function loadCacheData() {
-		if (is_null(self::$cacheData) && $this->cacheEnabled() && file_exists($this->cacheFile)) {
-			include($this->cacheFile);
-			self::$cacheData=$cache;
+		if (is_null(self::$cacheData) && $this->cacheEnabled()) {
+			self::$cacheData=$this->backend->get($this->cacheKey);
 		}
 	}
 

@@ -298,7 +298,7 @@ abstract class sys_admin_AdminModule {
 	public function parseXml(SimpleXMLElement $xml) {
 		$this->manager->runEvent ('preParse');
 		preg_match ('@^([-_a-zA-Z0-9]+)(/(.*))?$@', urldecode ((string) $xml->adminData->name), $name);
-		if (!empty($name [3])) {
+		if (!empty($name[3])) {
 			$this->subModule = explode('/',$name [3]);
 		}
 		if (!isset ($xml->adminData->id) || !(string)$xml->adminData->id) {

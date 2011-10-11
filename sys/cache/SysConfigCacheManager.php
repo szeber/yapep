@@ -20,7 +20,7 @@
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  * @version	$Rev$
  */
-class sys_cache_SysConfigCacheManager extends sys_cache_FileCacheManager {
+class sys_cache_SysConfigCacheManager extends sys_cache_BaseCacheManager {
 
 	/**
 	 * Cache data
@@ -54,7 +54,7 @@ class sys_cache_SysConfigCacheManager extends sys_cache_FileCacheManager {
 			$configData[$val['name']] = $val['value'];
 		}
 		self::$cacheData = $configData;
-		file_put_contents($this->cacheFile, "<?php\n$defines\$cache = ".var_export(self::$cacheData, true).";\n?>");
+		$this->backend->set($this->cacheKey, self::$cacheData);
 	}
 
 	/**
@@ -71,9 +71,11 @@ class sys_cache_SysConfigCacheManager extends sys_cache_FileCacheManager {
 	 *
 	 */
 	protected function loadCacheData() {
-		if (is_null(self::$cacheData) && $this->cacheEnabled() && file_exists($this->cacheFile)) {
-			include($this->cacheFile);
-			self::$cacheData=$cache;
+		if (is_null(self::$cacheData) && $this->cacheEnabled()) {
+			self::$cacheData=(array)$this->backend->get($this->cacheKey);
+			foreach(self::$cacheData as $key => $value) {
+			    define($key, $value);
+			}
 		}
 	}
 
@@ -81,8 +83,8 @@ class sys_cache_SysConfigCacheManager extends sys_cache_FileCacheManager {
 	 * @see sys_cache_FileCacheManager::setCacheFile()
 	 *
 	 */
-	protected function setCacheFile() {
-		$this->cacheFile = CACHE_DIR.'cms/sysConfigCache.php';
+	protected function setCacheKey() {
+		$this->cacheKey = 'sysConfigCache';
 	}
 
 }
