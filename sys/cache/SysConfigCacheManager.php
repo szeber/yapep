@@ -72,7 +72,19 @@ class sys_cache_SysConfigCacheManager extends sys_cache_BaseCacheManager {
 	 */
 	protected function loadCacheData() {
 		if (is_null(self::$cacheData) && $this->cacheEnabled()) {
-			self::$cacheData=(array)$this->backend->get($this->cacheKey);
+			self::$cacheData=$this->backend->get($this->cacheKey);
+			if (false === self::$cacheData) {
+			    // no cache data was found, check if the backend is volatile
+			    if ($this->backend->isVolatile()) {
+			        // it's volatile, we should recreate the cache.
+			        $this->recreateCache();
+			    } else {
+			        // the backend is persistent, we shouldn't recreate the cache automatically
+			        // TODO figure out whether we should trigger an error here
+			        self::$cacheData = array();
+			        return;
+			    }
+			}
 			foreach(self::$cacheData as $key => $value) {
 			    define($key, $value);
 			}

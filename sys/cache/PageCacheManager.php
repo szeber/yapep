@@ -161,6 +161,10 @@ class sys_cache_PageCacheManager extends sys_cache_BaseCacheManager {
 	protected function loadCacheData() {
 		if (is_null(self::$cacheData) && $this->cacheEnabled()) {
 			self::$cacheData=$this->backend->get($this->cacheKey);
+			if (false === self::$cacheData && $this->backend->isVolatile()) {
+			    // the backend is volatile, we should try recreating the cache
+			    $this->recreateCache();
+			}
 		}
 	}
 

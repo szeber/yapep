@@ -42,7 +42,7 @@ class sys_cache_CacheFactory {
      *
      * @param string $cacheId
      *
-     * @return sys_cache_ICacheBackend
+     * @return sys_cache_backend_ICacheBackend
      */
     public static function getCache($cacheId) {
         if (!isset(self::$caches[$cacheId])) {
@@ -56,7 +56,7 @@ class sys_cache_CacheFactory {
      *
      * @param string $cacheId
      *
-     * @return sys_cache_ICacheBackend
+     * @return sys_cache_backend_ICacheBackend
      */
     protected static function makeCache($cacheId) {
         if (is_null(self::$config)) {
@@ -68,11 +68,11 @@ class sys_cache_CacheFactory {
             switch($cacheConfig['type']) {
                 case 'memcache':
                     $cacheOptions = array('memcacheProjectPrefix' => self::$config->getOption('memcacheProjectPrefix'));
-                    return new sys_cache_MemcacheBackend($cacheConfig, $cacheId, $cacheOptions);
+                    return new sys_cache_backend_Memcache($cacheConfig, $cacheId, $cacheOptions);
                     break;
             }
         } else {
-            return new sys_cache_FileBackend(array(), $cacheId);
+            return new sys_cache_backend_File(array(), $cacheId);
         }
     }
 

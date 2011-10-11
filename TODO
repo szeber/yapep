@@ -1,0 +1,13 @@
+CACHING: 
+* Use cache backends for all types of caching
+* Cleanup cache managers
+* Use backends for session handling
+* Add database cachbackend
+
+LOGGING:
+* Add syslog log backend
+* Add more log levels
+
+ERROR HANDLING:
+* cleanup remaining notices
+* add custom error handler that logs to the specified log backend

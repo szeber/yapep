@@ -20,21 +20,9 @@
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  * @version	$Rev: 410 $
  */
-class sys_cache_MemcacheBackend implements sys_cache_ICacheBackend {
+class sys_cache_backend_File implements sys_cache_backend_ICacheBackend {
 
-    /**
-     * The prefix to all keys
-     *
-     * @var string
-     */
-    protected $keyPrefix = '';
-
-    /**
-     * The memcache instance
-     *
-     * @var Memcache
-     */
-    protected $memcache;
+    protected $cacheName;
 
     /**
      * Constructor
@@ -44,12 +32,7 @@ class sys_cache_MemcacheBackend implements sys_cache_ICacheBackend {
      * @param array  $options     Other options
      */
     public function __construct(array $config, $cacheName, array $options = array()) {
-        $this->memcache = new Memcache();
-        $this->memcache->connect($config['host'], $config['port']);
-        $this->keyPrefix = $cacheName;
-        if (isset($options['memcacheProjectPrefix']) && $options['memcacheProjectPrefix']) {
-            $this->keyPrefix = $options['memcacheProjectPrefix'] . '.' . $this->keyPrefix;
-        }
+        $this->cacheName = $cacheName;
     }
 
     /**
@@ -61,7 +44,17 @@ class sys_cache_MemcacheBackend implements sys_cache_ICacheBackend {
      * @param int    $ttl     The expiration time of the data in seconds (if supported by the backend)
      */
     public function set($key, $data, $facility = '', $ttl = 0) {
-        $this->memcache->set($this->makeKey($key, $facility), $data, 0, $ttl);
+        $cacheData = array();
+        if ($ttl > 0) {
+            $cacheData['expiration'] = time() + $ttl;
+        }
+        $cacheData['data'] = $data;
+        $fileName = $this->makeFileName($key, $facility);
+        $fileBaseDir = dirname($fileName);
+        if (!file_exists($fileBaseDir)) {
+            mkdir($fileBaseDir, 0755, true);
+        }
+        file_put_contents($fileName, serialize($cacheData));
     }
 
     /**
@@ -73,7 +66,16 @@ class sys_cache_MemcacheBackend implements sys_cache_ICacheBackend {
      * @return mixed
      */
     public function get($key, $facility = '') {
-        return $this->memcache->get($this->makeKey($key, $facility));
+        $fileName = $this->makeFileName($key, $facility);
+        if (!file_exists($fileName)) {
+            return false;
+        }
+        $data = unserialize(file_get_contents($fileName));
+        if (isset($data['expiration']) && time() < $data['expiration']) {
+            unlink($fileName);
+            return false;
+        }
+        return $data['data'];
     }
 
     /**
@@ -83,21 +85,34 @@ class sys_cache_MemcacheBackend implements sys_cache_ICacheBackend {
      * @param string $facility
      */
     public function delete($key, $facility = '') {
-        $this->memcache->delete($this->makeKey($key, $facility), 0);
+        unlink($this->makeFileName($key, $facility));
     }
 
     /**
-     * Makes the key used to store the data
+     * Makes the filename used to store the cache data
      *
      * @param string $key
      * @param string $facility
      *
-     * @return string   The memcache key
+     * @return string   The filename
      */
-    protected function makeKey($key, $facility = '') {
+    protected function makeFileName($key, $facility = '') {
         if ($facility) {
-            $key = $facility . '.' . $key;
+            $key = $facility . '/' . $key;
         }
-        return $this->keyPrefix . '.' . $key;
+        return CACHE_DIR . $this->cacheName . '/' . $key . '.php';
+    }
+
+    /**
+     * Returns if the backend is volatile, or stores data persistently.
+     *
+     * Used by the system caches, which will recache automatically, if the cache data is missing,
+     * and the backend is volatile.
+     *
+     * @return bool
+     */
+    public function isVolatile() {
+        // File based backend is persistent, we should not recache automatically if the data is missing.
+        return false;
     }
 }

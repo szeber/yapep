@@ -20,7 +20,7 @@
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  * @version	$Rev: 410 $
  */
-interface sys_cache_ICacheBackend {
+interface sys_cache_backend_ICacheBackend {
     /**
      * Constructor
      *
@@ -57,4 +57,14 @@ interface sys_cache_ICacheBackend {
      * @param string $facility
      */
     public function delete($key, $facility = '');
+
+    /**
+     * Returns if the backend is volatile, or stores data persistently.
+     *
+     * Used by the system caches, which will recache automatically, if the cache data is missing,
+     * and the backend is volatile.
+     *
+     * @return bool
+     */
+    public function isVolatile();
 }

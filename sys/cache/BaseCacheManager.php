@@ -33,7 +33,7 @@ abstract class sys_cache_BaseCacheManager implements sys_cache_CacheManager {
 	/**
 	 * Cache backend
 	 *
-	 * @var sys_cache_ICacheBackend
+	 * @var sys_cache_backend_ICacheBackend
 	 */
 	protected $backend;
 
