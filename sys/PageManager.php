@@ -393,7 +393,7 @@ class sys_PageManager
         'locale' => $this->urlHandler->locale ,
         'locale_id' => $this->urlHandler->locale_id ,
         'request_path' => $this->urlHandler->docPath ,
-        'doc_id' => $this->folderInfo['doc_id'] ,
+        'doc_id' => (isset($this->folderInfo['doc_id']) ? $this->folderInfo['doc_id'] : null),
         'real_request_path' => $this->folderInfo['requestPath']);
         if (isset($this->folderInfo['virtual_path'])) {
             $argArr['virtual_path'] = $this->folderInfo['virtual_path'];
