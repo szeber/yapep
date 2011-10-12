@@ -85,8 +85,8 @@ abstract class sys_cache_BaseCacheManager implements sys_cache_CacheManager {
 		}
 		$this->setCacheKey();
 		$this->backend = sys_cache_CacheFactory::getCache('system');
-		$this->loadCacheData();
 		$this->getDb();
+		$this->loadCacheData();
 	}
 
 	/**
